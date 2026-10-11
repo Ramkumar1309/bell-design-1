@@ -178,17 +178,40 @@ document.addEventListener('ComponentsLoaded', () => {
 
   // Update Footer Year dynamically
   
-  // Why Choose Us Active Station Scroll Highlighting
-  const stations = document.querySelectorAll('.why-us-station');
-  if (stations.length > 0 && 'IntersectionObserver' in window) {
-    const stationObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-active');
+  // Why Choose Us: Continuous Unbroken Traveling Line on Scroll
+  const whyUsRail = document.querySelector('.why-us-scroll-rail');
+  if (whyUsRail) {
+    const stations = whyUsRail.querySelectorAll('.why-us-station');
+
+    function updateWhyUsRail() {
+      const railRect = whyUsRail.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      
+      // Starts traveling when rail top reaches 65% of viewport and finishes when bottom reaches 35%
+      const startTrigger = viewportH * 0.65;
+      const endTrigger = viewportH * 0.35;
+      const distanceScrolled = startTrigger - railRect.top;
+      const totalTravelDistance = railRect.height - (endTrigger - startTrigger);
+      
+      let progress = distanceScrolled / totalTravelDistance;
+      progress = Math.max(0, Math.min(1, progress));
+      
+      whyUsRail.style.setProperty('--why-us-scroll-progress', (progress * 100).toFixed(2) + '%');
+
+      // Light up each station continuously as the unbroken line travels past it
+      stations.forEach(station => {
+        const sRect = station.getBoundingClientRect();
+        if (sRect.top <= startTrigger + 20) {
+          station.classList.add('is-active');
+        } else {
+          station.classList.remove('is-active');
         }
       });
-    }, { threshold: 0.35, rootMargin: '-10% 0px -10% 0px' });
-    stations.forEach(station => stationObserver.observe(station));
+    }
+
+    window.addEventListener('scroll', updateWhyUsRail, { passive: true });
+    window.addEventListener('resize', updateWhyUsRail, { passive: true });
+    updateWhyUsRail();
   }
 
   const yearSpan = document.getElementById('current-year');
