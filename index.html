@@ -194,54 +194,61 @@
                     width: 100% !important;
                     margin: 0 0 1.5rem 0 !important;
                 }
-                .hero-buttons .open-matchbox-btn {
+                .open-matchbox-btn {
                     height: 52px !important;
                     max-width: 185px !important;
                     width: 185px !important;
                     margin-right: 0 !important;
                     margin-bottom: 0 !important;
                 }
-                .hero-buttons .open-matchbox-btn .omb-cover {
+                .open-matchbox-btn .omb-cover {
                     font-size: 0.75rem !important;
                     font-weight: 800 !important;
                     letter-spacing: 0.8px !important;
                     padding-right: 6px !important;
                 }
-                .hero-buttons .open-matchbox-btn .omb-cover span {
+                .open-matchbox-btn .omb-cover span {
                     font-size: inherit !important;
                 }
-                .hero-buttons .open-matchbox-btn .omb-cover::after {
+                .open-matchbox-btn .omb-cover::after {
                     height: 5px !important;
                     bottom: 3px !important;
                 }
-                .hero-buttons .open-matchbox-btn .omb-drawer {
+                .open-matchbox-btn .omb-drawer {
                     transform: translateY(-50%) translateX(42px) !important;
                 }
-                .hero-buttons .open-matchbox-btn.is-closed .omb-drawer {
+                .open-matchbox-btn.is-closed .omb-drawer {
                     transform: translateY(-50%) translateX(5px) !important;
                 }
-                .hero-buttons .open-matchbox-btn .matchstick-group {
+                .open-matchbox-btn .matchstick-group {
                     right: 4px !important;
                 }
-                .hero-buttons .open-matchbox-btn .real-matchstick {
+                .open-matchbox-btn .real-matchstick {
                     height: 5px !important;
                     width: 55px !important;
                     right: 2px !important;
                 }
-                .hero-buttons .open-matchbox-btn .real-matchstick::after {
+                .open-matchbox-btn .real-matchstick::after {
                     width: 12px !important;
                     height: 9px !important;
                     top: -2px !important;
                     right: -2px !important;
                 }
-                .hero-buttons .open-matchbox-btn .real-matchstick:nth-child(1) {
+                .open-matchbox-btn .real-matchstick:nth-child(1) {
                     top: 11px !important;
                 }
-                .hero-buttons .open-matchbox-btn .real-matchstick:nth-child(2) {
+                .open-matchbox-btn .real-matchstick:nth-child(2) {
                     top: 20px !important;
                 }
-                .hero-buttons .open-matchbox-btn .real-matchstick:nth-child(3) {
+                .open-matchbox-btn .real-matchstick:nth-child(3) {
                     top: 29px !important;
+                }
+                #products .open-matchbox-btn {
+                    margin: 0 !important;
+                }
+                .cta-actions .open-matchbox-btn {
+                    margin-right: 0 !important;
+                    margin-bottom: 1rem !important;
                 }
                 .hero-visual {
                     width: 100% !important;
@@ -264,15 +271,15 @@
                 }
             }
             @media (max-width: 480px) {
-                .hero-buttons .open-matchbox-btn {
-                    height: 50px !important;
+                .open-matchbox-btn {
+                    height: 48px !important;
                     max-width: 175px !important;
                     width: 175px !important;
                 }
-                .hero-buttons .open-matchbox-btn .omb-cover {
-                    font-size: 0.72rem !important;
+                .open-matchbox-btn .omb-cover {
+                    font-size: 0.7rem !important;
                 }
-                .hero-buttons .open-matchbox-btn .omb-drawer {
+                .open-matchbox-btn .omb-drawer {
                     transform: translateY(-50%) translateX(32px) !important;
                 }
                 .hero-title {
@@ -289,7 +296,36 @@
             }
 
             /* Tablet Viewport Fix (992px - 1280px): Prevent 3D matchbox & matchstick cutting off on right side */
+            /* General matchbox button desktop/tablet container spacing */
+            #products .open-matchbox-btn {
+                margin: 0 !important;
+            }
+            .cta-actions {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+            .cta-actions .open-matchbox-btn {
+                margin-right: 50px !important;
+                margin-bottom: 12px !important;
+            }
+
             @media (min-width: 992px) and (max-width: 1280px) {
+                .open-matchbox-btn {
+                    height: 54px !important;
+                    width: 195px !important;
+                    max-width: 195px !important;
+                }
+                .open-matchbox-btn .omb-cover {
+                    font-size: 0.74rem !important;
+                }
+                .open-matchbox-btn .omb-drawer {
+                    transform: translateY(-50%) translateX(46px) !important;
+                }
+                .cta-actions .open-matchbox-btn {
+                    margin-right: 48px !important;
+                }
                 .hero-container {
                     grid-template-columns: 1fr 1.05fr !important;
                     gap: 1.5rem !important;
@@ -993,8 +1029,19 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center" style="margin-top:3rem;">
-                <a href="products.html" class="btn btn-primary">View All Products</a>
+            <div class="text-center" style="margin-top: 3.5rem; display: flex; justify-content: center; align-items: center;">
+                <a href="products.html" class="open-matchbox-btn" onclick="this.classList.add('is-closed')" ontouchstart="this.classList.add('is-closed')">
+                    <div class="omb-drawer">
+                        <div class="matchstick-group">
+                            <div class="real-matchstick" style="top: 15px; transform: rotate(-1deg); right: 15px;"></div>
+                            <div class="real-matchstick" style="top: 25px; transform: rotate(0.5deg); right: 15px;"></div>
+                            <div class="real-matchstick" style="top: 35px; transform: rotate(-0.5deg); right: 15px;"></div>
+                        </div>
+                    </div>
+                    <div class="omb-cover">
+                        <span>View All Products</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -1200,8 +1247,30 @@
                     <h2>Ready to Import Premium Safety Matches?</h2>
                     <p>Get in touch with our export team today. We offer competitive FOB/CIF pricing, flexible MOQs, and full documentation support for customs clearance worldwide. Whether you need safety matches wholesale, custom printed matches wholesale, or branded private-label products, our team can discuss your requirements.</p>
                     <div class="cta-actions">
-                        <a href="contact.html" class="btn btn-white">Request a Quote</a>
-                        <a href="products.html" class="btn btn-outline-white">Browse Products</a>
+                        <a href="contact.html" class="open-matchbox-btn" onclick="this.classList.add('is-closed')" ontouchstart="this.classList.add('is-closed')">
+                            <div class="omb-drawer">
+                                <div class="matchstick-group">
+                                    <div class="real-matchstick" style="top: 15px; transform: rotate(-1deg); right: 15px;"></div>
+                                    <div class="real-matchstick" style="top: 25px; transform: rotate(0.5deg); right: 15px;"></div>
+                                    <div class="real-matchstick" style="top: 35px; transform: rotate(-0.5deg); right: 15px;"></div>
+                                </div>
+                            </div>
+                            <div class="omb-cover">
+                                <span>Request a Quote</span>
+                            </div>
+                        </a>
+                        <a href="products.html" class="open-matchbox-btn" onclick="this.classList.add('is-closed')" ontouchstart="this.classList.add('is-closed')">
+                            <div class="omb-drawer">
+                                <div class="matchstick-group">
+                                    <div class="real-matchstick" style="top: 15px; transform: rotate(-1deg); right: 15px;"></div>
+                                    <div class="real-matchstick" style="top: 25px; transform: rotate(0.5deg); right: 15px;"></div>
+                                    <div class="real-matchstick" style="top: 35px; transform: rotate(-0.5deg); right: 15px;"></div>
+                                </div>
+                            </div>
+                            <div class="omb-cover">
+                                <span>Browse Products</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="cta-details">
