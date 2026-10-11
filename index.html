@@ -527,7 +527,7 @@
                 sleeve.add(topPnl, botPnl);
 
                 // Left & Right (Friction strips)
-                const lrGeo = new THREE.BoxGeometry(t, h - t, d);
+                const lrGeo = new THREE.BoxGeometry(t, h, d); // Full height prevents edge seam light leaks
                 const leftPnl = new THREE.Mesh(lrGeo, frictionMaterial);
                 leftPnl.position.x = -w/2 + t/2;
                 leftPnl.castShadow = true; leftPnl.receiveShadow = true;
@@ -576,13 +576,14 @@
                 tray.add(trayFront, trayBack, trayLeft, trayRight);
                 
                 // --- MATCHSTICKS ---
-                const woodMat = new THREE.MeshStandardMaterial({ color: 0xdec092, roughness: 0.9 });
-                const headMat = new THREE.MeshStandardMaterial({ color: 0xcc2222, roughness: 0.7 });
+                // Realistic sulfur safety match colors (Authentic Bell Match birch splint & deep crimson sulfur head)
+                const woodMat = new THREE.MeshStandardMaterial({ color: 0xd4a373, roughness: 0.85 });
+                const headMat = new THREE.MeshStandardMaterial({ color: 0x8a1c14, roughness: 0.8, metalness: 0.05 });
                 
-                const stickGeo = new THREE.BoxGeometry(0.5, 0.5, 9);
-                const headGeo = new THREE.SphereGeometry(0.45, 8, 8);
+                const stickGeo = new THREE.BoxGeometry(0.48, 0.48, 9);
+                const headGeo = new THREE.SphereGeometry(0.42, 10, 10);
 
-                // Create a bunch of matches inside the tray
+                // Create matches nestled neatly inside the tray
                 for(let i=0; i<15; i++) {
                     const match = new THREE.Group();
                     
@@ -591,20 +592,20 @@
                     
                     const head = new THREE.Mesh(headGeo, headMat);
                     head.position.z = 4.5;
-                    head.scale.z = 1.3;
+                    head.scale.set(1.0, 1.1, 1.35); // Oval sulfur match head
                     head.castShadow = true; head.receiveShadow = true;
                     
                     match.add(stick, head);
                     
-                    // Randomize position in tray
-                    match.position.x = (Math.random() - 0.5) * (w - 3);
-                    match.position.y = -h/2 + t + 0.3 + (Math.random() * 0.5);
-                    // Shift matches forward so heads stick out
-                    match.position.z = (Math.random() - 0.5) * 2 + 1;
+                    // Contained safely on tray bed (prevents any protrusion or back-seam bleed)
+                    match.position.x = (Math.random() - 0.5) * (w - 4.2);
+                    match.position.y = -h/2 + t + 0.28; // Nestled flat on tray bottom
+                    match.position.z = (Math.random() - 0.5) * 1.4 + 1.1; // Visible in open drawer, safely inside limits
                     
-                    // Randomize rotation slightly
-                    match.rotation.y = (Math.random() - 0.5) * 0.2;
-                    match.rotation.z = (Math.random() - 0.5) * 0.1;
+                    // Subtle realistic horizontal variation only; no vertical tilt
+                    match.rotation.y = (Math.random() - 0.5) * 0.06;
+                    match.rotation.z = 0;
+                    match.rotation.x = 0;
                     
                     tray.add(match);
                 }
