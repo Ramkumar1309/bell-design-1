@@ -329,6 +329,17 @@
                     gap: 2rem;
                 }
             }
+            @media (max-width: 768px) {
+                .export-map-panel {
+                    margin: 0 -0.5rem;
+                    padding: 0.85rem 0.2rem !important;
+                    border-radius: 12px;
+                }
+                .export-map-svg-wrap {
+                    transform: scale(1.16);
+                    transform-origin: center center;
+                }
+            }
             @media (max-width: 580px) {
                 .dual-hub-grid {
                     grid-template-columns: 1fr !important;
@@ -383,7 +394,7 @@
                 <!-- Right: Compact Animated World Export Map -->
                 <div class="export-map-panel">
                     <!-- SVG World Map Container -->
-                    <div style="position: relative; width: 100%; line-height: 0;">
+                    <div class="export-map-svg-wrap" style="position: relative; width: 100%; line-height: 0;">
                         <svg viewBox="0 55 950 455" width="100%" height="auto" style="display: block; border-radius: 10px; background: #ffffff;">
                             <!-- Base Vector World Map (Clean, Bright Landmasses) -->
                             <image href="uploads/world_map_base.svg" x="0" y="0" width="950" height="620" preserveAspectRatio="xMidYMid meet" opacity="0.95" />
