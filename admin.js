@@ -165,7 +165,7 @@ function updateProdSubCategory() {
 
 document.getElementById('addMainCatForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = document.getElementById('newMainCat').value;
+    const name = document.getElementById('newMainCat').value.trim().toUpperCase();
     await fetch(`${API_URL}/categories/main`, {
         method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` },
         body: JSON.stringify({ name })
@@ -176,7 +176,7 @@ document.getElementById('addMainCatForm').addEventListener('submit', async (e) =
 
 document.getElementById('addSubCatForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = document.getElementById('newSubCat').value;
+    const name = document.getElementById('newSubCat').value.trim().toUpperCase();
     const main_category_id = document.getElementById('parentMainCat').value;
     if(!main_category_id) return alert('Select a parent category');
     await fetch(`${API_URL}/categories/sub`, {
