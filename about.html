@@ -205,11 +205,16 @@
             }
             @media (max-width: 992px) {
                 .mfg-solutions-grid {
-                    grid-template-columns: 1fr !important;
+                    display: flex !important;
+                    flex-direction: column !important;
                     gap: 2rem !important;
+                }
+                .mfg-solutions-content {
+                    order: 1 !important;
                 }
                 .mfg-solutions-img-card {
                     height: 320px !important;
+                    order: 2 !important;
                 }
             }
         </style>
@@ -221,7 +226,7 @@
                 </div>
 
                 <!-- Right: Text -->
-                <div style="display: flex; flex-direction: column; justify-content: center;">
+                <div class="mfg-solutions-content" style="display: flex; flex-direction: column; justify-content: center;">
                     <h2 style="color: var(--primary-red); font-size: 2.3rem; margin-bottom: 1.5rem; font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.25;">Complete Safety Match Manufacturing Solutions</h2>
                     <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">Whether you require standard household safety matches, kitchen matches, promotional match boxes, or customised private-label products, Bell Match Company provides complete manufacturing solutions tailored to your business requirements.</p>
                     <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">Our experienced production and export teams ensure every order meets stringent quality standards while maintaining consistency across bulk production.</p>
