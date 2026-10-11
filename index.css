@@ -470,37 +470,78 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
 .mobile-menu-toggle.active .bar:nth-child(2) { opacity: 0; }
 .mobile-menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-/* Mobile Nav Overlay */
+/* Mobile Nav Overlay - Slide Down from Top with Dark Luxury Background */
 .mobile-nav-overlay {
   position: fixed;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   height: 100vh;
-  background-color: var(--white);
-  z-index: 1050;
-  transition: left 0.4s ease-in-out;
+  background: 
+    linear-gradient(180deg, rgba(8, 9, 14, 0.90) 0%, rgba(14, 17, 26, 0.85) 50%, rgba(8, 9, 14, 0.92) 100%),
+    url('uploads/hero_matchsticks_bg_mobile.jpg') center center / cover no-repeat !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 10500;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
+
 .mobile-nav-overlay.active {
-  left: 0;
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
+
 .mobile-nav-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
   width: 100%;
-  padding: 2rem;
+  padding: 3rem 1.5rem 2rem 1.5rem;
+  box-sizing: border-box;
 }
+
 .mobile-link {
-  font-size: 1.5rem;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 1.55rem;
   font-weight: 800;
-  color: var(--dark-text);
+  color: #f8fafc !important;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.mobile-link:hover { color: var(--primary-red); }
+
+.mobile-link:hover,
+.mobile-link.active {
+  color: #ff4747 !important;
+  transform: scale(1.06);
+}
+
+.mobile-dropdown-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #cbd5e1 !important;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mobile-dropdown-item:hover,
+.mobile-dropdown-item.active {
+  color: #c49a6c !important;
+}
 
 /* Premium Hero Section */
 .premium-hero {
