@@ -494,8 +494,11 @@
     </section>
 
     <!-- International Manufacturing & Export Capabilities Section -->
-    <section class="section" id="export-capabilities" style="padding: 6rem 0; background: #fafbfc; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB;">
+    <section class="section" id="export-capabilities" style="background: #fafbfc; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB;">
         <style>
+            #export-capabilities {
+                padding: 3.25rem 0 !important;
+            }
             .export-1400-container {
                 width: 100%;
                 max-width: 100%;
@@ -506,10 +509,10 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-end;
-                gap: 3rem;
-                margin-bottom: 3.5rem;
+                gap: 2.5rem;
+                margin-bottom: 2rem;
                 border-bottom: 1px solid #e5e7eb;
-                padding-bottom: 2.5rem;
+                padding-bottom: 1.25rem;
             }
             .export-header-left {
                 max-width: 720px;
@@ -524,10 +527,10 @@
                 font-weight: 700;
                 letter-spacing: 2px;
                 text-transform: uppercase;
-                margin-bottom: 0.8rem;
+                margin-bottom: 0.5rem;
             }
             .export-main-title {
-                font-size: 2.85rem;
+                font-size: 2.6rem;
                 color: #111827;
                 font-family: 'Poppins', sans-serif;
                 font-weight: 700;
@@ -540,15 +543,15 @@
             }
             .export-lead-p {
                 font-family: 'Lora', serif;
-                font-size: 1.15rem;
-                line-height: 1.85;
+                font-size: 1.05rem;
+                line-height: 1.7;
                 color: #4b5563;
-                margin: 0 0 1.2rem 0;
+                margin: 0 0 0.85rem 0;
             }
             .export-deck-4col {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
-                gap: 1.8rem;
+                gap: 1.5rem;
             }
             .export-deck-card {
                 background: #ffffff;
@@ -673,30 +676,39 @@
                 color: var(--primary-red);
             }
             @media (max-width: 1200px) {
+                #export-capabilities {
+                    padding: 2.5rem 0 !important;
+                }
                 .export-deck-4col {
                     grid-template-columns: repeat(2, 1fr);
+                    gap: 1.25rem;
                 }
                 .export-top-header {
                     flex-direction: column;
                     align-items: flex-start;
-                    gap: 1.5rem;
+                    gap: 1.2rem;
+                    margin-bottom: 1.75rem;
+                    padding-bottom: 1.25rem;
                 }
             }
             @media (max-width: 680px) {
+                #export-capabilities {
+                    padding: 1.75rem 0 !important;
+                }
                 .export-deck-4col {
                     grid-template-columns: 1fr;
+                    gap: 1rem;
+                }
+                .export-deck-card {
+                    padding: 1.5rem 1.25rem;
                 }
                 .export-main-title {
-                    font-size: 2.1rem;
+                    font-size: 1.85rem;
                 }
-                .export-action-bar-1400 {
-                    flex-direction: column;
-                    align-items: flex-start;
-                    padding: 1.5rem;
-                }
-                .export-badge-items {
-                    flex-direction: column;
-                    gap: 0.8rem;
+                .export-top-header {
+                    gap: 1rem;
+                    margin-bottom: 1.25rem;
+                    padding-bottom: 1rem;
                 }
             }
         </style>
