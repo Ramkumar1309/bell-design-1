@@ -618,30 +618,50 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
     background: linear-gradient(180deg, rgba(8, 9, 12, 0.82) 0%, rgba(8, 9, 12, 0.55) 45%, rgba(8, 9, 12, 0.92) 100%) !important;
   }
   .hero-buttons .open-matchbox-btn {
-    height: 46px !important;
-    max-width: 205px !important;
-    width: 100% !important;
+    height: 52px !important;
+    max-width: 185px !important;
+    width: 185px !important;
     margin-right: 0 !important;
     margin-bottom: 0 !important;
   }
   .hero-buttons .open-matchbox-btn .omb-cover {
-    font-size: 0.72rem !important;
+    font-size: 0.75rem !important;
+    font-weight: 800 !important;
     letter-spacing: 0.8px !important;
+    padding-right: 6px !important;
+  }
+  .hero-buttons .open-matchbox-btn .omb-cover span {
+    font-size: inherit !important;
+  }
+  .hero-buttons .open-matchbox-btn .omb-cover::after {
+    height: 5px !important;
+    bottom: 3px !important;
   }
   .hero-buttons .open-matchbox-btn .omb-drawer {
-    transform: translateY(-50%) translateX(40px) !important;
+    transform: translateY(-50%) translateX(36px) !important;
   }
   .hero-buttons .open-matchbox-btn.is-closed .omb-drawer {
     transform: translateY(-50%) translateX(5px) !important;
   }
+  .hero-buttons .open-matchbox-btn .real-matchstick {
+    height: 5px !important;
+    width: 55px !important;
+    right: 12px !important;
+  }
+  .hero-buttons .open-matchbox-btn .real-matchstick::after {
+    width: 12px !important;
+    height: 9px !important;
+    top: -2px !important;
+    right: -4px !important;
+  }
   .hero-buttons .open-matchbox-btn .real-matchstick:nth-child(1) {
-    top: 9px !important;
+    top: 11px !important;
   }
   .hero-buttons .open-matchbox-btn .real-matchstick:nth-child(2) {
-    top: 17px !important;
+    top: 20px !important;
   }
   .hero-buttons .open-matchbox-btn .real-matchstick:nth-child(3) {
-    top: 25px !important;
+    top: 29px !important;
   }
   .hero-visual {
     width: 100% !important;
@@ -664,6 +684,17 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
   }
 }
 @media (max-width: 480px) {
+  .hero-buttons .open-matchbox-btn {
+    height: 50px !important;
+    max-width: 175px !important;
+    width: 175px !important;
+  }
+  .hero-buttons .open-matchbox-btn .omb-cover {
+    font-size: 0.72rem !important;
+  }
+  .hero-buttons .open-matchbox-btn .omb-drawer {
+    transform: translateY(-50%) translateX(32px) !important;
+  }
   .hero-title {
     font-size: clamp(1.55rem, 6.8vw, 1.95rem) !important;
   }
