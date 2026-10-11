@@ -242,6 +242,10 @@
             <style>
                 #infrastructure .feature-card {
                     padding: 1.5rem 1.5rem 1.25rem !important;
+                    height: 100% !important;
+                    display: flex !important;
+                    flex-direction: column !important;
+                    justify-content: flex-start !important;
                 }
                 #infrastructure .feature-card > div:first-child {
                     width: 100% !important;
@@ -260,12 +264,48 @@
                     display: block !important;
                 }
                 #infrastructure .feature-card h3 {
+                    font-size: 1.25rem !important;
+                    line-height: 1.35 !important;
+                    min-height: 3.4rem !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    text-align: center !important;
                     margin-bottom: 0.6rem !important;
                 }
                 #infrastructure .feature-card p {
+                    font-size: 0.95rem !important;
+                    line-height: 1.6 !important;
+                    min-height: 3.1rem !important;
+                    display: flex !important;
+                    align-items: flex-start !important;
+                    justify-content: center !important;
+                    text-align: center !important;
                     margin-bottom: 0 !important;
                 }
+                @media (max-width: 992px) {
+                    #infrastructure .feature-card h3 {
+                        font-size: 1.2rem !important;
+                        line-height: 1.35 !important;
+                        min-height: 3.3rem !important;
+                    }
+                    #infrastructure .feature-card p {
+                        font-size: 0.92rem !important;
+                        line-height: 1.55 !important;
+                        min-height: 4.3rem !important;
+                    }
+                }
                 @media (max-width: 768px) {
+                    #infrastructure .feature-card h3 {
+                        font-size: 1.15rem !important;
+                        line-height: 1.3 !important;
+                        min-height: 3rem !important;
+                    }
+                    #infrastructure .feature-card p {
+                        font-size: 0.88rem !important;
+                        line-height: 1.5 !important;
+                        min-height: 4rem !important;
+                    }
                     .infra-mobile-scroll {
                         display: flex !important;
                         overflow-x: auto !important;
