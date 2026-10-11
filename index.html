@@ -893,21 +893,25 @@
     <section class="premium-details-section" style="padding-top: 5rem; padding-bottom: 1.5rem; background: #09090b; border-top: 1px solid #1c1c1e;">
         <style>
             .industry-pill {
-                padding: 0.8rem 1.8rem;
-                background: #121214;
-                border: 1px solid #27272a;
+                padding: 0.85rem 2rem;
+                background: linear-gradient(145deg, #1c1c21 0%, #121216 100%);
+                border: 1px solid rgba(196, 154, 108, 0.4);
                 border-radius: 50px;
-                color: #e4e4e7;
+                color: #ffffff;
                 font-family: 'Outfit', sans-serif;
                 font-size: 1.1rem;
-                font-weight: 500;
+                font-weight: 600;
+                letter-spacing: 0.3px;
                 white-space: nowrap;
-                transition: all 0.3s ease;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             }
             .industry-pill:hover {
                 border-color: #c49a6c;
-                color: #c49a6c;
-                background: rgba(196, 154, 108, 0.05);
+                color: #ffffff;
+                background: linear-gradient(145deg, rgba(196, 154, 108, 0.25) 0%, #1c1c21 100%);
+                box-shadow: 0 6px 24px rgba(196, 154, 108, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
             }
             .marquee-wrapper {
                 margin-bottom: 2.5rem;
@@ -918,6 +922,8 @@
                 right: 50%;
                 margin-left: -50vw;
                 margin-right: -50vw;
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
             }
             .marquee-track {
                 display: flex;
@@ -1012,7 +1018,7 @@
                     <!-- Set 1 -->
                     <div class="industry-pill">Supermarkets</div>
                     <div class="industry-pill">Hotels & Resorts</div>
-                    <div class="industry-pill">Restaurants</div>
+                    <div class="industry-pill">Restaurants & Bars</div>
                     <div class="industry-pill">FMCG Distributors</div>
                     <div class="industry-pill">Importers</div>
                     <div class="industry-pill">Wholesalers</div>
@@ -1024,7 +1030,7 @@
                     <!-- Set 2 (Duplicate for seamless scroll) -->
                     <div class="industry-pill">Supermarkets</div>
                     <div class="industry-pill">Hotels & Resorts</div>
-                    <div class="industry-pill">Restaurants</div>
+                    <div class="industry-pill">Restaurants & Bars</div>
                     <div class="industry-pill">FMCG Distributors</div>
                     <div class="industry-pill">Importers</div>
                     <div class="industry-pill">Wholesalers</div>
