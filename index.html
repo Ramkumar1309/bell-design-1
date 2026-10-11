@@ -306,10 +306,6 @@
     <!-- About Section -->
                                             <!-- 3D Interactive WebGL About Section -->
     <section class="section" id="about" style="background: #1c1c1e; padding: 40px 0; position: relative; overflow: hidden; min-height: auto; display: flex; align-items: center;">
-        <!-- Animated Background Glows -->
-        <div class="ambient-glow glow-1"></div>
-        <div class="ambient-glow glow-2"></div>
-        <div class="ambient-glow glow-3"></div>
 
         
         
@@ -465,15 +461,15 @@
 
                 // Materials
                 const sleeveMaterial = new THREE.MeshStandardMaterial({ 
-                    color: 0xf5f2e9, // Ivory cream matching label base
+                    color: 0xf5f2e9, // Ivory cream matching label base (keeps inside clean)
                     roughness: 0.6,
                     metalness: 0.1
                 });
                 
                 const frictionMaterial = new THREE.MeshStandardMaterial({
-                    color: 0x222222,
-                    roughness: 0.9,
-                    bumpScale: 0.02
+                    color: 0xb71c1c, // Button red (#b71c1c) replacing the black side
+                    roughness: 0.6,
+                    metalness: 0.05
                 });
 
                 const trayMaterial = new THREE.MeshStandardMaterial({

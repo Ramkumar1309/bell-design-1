@@ -2782,13 +2782,7 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
 
 /* Animated Ambient Glow for Who We Are */
 .ambient-glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.4;
-    z-index: 1;
-    pointer-events: none;
-    animation: drift 20s infinite alternate ease-in-out;
+    display: none !important;
 }
 .glow-1 {
     width: 500px;
