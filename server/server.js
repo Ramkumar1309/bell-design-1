@@ -24,13 +24,13 @@ if (!fs.existsSync(uploadDir)) {
 // Serve uploaded images statically
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
-// Serve the frontend statically with clean URLs (auto-resolves .html)
-app.use(express.static(path.join(__dirname, '..'), { extensions: ['html'] }));
-
-// Universal Admin Redirects (Fix for malformed URL typing)
-app.get(['/admin', '/products.html/admin'], (req, res) => {
+// Universal Admin Redirects (Fix for malformed URL typing) - MUST be before static
+app.get(['/admin', '/products.html/admin', '/index.html/admin', '/products/admin'], (req, res) => {
     res.redirect('/admin.html');
 });
+
+// Serve the frontend statically with clean URLs (auto-resolves .html)
+app.use(express.static(path.join(__dirname, '..'), { extensions: ['html'] }));
 
 // Multer setup
 const storage = multer.diskStorage({
@@ -314,6 +314,12 @@ app.delete('/api/products/:id', authenticateToken, (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Backend server is running on http://localhost:${PORT}`);
 });
+
+if (String(PORT) !== '5500') {
+    app.listen(5500, '0.0.0.0', () => {
+        console.log(`Backend server is also running on http://localhost:5500`);
+    });
+}

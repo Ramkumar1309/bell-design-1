@@ -57,7 +57,7 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="index.css?v=102">
+    <link rel="stylesheet" href="index.css?v=104">
 
     <!-- Vintage Label Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,23 +102,139 @@
 
     <main id="main-content">
     <section class="premium-hero">
-        <div class="hero-bg" style="background-image: url('https://res.cloudinary.com/ppxlfuj2/image/upload/q_auto,f_auto,c_limit,w_2000/v1785391314/hero-bg_njjghi.jpg');"></div>
+        <div class="hero-bg" style="background-image: url('uploads/hero_matchsticks_bg.jpg'), url('https://res.cloudinary.com/ppxlfuj2/image/upload/q_auto,f_auto,c_limit,w_2000/v1785391314/hero-bg_njjghi.jpg');"></div>
         <div class="hero-overlay"></div>
         <div class="particles" id="particles"></div>
 
+        <style>
+            /* Universal touch highlight fix to prevent blue box/flash on mobile */
+            .code-match-scene,
+            .code-match-scene *,
+            .hero-visual,
+            .hero-visual *,
+            #matchFlameCanvas,
+            #codeMatchstickActor,
+            .sample-matchbox-assembly,
+            .open-matchbox-btn,
+            .open-matchbox-btn * {
+                -webkit-tap-highlight-color: transparent !important;
+                -webkit-touch-callout: none !important;
+                outline: none !important;
+            }
+
+            @media (max-width: 991px) {
+                .premium-hero {
+                    min-height: auto !important;
+                    padding: 2.5rem 0 4rem 0 !important;
+                    overflow-x: hidden !important;
+                    width: 100% !important;
+                    max-width: 100vw !important;
+                }
+                .hero-container {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: flex-start !important;
+                    text-align: left !important;
+                    gap: 1.5rem !important;
+                    padding: 1rem 1.25rem 2rem 1.25rem !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    box-sizing: border-box !important;
+                    overflow-x: hidden !important;
+                }
+                .hero-content {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    text-align: left !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    box-sizing: border-box !important;
+                }
+                .hero-title {
+                    font-size: clamp(1.75rem, 6.2vw, 2.3rem) !important;
+                    line-height: 1.25 !important;
+                    margin-bottom: 1rem !important;
+                    letter-spacing: -0.5px !important;
+                    word-break: normal !important;
+                    overflow-wrap: break-word !important;
+                    text-align: left !important;
+                }
+                .hero-title .text-highlight {
+                    display: block !important;
+                    margin-top: 0.25rem !important;
+                    text-align: left !important;
+                }
+                .hero-description {
+                    font-size: 0.95rem !important;
+                    line-height: 1.65 !important;
+                    max-width: 100% !important;
+                    margin: 0 0 1.5rem 0 !important;
+                    text-align: left !important;
+                    color: rgba(255, 255, 255, 0.85) !important;
+                    padding: 0 !important;
+                    box-sizing: border-box !important;
+                }
+                .hero-buttons {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: flex-start !important;
+                    justify-content: flex-start !important;
+                    gap: 0.85rem !important;
+                    width: 100% !important;
+                    margin: 0 0 1.5rem 0 !important;
+                }
+                .hero-buttons .open-matchbox-btn {
+                    margin-right: 0 !important;
+                    margin-bottom: 0 !important;
+                    max-width: 250px !important;
+                    width: 100% !important;
+                }
+                .hero-visual {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                    height: 330px !important;
+                    margin: 1.5rem auto 1rem auto !important;
+                    overflow: visible !important;
+                }
+                .code-match-scene {
+                    width: 520px !important;
+                    max-width: 520px !important;
+                    height: 440px !important;
+                    transform: scale(0.68) !important;
+                    transform-origin: center center !important;
+                    margin: 0 auto !important;
+                    flex-shrink: 0 !important;
+                }
+            }
+            @media (max-width: 480px) {
+                .hero-title {
+                    font-size: clamp(1.55rem, 6.8vw, 1.95rem) !important;
+                }
+                .hero-visual {
+                    height: 310px !important;
+                    margin: 1rem auto 1rem auto !important;
+                }
+                .code-match-scene {
+                    transform: scale(0.62) !important;
+                    height: 440px !important;
+                }
+            }
+        </style>
+
         <div class="container hero-container relative">
             <div class="hero-content">
-                <div class="hero-label-wrapper">
-                    <span class="hero-label">LEADING SAFETY MATCH MANUFACTURER & EXPORTER IN INDIA</span>
-                </div>
+                
                 <h1 class="hero-title">
-                    Premium Safety Matches & <span class="text-highlight">Match Boxes for Global Markets</span>
+                    Premium Safety Matches <span class="text-highlight">for Global Markets</span>
                 </h1>
-                <p class="hero-description" style="max-width: 950px;">
-                    Bell Match Company is one of India's trusted matchbox manufacturers and exporters, delivering premium-quality match boxes to customers worldwide. With decades of manufacturing expertise, modern production facilities, stringent quality control, and global export capabilities, we provide reliable products for wholesalers, distributors, retailers, supermarkets, hotels, and private-label brands. As a trusted safety match manufacturer and safety match exporter, we also support businesses looking for custom matchbox and bulk supply solutions.
+                <p class="hero-description">
+                    Bell Match Company is one of India's trusted matchbox manufacturers and exporters, delivering premium-quality match boxes to customers worldwide. With decades of manufacturing expertise, modern
                 </p>
                                 <div class="hero-buttons">
-                    <a href="products.html" class="open-matchbox-btn" onmousedown="this.classList.add('is-closed')" ontouchstart="this.classList.add('is-closed')">
+                    <a href="products.html" class="open-matchbox-btn" onclick="this.classList.add('is-closed')">
                         <div class="omb-drawer">
                             <div class="matchstick-group">
                                 <div class="real-matchstick" style="top: 15px; transform: rotate(-1deg); right: 15px;"></div>
@@ -130,7 +246,7 @@
                             <span>Explore Products</span>
                         </div>
                     </a>
-                    <a href="uploads/Bell_Match_Catalogue.pdf" class="open-matchbox-btn" onmousedown="this.classList.add('is-closed')" ontouchstart="this.classList.add('is-closed')">
+                    <a href="uploads/Bell_Match_Catalogue.pdf" class="open-matchbox-btn" onclick="this.classList.add('is-closed')">
                         <div class="omb-drawer">
                             <div class="matchstick-group">
                                 <div class="real-matchstick" style="top: 15px; transform: rotate(-1deg); right: 15px;"></div>
@@ -144,12 +260,52 @@
                     </a>
                 </div>
             </div>
+
+            <!-- Hero Studio Showcase: Real 3D Slide Matchbox & Striking Flame -->
+            <div class="hero-visual" id="heroVisualStage">
+                <div class="code-match-scene" id="codeMatchScene">
+                    <!-- Authentic Photorealistic 3D Matchbox (Real Envato 3D Model with User's Official Logo) -->
+                    <div class="sample-matchbox-assembly" id="matchboxAssembly">
+                        <div class="sample-box-shadow"></div>
+                        <div class="sample-box-rig" id="sampleBoxRig">
+                            <img src="uploads/bell_3d_matchbox.webp" 
+                                 alt="The Bell Match Company 3D Safety Matchbox" 
+                                 class="hero-3d-box-img" 
+                                 id="hero3dBoxImg"
+                                 width="800" 
+                                 height="493"
+                                 loading="eager"
+                                 decoding="async">
+                            
+                            <!-- Phosphorus Striker Contact Target -->
+                            <div class="sleeve-striker-side" id="boxStrikerSide"></div>
+                        </div>
+                    </div>
+
+                    <!-- 3D Striking Matchstick Actor (Photorealistic Birchwood & Sulfur Tip) -->
+                    <div class="code-matchstick-actor is-unlit" id="codeMatchstickActor">
+                        <img src="uploads/bell_3d_matchstick.webp" 
+                             alt="Safety Matchstick" 
+                             class="matchstick-3d-img" 
+                             id="matchstick3dImg"
+                             width="38" 
+                             height="400">
+                        <div class="splint-char-glow" id="splintCharGlow"></div>
+                        <div class="splint-head" id="splintHead"></div>
+                    </div>
+
+                    <!-- Dynamic Living Flame & Spark Physics Canvas Overlay -->
+                    <canvas id="matchFlameCanvas" class="match-flame-canvas"></canvas>
+
+                    
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
                                             <!-- 3D Interactive WebGL About Section -->
-    <section class="section" id="about" style="background: #1c1c1e; padding: 0;  position: relative; overflow: hidden; min-height: 100vh; display: flex; align-items: center;">
+    <section class="section" id="about" style="background: #1c1c1e; padding: 40px 0; position: relative; overflow: hidden; min-height: auto; display: flex; align-items: center;">
         <!-- Animated Background Glows -->
         <div class="ambient-glow glow-1"></div>
         <div class="ambient-glow glow-2"></div>
@@ -160,64 +316,81 @@
 <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; position: relative; z-index: 10;">
 
             <!-- 3D Canvas Container (Right) -->
-            <div id="threejs-canvas-container" style="flex: 1.5; min-width: 300px; height: 80vh; min-height: 500px; position: relative; cursor: grab; opacity: 0; transition: opacity 1.5s ease-in-out;">
+            <div id="threejs-canvas-container" style="flex: 0 0 60%; width: 60%; max-width: 60%; min-width: 320px; height: 520px; min-height: 440px; position: relative; cursor: grab; opacity: 0; transition: opacity 1.5s ease-in-out;">
                 <!-- Canvas injected by JS -->
             </div>
 
             <!-- Text Content (Left) -->
-            <div class="about-text-content" style="flex: 1; min-width: 300px; max-width: 500px; padding: 40px 0;">
+            <div class="about-text-content" style="flex: 0 0 40%; width: 40%; max-width: 40%; min-width: 300px; padding: 10px 0;">
                 <style>
-                    @media (max-width: 768px) {
+                    @media (max-width: 991px) {
+                        #threejs-canvas-container {
+                            flex: 0 0 100% !important;
+                            width: 100% !important;
+                            max-width: 100% !important;
+                            height: 50vh !important;
+                            min-height: 350px !important;
+                        }
+                        .about-text-content {
+                            flex: 0 0 100% !important;
+                            width: 100% !important;
+                            max-width: 100% !important;
+                            padding: 10px 0 !important;
+                        }
                         .mobile-center-title {
                             text-align: center;
                         }
                     }
                 </style>
-                <h2 class="mobile-center-title" style="font-family: 'Outfit', sans-serif; font-size: 2.8rem; font-weight: 900; line-height: 1.1; color: #fff; margin-bottom: 20px;">
+                <h2 class="mobile-center-title" style="font-family: 'Outfit', sans-serif; font-size: 2.8rem; font-weight: 900; line-height: 1.1; color: #fff; margin-bottom: 12px;">
                     Premium Safety<br>Match Products
                 </h2>
-                <div style="width: 60px; height: 4px; background: #1c1c1e; margin-bottom: 30px;"></div>
-                <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; line-height: 1.7; color: #a1a1aa; font-weight: 300; margin-bottom: 30px;">
-                    <strong style="color: #fff; font-weight: 600;">Bell Match</strong> manufactures a wide range of safety matches designed to meet international quality standards while ensuring safe ignition, durability, and consistent performance. As an experienced matchbox manufacturer and exporter, we supply safety matches wholesale to international buyers, distributors, and businesses requiring dependable match products.
+                <div style="width: 60px; height: 3px; background: #c49a6c; margin-bottom: 16px;"></div>
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.65; color: #a1a1aa; font-weight: 300; margin-bottom: 18px;">
+                    <strong style="color: #fff; font-weight: 600;">Bell Match</strong> manufactures premium safety matches engineered for dependable ignition, superior durability, and international quality standards for global wholesale export.
                 </p>
-                <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 20px;">
+                <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 14px;">
                     Our Product Range
                 </h3>
                 <style>
                     .product-badge-list {
                         display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                        gap: 15px;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 10px 12px;
+                        width: 100%;
                     }
                     .product-badge {
                         display: inline-flex;
                         align-items: center;
                         background: #121214;
-                        padding: 12px 20px;
+                        padding: 10px 14px;
                         border-radius: 6px;
                         border-left: 3px solid #c49a6c;
                         font-family: 'Outfit', sans-serif;
                         color: #d4d4d8;
-                        font-size: 1.05rem;
+                        font-size: 0.92rem;
                         font-weight: 500;
                         transition: all 0.3s ease;
                         cursor: default;
                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                     .product-badge:hover {
                         background: rgba(196, 154, 108, 0.1);
                         color: #fff;
-                        border-left-width: 8px;
+                        border-left-width: 6px;
                         transform: translateX(3px);
                     }
                     @media (max-width: 600px) {
                         .product-badge-list {
                             grid-template-columns: repeat(2, 1fr);
-                            gap: 10px;
+                            gap: 8px;
                         }
                         .product-badge {
-                            padding: 10px 12px;
-                            font-size: 0.9rem;
+                            padding: 8px 10px;
+                            font-size: 0.82rem;
                         }
                     }
                 </style>
@@ -292,7 +465,7 @@
 
                 // Materials
                 const sleeveMaterial = new THREE.MeshStandardMaterial({ 
-                    color: 0xC8393B, // Bell Match Red
+                    color: 0xf5f2e9, // Ivory cream matching label base
                     roughness: 0.6,
                     metalness: 0.1
                 });
@@ -318,7 +491,7 @@
                 const sleeve = new THREE.Group();
                 
                 const textureLoader = new THREE.TextureLoader();
-                const coverTexture = textureLoader.load('https://res.cloudinary.com/ppxlfuj2/image/upload/v1785133995/035A0540_r2cwxn.jpg');
+                const coverTexture = textureLoader.load('uploads/bell_clean_matchbox_cover.webp?v=1');
                 
                 coverTexture.center.set(0.5, 0.5);
                 coverTexture.rotation = -Math.PI / 2;
@@ -507,149 +680,207 @@
         </script>
     </section>
 
-        <!-- Ultra-Premium Bento Grid Why Choose Us Section -->
-    <section class="section section-dark" id="why-us" style="padding: 120px 0; background: #050505;">
+    <!-- Split-Sticky Architectural Showcase: Why Choose Us (Cardless) -->
+    <section class="section section-dark why-us-section" id="why-us">
         <div class="container">
-                        <div class="bento-header">
-                <h2 class="bento-title">Why Choose Us</h2>
-                <p class="bento-subtitle">Bell Match combines advanced manufacturing technology with strict quality standards to supply reliable products across domestic and international markets.</p>
-                <div class="mobile-swipe-instruction" style="display: none; color: #a1a1aa; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin-top: 15px;">
-                    <i class="fas fa-arrows-alt-h" style="margin-right: 5px;"></i> Swipe to explore
-                </div>
-            </div>
-
-            <div class="bento-grid" id="bento-grid">
+            <div class="why-us-split-layout">
                 
-                <!-- Card 1: Wide -->
-                <div class="bento-card bento-wide">
-                    <div class="bento-watermark">01</div>
-                    <div class="bento-content">
-                        <h3>Premium Quality Raw Materials</h3>
-                        <p>We source only the finest wood, splints, and chemicals to ensure every match strikes perfectly and burns steadily without breaking.</p>
+                <!-- Left Column: Sticky Editorial Stage -->
+                <div class="why-us-sticky-stage">
+                    <div class="why-us-stage-inner">
+                        
+                        <h2 class="why-us-main-heading">
+                            Engineered for Unfailing Ignition. <span class="text-gradient-red">Exported Worldwide.</span>
+                        </h2>
+                        <p class="why-us-stage-desc">
+                            We combine precision European automation with rigorous chemical standardization to manufacture safety matches that perform flawlessly across extreme international climates.
+                        </p>
+                        
+                        <!-- Industrial Spec HUD (Cardless, Architectural Readouts) -->
+                        <div class="why-us-hud-grid">
+                            <div class="hud-item">
+                                <span class="hud-value">99.8<span class="hud-unit">%</span></span>
+                                <span class="hud-label">Strike Reliability</span>
+                            </div>
+                            <div class="hud-item">
+                                <span class="hud-value">40<span class="hud-unit">+</span></span>
+                                <span class="hud-label">Export Nations</span>
+                            </div>
+                            <div class="hud-item">
+                                <span class="hud-value">50M<span class="hud-unit">+</span></span>
+                                <span class="hud-label">Monthly Output</span>
+                            </div>
+                            <div class="hud-item">
+                                <span class="hud-value">FSC</span>
+                                <span class="hud-label">Certified Timber</span>
+                            </div>
+                        </div>
+
+                        <div class="why-us-action-row">
+                            <a href="contact.html" class="open-matchbox-btn" onmousedown="this.classList.add('is-closed')" ontouchstart="this.classList.add('is-closed')">
+                                <div class="omb-drawer">
+                                    <div class="matchstick-group">
+                                        <div class="real-matchstick" style="top: 15px; transform: rotate(-1deg); right: 15px;"></div>
+                                        <div class="real-matchstick" style="top: 25px; transform: rotate(0.5deg); right: 15px;"></div>
+                                        <div class="real-matchstick" style="top: 35px; transform: rotate(-0.5deg); right: 15px;"></div>
+                                    </div>
+                                </div>
+                                <div class="omb-cover">
+                                    <span>Get in Touch</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 2: Square -->
-                <div class="bento-card">
-                    <div class="bento-watermark">02</div>
-                    <div class="bento-content">
-                        <h3>Advanced Manufacturing Facility</h3>
-                        <p>Our state-of-the-art production lines combine precision engineering with rigorous standards to produce flawless matchboxes daily. This manufacturing capability supports our position as a reliable matchbox manufacturer for domestic and international buyers.</p>
+                <!-- Right Column: Scrolling Capability Rail (Cardless Stations) -->
+                <div class="why-us-scroll-rail">
+                    
+                    <!-- Station 01 -->
+                    <div class="why-us-station" data-station="1">
+                        <div class="station-meta">
+                            <span class="station-index">01</span>
+                            <span class="station-tag">TIMBER & RAW PURITY</span>
+                        </div>
+                        <h3 class="station-title">Premium Aspen & Carbon-Neutral Wood Splints</h3>
+                        <p class="station-body">
+                            We source only Grade-A uniform aspen and pine splints, precision-selected for high tensile strength. Splints undergo vacuum chemical carbonization to eliminate post-strike smoldering and ensure zero breakage under heavy striking pressure.
+                        </p>
+                        <div class="station-spec-line">
+                            <i class="fas fa-circle-check"></i>
+                            <span>Zero splint fracture guarantee with uniform flame progression</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Card 3: Square -->
-                <div class="bento-card">
-                    <div class="bento-watermark">03</div>
-                    <div class="bento-content">
-                        <h3>Consistent Flame Performance</h3>
-                        <p>Every match head is meticulously formulated to guarantee a smooth, instant ignition and a steady, long-lasting flame.</p>
+                    <!-- Station 02 -->
+                    <div class="why-us-station" data-station="2">
+                        <div class="station-meta">
+                            <span class="station-index">02</span>
+                            <span class="station-tag">AUTOMATED INFRASTRUCTURE</span>
+                        </div>
+                        <h3 class="station-title">Continuous High-Speed Automated Assembly Lines</h3>
+                        <p class="station-body">
+                            Our advanced machinery combines micro-tolerance box assembly, friction side application, and automated sorting. Operating with computer-controlled speed, our production facility delivers millions of uniform units daily without human error.
+                        </p>
+                        <div class="station-spec-line">
+                            <i class="fas fa-circle-check"></i>
+                            <span>Continuous 50M+ monthly capacity with millimeter box alignment</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Card 4: Square -->
-                <div class="bento-card">
-                    <div class="bento-watermark">04</div>
-                    <div class="bento-content">
-                        <h3>Export-Grade Packaging</h3>
-                        <p>We utilize robust, moisture-resistant packaging materials to ensure our safety matches reach international destinations in pristine condition. Our export capabilities support buyers seeking a dependable safety match exporter and matchbox exporter.</p>
+                    <!-- Station 03 -->
+                    <div class="why-us-station" data-station="3">
+                        <div class="station-meta">
+                            <span class="station-index">03</span>
+                            <span class="station-tag">CHEMICAL FORMULATION</span>
+                        </div>
+                        <h3 class="station-title">Instant-Strike, Non-Toxic Head Chemistry</h3>
+                        <p class="station-body">
+                            Our proprietary match head compound is formulated with stabilized oxidizers and eco-friendly binders. Engineered to strike instantly upon friction contact, each head generates a smooth, uniform flame that burns quietly without pungent chemical odor.
+                        </p>
+                        <div class="station-spec-line">
+                            <i class="fas fa-circle-check"></i>
+                            <span>Tested to ignite reliably even in high-humidity tropical conditions</span>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Card 5: Square -->
-                <div class="bento-card">
-                    <div class="bento-watermark">05</div>
-                    <div class="bento-content">
-                        <h3>Competitive Wholesale Pricing</h3>
-                        <p>By optimizing our supply chain and manufacturing processes, we deliver exceptional bulk value without compromising on quality. This makes Bell Match a suitable bulk safety matches supplier for businesses purchasing safety matches wholesale.</p>
-                    </div>
-                </div>
 
-                <!-- Card 6: Wide -->
-                <div class="bento-card bento-wide">
-                    <div class="bento-watermark">06</div>
-                    <div class="bento-content">
-                        <h3>Customized Branding Solutions</h3>
-                        <p>Elevate your brand with our private label options. We offer fully customizable matchbox sizes, designs, and prints tailored perfectly to your specific requirements. Our solutions are suitable for businesses looking for a custom matchbox wholesale supplier, custom printed matchbox manufacturer, or private label matchbox manufacturer.</p>
+                    <!-- Station 04 -->
+                    <div class="why-us-station" data-station="4">
+                        <div class="station-meta">
+                            <span class="station-index">04</span>
+                            <span class="station-tag">EXPORT PRESERVATION</span>
+                        </div>
+                        <h3 class="station-title">Moisture-Shielded Ocean Freight Packaging</h3>
+                        <p class="station-body">
+                            Long-distance sea transport demands military-grade packaging. We wrap match bundles in heavy-gauge poly-film liners, hermetically sealed inner packs, and reinforced 5-ply corrugated export cartons to ensure 100% dryness upon container arrival.
+                        </p>
+                        <div class="station-spec-line">
+                            <i class="fas fa-circle-check"></i>
+                            <span>Certified Dangerous Goods (DG) packaging standard for maritime shipping</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Card 7: Square -->
-                <div class="bento-card">
-                    <div class="bento-watermark">07</div>
-                    <div class="bento-content">
-                        <h3>Global Export Network</h3>
-                        <p>With decades of experience, we proudly export our products to over 40 countries across Europe, the Middle East, and the Americas. Our international supply capabilities make us an experienced safety match exporter and matchbox exporter for global markets.</p>
+                    <!-- Station 05 -->
+                    <div class="why-us-station" data-station="5">
+                        <div class="station-meta">
+                            <span class="station-index">05</span>
+                            <span class="station-tag">BESPOKE OEM & PRIVATE LABEL</span>
+                        </div>
+                        <h3 class="station-title">Comprehensive Custom Branding & Printing</h3>
+                        <p class="station-body">
+                            Full-service private label OEM manufacturing for global retail brands and distributors. We provide bespoke box formats, custom friction patterns, spot UV, hot foil stamping, and vibrant 4-colour offset printing calibrated to exact Pantone specifications.
+                        </p>
+                        <div class="station-spec-line">
+                            <i class="fas fa-circle-check"></i>
+                            <span>High-definition multi-colour packaging with tailored box dimensions</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Card 8: Square -->
-                <div class="bento-card">
-                    <div class="bento-watermark">08</div>
-                    <div class="bento-content">
-                        <h3>Timely Order Delivery</h3>
-                        <p>We understand that time is money. Our production planning and logistics team ensures that every order is delivered on schedule, helping customers maintain a dependable supply of matches.</p>
+                    <!-- Station 06 -->
+                    <div class="why-us-station" data-station="6">
+                        <div class="station-meta">
+                            <span class="station-index">06</span>
+                            <span class="station-tag">GLOBAL LOGISTICS NETWORK</span>
+                        </div>
+                        <h3 class="station-title">Certified Cross-Border Supply to 40+ Nations</h3>
+                        <p class="station-body">
+                            With decades of export experience across Europe, the Middle East, Africa, and the Americas, our dedicated international logistics team oversees prompt container clearance, port dispatch, and end-to-end documentation compliance.
+                        </p>
+                        <div class="station-spec-line">
+                            <i class="fas fa-circle-check"></i>
+                            <span>100% on-time container vessel dispatch with complete DG compliance</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Card 9: Wide -->
-                <div class="bento-card bento-wide">
-                    <div class="bento-watermark">09</div>
-                    <div class="bento-content">
-                        <h3>Sustainable Manufacturing Practices</h3>
-                        <p>We are deeply committed to eco-friendly production, utilizing responsibly sourced wood and prioritizing waste reduction throughout our entire supply chain.</p>
-                    </div>
                 </div>
 
             </div>
         </div>
-
-
     </section>
 
     <!-- Products Overview -->
     <section class="section" id="products-preview">
         <div class="container">
             <div class="section-header text-center">
-                <div class="section-label">Our Products</div>
+                
                 <h2 class="section-title">Trusted Match Box Manufacturer for Global Markets</h2>
                 <p class="section-subtitle">Our manufacturing infrastructure enables us to fulfil bulk export orders while maintaining consistent product quality. As a reliable matchbox manufacturer and exporter, Bell Match serves wholesalers, retailers, distributors, importers, and private-label businesses worldwide.</p>
             </div>
             <div class="grid grid-cols-3 gap-medium" style="margin-top:3rem;">
-                <div class="product-card">
-                    <div class="product-img-wrap">
+                <div class="product-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrap" style="height: 240px; overflow: hidden; background: #f8f9fa;">
                         <div style="width: 100%; height: 100%; transform: scale(1.15); transform-origin: top left;">
-                            <img src="https://res.cloudinary.com/ppxlfuj2/image/upload/v1784633047/add_image_angle_video_202607211643-ezgif.com-crop_ibw4ms.webp" alt="Household Safety Matches" loading="lazy" decoding="async">
+                            <img src="https://res.cloudinary.com/ppxlfuj2/image/upload/v1784633047/add_image_angle_video_202607211643-ezgif.com-crop_ibw4ms.webp" alt="Resale Matches" loading="lazy" decoding="async">
                         </div>
                     </div>
-                    <div class="product-card-body">
-                        <h3>Household Safety Matches</h3>
-                        <p>Standard household matchboxes in various sizes (30s, 40s, 50s matches per box). Reliable ignition; safe for everyday use.</p>
-                        <a href="products.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                    <div class="product-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.75rem;">
+                        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; min-height: 2rem; display: flex; align-items: center; color: #111827;">Resale Matches</h3>
+                        <p style="min-height: 4.8rem; margin-bottom: 1.5rem; line-height: 1.6; color: #4b5563; font-size: 0.95rem;">Standard household and commercial safety matches for retail and wholesale distribution. Features dependable strike ignition, sturdy splints, and moisture-resistant packaging.</p>
+                        <a href="products.html?cat=resale" class="btn-link" style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--primary-red);">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-img-wrap">
+                <div class="product-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrap" style="height: 240px; overflow: hidden; background: #f8f9fa;">
                         <div style="width: 100%; height: 100%; transform: scale(1.15); transform-origin: top left;">
-                            <img src="https://res.cloudinary.com/ppxlfuj2/image/upload/v1784637558/this_is_the_slim_in_striking_202607211805-ezgif.com-video-to-webp-converter_lmtbdz.webp" alt="Long Matches" loading="lazy" decoding="async">
+                            <img src="https://res.cloudinary.com/ppxlfuj2/image/upload/v1784637558/this_is_the_slim_in_striking_202607211805-ezgif.com-video-to-webp-converter_lmtbdz.webp" alt="Advertising Matches" loading="lazy" decoding="async">
                         </div>
                     </div>
-                    <div class="product-card-body">
-                        <h3>Long Safety Matches</h3>
-                        <p>Extra long safety matches (120mm–500mm) ideal for lighting candles, fireplaces, BBQ grills, and industrial burners.</p>
-                        <a href="products.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                    <div class="product-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.75rem;">
+                        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; min-height: 2rem; display: flex; align-items: center; color: #111827;">Advertising Matches</h3>
+                        <p style="min-height: 4.8rem; margin-bottom: 1.5rem; line-height: 1.6; color: #4b5563; font-size: 0.95rem;">Custom promotional matchboxes crafted for hotels, restaurants, cafes, and marketing events. Features high-impact multi-colour printing that showcases your brand identity.</p>
+                        <a href="products.html?cat=advertising" class="btn-link" style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--primary-red);">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-img-wrap">
+                <div class="product-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrap" style="height: 240px; overflow: hidden; background: #f8f9fa;">
                         <div style="width: 100%; height: 100%; transform: scale(1.10); transform-origin: top left;">
-                            <img src="https://res.cloudinary.com/ppxlfuj2/image/upload/v1784638836/Cylindrical_matchbox_360_rotation_202607211828-ezgif.com-video-to-webp-converter_hwffwt.webp" alt="Custom Brand Matchboxes" loading="lazy" decoding="async">
+                            <img src="https://res.cloudinary.com/ppxlfuj2/image/upload/v1784638836/Cylindrical_matchbox_360_rotation_202607211828-ezgif.com-video-to-webp-converter_hwffwt.webp" alt="Special and Custom Matches" loading="lazy" decoding="async">
                         </div>
                     </div>
-                    <div class="product-card-body">
-                        <h3>Custom / Private Label</h3>
-                        <p>Fully customized matchboxes with your branding, logo, and design. Perfect for hotels, restaurants, and promotional campaigns. Our capabilities include custom printed matchbox production, branded matches wholesale, and private label matchbox manufacturer solutions for businesses requiring customized products.</p>
-                        <a href="products.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                    <div class="product-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.75rem;">
+                        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; min-height: 2rem; display: flex; align-items: center; color: #111827;">Special and Custom Matches</h3>
+                        <p style="min-height: 4.8rem; margin-bottom: 1.5rem; line-height: 1.6; color: #4b5563; font-size: 0.95rem;">Bespoke shapes, cylindrical boxes, and elongated splints tailored for luxury venues and gifting. Comprehensive OEM private-label manufacturing with premium finishes.</p>
+                        <a href="products.html?cat=advertising" class="btn-link" style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--primary-red);">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -660,7 +891,7 @@
     </section>
 
     <!-- Premium Details Section -->
-    <section class="premium-details-section" style="padding: 6rem 0; background: #09090b; border-top: 1px solid #1c1c1e;">
+    <section class="premium-details-section" style="padding-top: 5rem; padding-bottom: 1.5rem; background: #09090b; border-top: 1px solid #1c1c1e;">
         <style>
             .industry-pill {
                 padding: 0.8rem 1.8rem;
@@ -811,7 +1042,7 @@
             </p>
 
             <!-- 2 Column Layout for Quality & Export -->
-            <div class="grid premium-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 6rem;">
+            <div class="grid premium-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 0;">
                 
                 <div class="detail-card">
                     <h2>Quality Manufacturing Process</h2>
@@ -849,7 +1080,7 @@
     </section>
 
     <!-- Quote / CTA Section -->
-    <section class="section section-cta" id="quote">
+    <section class="section section-cta" id="quote" style="padding: 1.75rem 0;">
         <div class="container">
             <div class="cta-card">
                 <div class="cta-content">
@@ -888,7 +1119,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="section faq-section" style="padding: 6rem 0; background: #ffffff; border-top: 1px solid #e5e7eb;">
+    <section class="section faq-section" style="padding: 2.5rem 0; background: #ffffff; border-top: 1px solid #e5e7eb;">
         <style>
             .faq-section details {
                 background: #ffffff;

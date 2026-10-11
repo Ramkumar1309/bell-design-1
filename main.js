@@ -63,7 +63,7 @@ loadComponents();
     } else {
       setTimeout(() => {
         preloader.classList.add('fade-out');
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = '';
       }, 40);
     }
   }
@@ -74,7 +74,7 @@ loadComponents();
   window.addEventListener('pageshow', (e) => {
     if (e.persisted) {
       preloader.classList.add('fade-out');
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     }
   });
 })();
@@ -177,6 +177,20 @@ document.addEventListener('ComponentsLoaded', () => {
   }
 
   // Update Footer Year dynamically
+  
+  // Why Choose Us Active Station Scroll Highlighting
+  const stations = document.querySelectorAll('.why-us-station');
+  if (stations.length > 0 && 'IntersectionObserver' in window) {
+    const stationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-active');
+        }
+      });
+    }, { threshold: 0.35, rootMargin: '-10% 0px -10% 0px' });
+    stations.forEach(station => stationObserver.observe(station));
+  }
+
   const yearSpan = document.getElementById('current-year');
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
@@ -220,149 +234,347 @@ document.addEventListener('ComponentsLoaded', () => {
     }
   });
 
-  // Premium Background Parallax & Firefly Particles for Why Choose Us
-  const whyUsSection = document.getElementById('why-us');
-  if (whyUsSection) {
-    // 1. Grid Parallax
-    whyUsSection.addEventListener('mousemove', (e) => {
-      if (window.innerWidth > 992) {
-        const x = (e.clientX / window.innerWidth - 0.5) * 15; // rotateY
-        const y = (e.clientY / window.innerHeight - 0.5) * 15; // rotateX offset
-        
-        whyUsSection.style.setProperty('--grid-rotate-y', `${x}deg`);
-        whyUsSection.style.setProperty('--grid-rotate-x', `${70 - y}deg`);
+  // Why Choose Us background animations completely removed per user instruction
+
+/* ============================================================
+   HERO PURE CODE ANIMATION: PHOTOREALISTIC CANVAS FLAME & SPARKS ENGINE
+   Matching Image 2 (Soft Rounded Organic Matchstick Flame)
+   Strike Path: Starts at black honeycomb structure and strikes along 70% of strip
+   Page Load: Auto-strikes & lights into flame; subsequent taps toggle on/off
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  const scene = document.getElementById('codeMatchScene');
+  const actor = document.getElementById('codeMatchstickActor');
+  const head = document.getElementById('splintHead');
+  const canvas = document.getElementById('matchFlameCanvas');
+  const firelight = document.getElementById('sceneFirelight');
+  const charGlow = document.getElementById('splintCharGlow');
+  const strikerGlow = document.getElementById('strikerFrictionGlow');
+
+  if (!scene || !actor || !head || !canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let dpr = window.devicePixelRatio || 1;
+
+  function resizeCanvas() {
+    const rect = scene.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+  }
+  resizeCanvas();
+  window.addEventListener('resize', () => {
+    dpr = window.devicePixelRatio || 1;
+    resizeCanvas();
+  });
+
+  // Particle systems
+  const sparks = [];
+  const smokeParticles = [];
+
+  class SparkParticle {
+    constructor(x, y, isBurst = false, dirX = 0, dirY = 0) {
+      this.x = x;
+      this.y = y;
+      this.prevX = x;
+      this.prevY = y;
+      if (isBurst) {
+        const baseAngle = (dirX !== 0 || dirY !== 0)
+          ? Math.atan2(dirY, dirX)
+          : -Math.PI * 0.5;
+        const angle = baseAngle + (Math.random() - 0.5) * 0.9;
+        const speed = 4 + Math.random() * 8.5;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        this.gravity = 0.22;
+        this.life = 1.0;
+        this.decay = 0.035 + Math.random() * 0.03;
+      } else {
+        this.vx = (Math.random() - 0.5) * 1.4;
+        this.vy = -(1.8 + Math.random() * 2.8);
+        this.gravity = -0.02;
+        this.life = 1.0;
+        this.decay = 0.022 + Math.random() * 0.025;
       }
-    });
+    }
+    update() {
+      this.prevX = this.x;
+      this.prevY = this.y;
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vy += this.gravity;
+      this.vx *= 0.97;
+      this.life -= this.decay;
+    }
+    draw(ctx) {
+      if (this.life <= 0) return;
+      const alpha = Math.max(0, Math.min(1, this.life));
+      ctx.strokeStyle = `rgba(255, 235, 160, ${alpha})`;
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(this.prevX, this.prevY);
+      ctx.lineTo(this.x, this.y);
+      ctx.stroke();
 
-    // 2. Firefly Embers
-    const particleCount = 25;
-    const emberContainer = document.createElement('div');
-    emberContainer.style.position = 'absolute';
-    emberContainer.style.top = '0';
-    emberContainer.style.left = '0';
-    emberContainer.style.width = '100%';
-    emberContainer.style.height = '100%';
-    emberContainer.style.pointerEvents = 'none';
-    emberContainer.style.zIndex = '2'; // Above grid, behind cards
-    emberContainer.style.overflow = 'hidden';
-    whyUsSection.appendChild(emberContainer);
-
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('firefly-particle');
-      particle.style.left = Math.random() * 100 + '%';
-      
-      // Randomize animation timing
-      particle.style.animationDelay = (Math.random() * 15) + 's';
-      particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-      
-      // Randomize sway
-      const sway = (Math.random() - 0.5) * 200;
-      particle.style.setProperty('--sway-x', `${sway}px`);
-      
-      // Randomize colors (Fire palette)
-      const colors = ['rgba(255, 59, 59, 0.8)', 'rgba(255, 170, 0, 0.8)', 'rgba(255, 200, 100, 0.6)'];
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      particle.style.backgroundColor = color;
-      particle.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}`;
-      
-      // Randomize size
-      const size = Math.random() * 4 + 2;
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      
-      emberContainer.appendChild(particle);
+      ctx.fillStyle = `rgba(255, 140, 0, ${0.45 * alpha})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 2.4, 0, Math.PI * 2);
+      ctx.fill();
     }
   }
 
-  // 3. Floating Burning Matchsticks
-  const whyUsForMatches = document.getElementById('why-us');
-  if (whyUsForMatches) {
-      const matchContainer = document.createElement('div');
-      matchContainer.style.position = 'absolute';
-      matchContainer.style.top = '0';
-      matchContainer.style.left = '0';
-      matchContainer.style.width = '100%';
-      matchContainer.style.height = '100%';
-      matchContainer.style.pointerEvents = 'none';
-      matchContainer.style.zIndex = '3';
-      matchContainer.style.overflow = 'hidden';
-      whyUsForMatches.appendChild(matchContainer);
-
-      const matchCount = 8;
-      for (let i = 0; i < matchCount; i++) {
-        const match = document.createElement('div');
-        match.classList.add('floating-burning-match');
-        match.style.left = Math.random() * 100 + '%';
-        
-        const delay = -(Math.random() * 30); // Negative delay spawns them instantly on screen
-        const duration = Math.random() * 15 + 15;
-        
-        match.style.setProperty('--match-delay', `${delay}s`);
-        match.style.setProperty('--match-duration', `${duration}s`);
-        
-        const sway = (Math.random() - 0.5) * 400;
-        match.style.setProperty('--sway-x', `${sway}px`);
-        
-        // Full 360+ Tumbling logic
-        const startRot = Math.random() * 360; 
-        const rotations = Math.floor(Math.random() * 3) + 1; // 1 to 3 full rotations
-        const endRot = startRot + (Math.random() > 0.5 ? 360 * rotations : -360 * rotations); 
-        match.style.setProperty('--start-rot', `${startRot}deg`);
-        match.style.setProperty('--end-rot', `${endRot}deg`);
-        
-        const scale = Math.random() * 0.4 + 0.5; // Scale down for depth
-        match.style.setProperty('--match-scale', `${scale}`);
-
-        // The Stick Wrapper (handles the tumbling)
-        const stickWrapper = document.createElement('div');
-        stickWrapper.classList.add('fbm-stick-wrapper');
-
-        // The Stick itself (Pure CSS realistic wood)
-        const stick = document.createElement('div');
-        stick.classList.add('fbm-stick');
-        
-        // The Ash/Burnt trail
-        const burntTrail = document.createElement('div');
-        burntTrail.classList.add('fbm-burnt-trail');
-        
-        // The glowing ember at the burn line
-        const ember = document.createElement('div');
-        ember.classList.add('fbm-ember-glow');
-        
-        // The Head
-        const head = document.createElement('div');
-        head.classList.add('fbm-head');
-        
-        // The Flame Container (travels along stick, counter-tumbles to stay upright)
-        const flameContainer = document.createElement('div');
-        flameContainer.classList.add('fbm-flame-container');
-        
-        const flameMain = document.createElement('div');
-        flameMain.classList.add('fbm-flame-main');
-        
-        const flameLickLeft = document.createElement('div');
-        flameLickLeft.classList.add('fbm-flame-lick', 'left');
-        
-        const flameLickRight = document.createElement('div');
-        flameLickRight.classList.add('fbm-flame-lick', 'right');
-        
-        const flameBase = document.createElement('div');
-        flameBase.classList.add('fbm-flame-base');
-        
-        flameContainer.appendChild(flameMain);
-        flameContainer.appendChild(flameLickLeft);
-        flameContainer.appendChild(flameLickRight);
-        flameContainer.appendChild(flameBase);
-        
-        stickWrapper.appendChild(stick);
-        stickWrapper.appendChild(head);
-        stickWrapper.appendChild(burntTrail);
-        stickWrapper.appendChild(ember);
-        stickWrapper.appendChild(flameContainer);
-        
-        match.appendChild(stickWrapper);
-        matchContainer.appendChild(match);
-      }
+  class SmokeParticle {
+    constructor(x, y) {
+      this.x = x + (Math.random() - 0.5) * 6;
+      this.y = y;
+      this.vx = (Math.random() - 0.5) * 0.8;
+      this.vy = -(1.6 + Math.random() * 1.8);
+      this.radius = 3 + Math.random() * 4;
+      this.life = 1.0;
+      this.decay = 0.018 + Math.random() * 0.014;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.radius += 0.35;
+      this.life -= this.decay;
+    }
+    draw(ctx) {
+      if (this.life <= 0) return;
+      ctx.fillStyle = `rgba(200, 200, 210, ${this.life * 0.28})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
   }
 
+  // State
+  let isLit = false;
+  let isStriking = false;
+  let currentIntensity = 0;
+  let targetIntensity = 0;
+  let strikeStartTime = 0;
+
+  // Strike along honeycomb:
+  // Starts at honeycomb start (0%) -> strikes across 85% of strip at smooth deliberate speed -> ignites into flame
+  function doStrike() {
+    if (isStriking) return;
+    isStriking = true;
+    currentIntensity = 0;
+    targetIntensity = 0;
+
+    // Step 1: Position at start of black honeycomb strip (0%, vertical center)
+    actor.style.transition = 'transform 0.3s ease-out';
+    actor.style.transform = 'translate(-28px, 41px) rotate(20deg)';
+
+    // Step 2: Strike swipe across 85% of the honeycomb strip at smooth, realistic deliberate speed
+    setTimeout(() => {
+      strikeStartTime = performance.now();
+      actor.style.transition = 'transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      actor.style.transform = 'translate(170px, -14px) rotate(15deg)';
+    }, 300);
+
+    // Step 3: Ignition Burst right at the 85% mark!
+    setTimeout(() => {
+      isLit = true;
+      targetIntensity = 1.05;
+      if (charGlow) charGlow.style.opacity = '1';
+
+      const sceneRect = scene.getBoundingClientRect();
+      const headRect = head.getBoundingClientRect();
+      const hX = headRect.left - sceneRect.left + headRect.width / 2;
+      const hY = headRect.top - sceneRect.top + headRect.height / 2;
+      for (let i = 0; i < 22; i++) {
+        sparks.push(new SparkParticle(hX, hY, true));
+      }
+    }, 1150);
+
+    // Complete strike
+    setTimeout(() => {
+      isStriking = false;
+    }, 1350);
+  }
+
+  function doStop() {
+    if (isStriking) return;
+    isLit = false;
+    targetIntensity = 0;
+    if (charGlow) charGlow.style.opacity = '0';
+
+    const sceneRect = scene.getBoundingClientRect();
+    const headRect = head.getBoundingClientRect();
+    const hX = headRect.left - sceneRect.left + headRect.width / 2;
+    const hY = headRect.top - sceneRect.top + headRect.height / 2;
+    for (let i = 0; i < 8; i++) {
+      smokeParticles.push(new SmokeParticle(hX, hY));
+    }
+  }
+
+  // User Interaction: Tap toggles strike/ignite and stop
+  scene.addEventListener('click', () => {
+    if (isStriking) return;
+    if (isLit) {
+      doStop();
+    } else {
+      doStrike();
+    }
+  });
+
+  // Page start: Auto-strike and ignite into flame
+  setTimeout(() => {
+    doStrike();
+  }, 450);
+
+  // Authentic Soft-Rounded Matchstick Flame (Matching Image 2 - NOT sharp/needle)
+  function drawRealisticMatchFlame(ctx, x, y, intensity) {
+    if (intensity <= 0.01) return;
+    const now = performance.now();
+    const t = now * 0.0065;
+    const sway = Math.sin(t * 2.6) * 1.5;
+    const flickerH = Math.sin(t * 3.8) * 1.8;
+    const h = 86 * intensity;
+    const w = 32 * intensity;
+
+    ctx.save();
+    ctx.translate(x, y);
+
+    // 1. Ambient Firelight Glow (Illuminates the matchbox top and matchstick)
+    ctx.globalCompositeOperation = 'screen';
+    const bloom = ctx.createRadialGradient(0, -h * 0.45, 0, 0, -h * 0.45, h * 1.5);
+    bloom.addColorStop(0, 'rgba(255, 140, 20, 0.42)');
+    bloom.addColorStop(0.35, 'rgba(255, 60, 0, 0.16)');
+    bloom.addColorStop(0.7, 'rgba(255, 30, 0, 0.04)');
+    bloom.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = bloom;
+    ctx.beginPath();
+    ctx.arc(0, -h * 0.45, h * 1.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 2. Outer Fiery Combustion Mantel with Soft Rounded Dome Apex
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.beginPath();
+    ctx.moveTo(-w * 0.42, 2);
+    // Left curve rising up
+    ctx.bezierCurveTo(-w * 0.76, -h * 0.32, -w * 0.45 + sway, -h * 0.75, -w * 0.16 + sway, -h * 0.94 - flickerH);
+    // Smooth rounded dome tip (Soft & organic, eliminating sharp needle point)
+    ctx.bezierCurveTo(-w * 0.08 + sway, -h - flickerH, w * 0.08 + sway, -h - flickerH, w * 0.16 + sway, -h * 0.94 - flickerH);
+    // Right curve descending down
+    ctx.bezierCurveTo(w * 0.45 + sway, -h * 0.75, w * 0.76, -h * 0.32, w * 0.42, 2);
+    // Base wrapping around match head
+    ctx.bezierCurveTo(w * 0.2, 5, -w * 0.2, 5, -w * 0.42, 2);
+    ctx.closePath();
+
+    const outerGrad = ctx.createLinearGradient(0, 5, 0, -h);
+    outerGrad.addColorStop(0, '#e62400');
+    outerGrad.addColorStop(0.2, '#ff4500');
+    outerGrad.addColorStop(0.55, '#ff7700');
+    outerGrad.addColorStop(0.85, '#ff9900');
+    outerGrad.addColorStop(1, '#ffb300');
+    ctx.fillStyle = outerGrad;
+    ctx.fill();
+
+    // 3. Middle Incandescent Golden Flame (Smooth blended glow)
+    ctx.globalCompositeOperation = 'screen';
+    ctx.beginPath();
+    const mW = w * 0.7;
+    const mH = h * 0.8;
+    ctx.moveTo(-mW * 0.38, 1);
+    ctx.bezierCurveTo(-mW * 0.68, -mH * 0.32, -mW * 0.4 + sway * 0.7, -mH * 0.75, -mW * 0.14 + sway * 0.7, -mH * 0.94);
+    ctx.bezierCurveTo(-mW * 0.06 + sway * 0.7, -mH, mW * 0.06 + sway * 0.7, -mH, mW * 0.14 + sway * 0.7, -mH * 0.94);
+    ctx.bezierCurveTo(mW * 0.4 + sway * 0.7, -mH * 0.75, mW * 0.68, -mH * 0.32, mW * 0.38, 1);
+    ctx.closePath();
+
+    const midGrad = ctx.createLinearGradient(0, 2, 0, -mH);
+    midGrad.addColorStop(0, '#ff5500');
+    midGrad.addColorStop(0.25, '#ff9900');
+    midGrad.addColorStop(0.65, '#ffcc00');
+    midGrad.addColorStop(0.9, '#ffea55');
+    midGrad.addColorStop(1, '#fff5b0');
+    ctx.fillStyle = midGrad;
+    ctx.fill();
+
+    // 4. Inner White-Hot Luminous Core (Soft rounded tip)
+    ctx.beginPath();
+    const cW = w * 0.4;
+    const cH = h * 0.56;
+    ctx.moveTo(-cW * 0.32, 0);
+    ctx.bezierCurveTo(-cW * 0.58, -cH * 0.3, -cW * 0.3 + sway * 0.4, -cH * 0.78, -cW * 0.1 + sway * 0.4, -cH * 0.95);
+    ctx.bezierCurveTo(-cW * 0.04 + sway * 0.4, -cH, cW * 0.04 + sway * 0.4, -cH, cW * 0.1 + sway * 0.4, -cH * 0.95);
+    ctx.bezierCurveTo(cW * 0.3 + sway * 0.4, -cH * 0.78, cW * 0.58, -cH * 0.3, cW * 0.32, 0);
+    ctx.closePath();
+
+    const coreGrad = ctx.createLinearGradient(0, 1, 0, -cH);
+    coreGrad.addColorStop(0, '#ffffff');
+    coreGrad.addColorStop(0.6, '#ffffff');
+    coreGrad.addColorStop(0.9, '#fffbd6');
+    coreGrad.addColorStop(1, '#ffe885');
+    ctx.fillStyle = coreGrad;
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+  // Animation Loop
+  function animate() {
+    requestAnimationFrame(animate);
+
+    const now = performance.now();
+    const sceneRect = scene.getBoundingClientRect();
+    const headRect = head.getBoundingClientRect();
+    const headX = headRect.left - sceneRect.left + headRect.width / 2;
+    const headY = headRect.top - sceneRect.top + headRect.height / 2;
+
+    ctx.clearRect(0, 0, sceneRect.width, sceneRect.height);
+
+    // Smooth intensity interpolation for gentle on/off transitions
+    currentIntensity += (targetIntensity - currentIntensity) * 0.12;
+
+    // Handle friction sparks while scraping across the honeycomb strip
+    if (isStriking) {
+      const elapsed = now - strikeStartTime;
+      if (elapsed >= 60 && elapsed <= 820) {
+        // Friction scrape phase: spray sparks backwards along strip
+        for (let i = 0; i < 2; i++) {
+          sparks.push(new SparkParticle(headX, headY, true, -0.7, -0.4));
+        }
+      }
+    }
+
+    // Update Charred Wood Glow & Scene Firelight
+    if (currentIntensity > 0.05) {
+      if (firelight) firelight.style.opacity = (currentIntensity * 0.85).toFixed(2);
+
+      // Occasional gentle buoyant spark
+      if (Math.random() < 0.14 * currentIntensity) {
+        sparks.push(new SparkParticle(headX, headY - 25, false));
+      }
+
+      // Render the Photorealistic Matchstick Flame (Matching Image 2)
+      drawRealisticMatchFlame(ctx, headX, headY, currentIntensity);
+    } else {
+      if (firelight) firelight.style.opacity = '0';
+    }
+
+    // Render Smoke Particles (e.g. When extinguished)
+    ctx.globalCompositeOperation = 'source-over';
+    for (let i = smokeParticles.length - 1; i >= 0; i--) {
+      const p = smokeParticles[i];
+      p.update();
+      p.draw(ctx);
+      if (p.life <= 0) smokeParticles.splice(i, 1);
+    }
+
+    // Render Sparks
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = sparks.length - 1; i >= 0; i--) {
+      const s = sparks[i];
+      s.update();
+      s.draw(ctx);
+      if (s.life <= 0) sparks.splice(i, 1);
+    }
+  }
+
+  requestAnimationFrame(animate);
+});

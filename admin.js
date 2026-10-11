@@ -1,6 +1,10 @@
-const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-    ? 'http://localhost:5000'
-    : '';
+const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname) || 
+                window.location.hostname.startsWith('192.168.') || 
+                window.location.hostname.startsWith('10.') || 
+                window.location.hostname.endsWith('.local');
+const API_BASE = window.location.port === '5000' 
+    ? '' 
+    : (isLocal ? `http://${window.location.hostname}:5000` : '');
 const API_URL = `${API_BASE}/api`;
 
 const loginSection = document.getElementById('loginSection');

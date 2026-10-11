@@ -2,25 +2,72 @@
 /* Desktop Layout */
 @media (min-width: 993px) {
   .header-inner {
-    display: grid !important;
-    grid-template-columns: 1fr auto 1fr !important;
+    display: flex !important;
+    justify-content: space-between !important;
     align-items: center !important;
     padding: 0.4rem 1.5rem !important; 
+    gap: 1rem !important;
   }
   .header-left {
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    height: 100% !important;
+    justify-content: flex-start !important;
+    flex-shrink: 0 !important;
   }
   .header-center {
     display: flex !important;
     justify-content: center !important;
+    flex: 1 !important;
+    min-width: 0 !important;
   }
   .header-right {
     display: flex !important;
     justify-content: flex-end !important;
     align-items: center !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* Tablet & Smaller Desktop Responsive Fit (993px - 1280px) */
+@media (min-width: 993px) and (max-width: 1280px) {
+  .header-inner {
+    padding: 0.35rem 1rem !important;
+    gap: 0.5rem !important;
+  }
+  .brand-logo img {
+    height: 54px !important;
+  }
+  .nav-container {
+    padding: 4px 6px !important;
+  }
+  .premium-nav {
+    gap: 0px !important;
+  }
+  .premium-nav .nav-link,
+  .nav-dropdown .nav-link {
+    font-size: 13.5px !important;
+    padding: 7px 10px !important;
+    letter-spacing: 0px !important;
+  }
+  .header-matchbox-btn {
+    height: 38px !important;
+    width: 140px !important;
+    margin-right: 36px !important;
+  }
+  .header-matchbox-btn .omb-cover {
+    font-size: 0.65rem !important;
+    padding: 0 10px !important;
+  }
+  .header-matchbox-btn .omb-drawer {
+    transform: translateY(-50%) translateX(30px) !important;
+  }
+  .header-matchbox-btn .matchstick-group {
+    width: 32px !important;
+    right: 4px !important;
+  }
+  .header-matchbox-btn .real-matchstick {
+    width: 40px !important;
+    height: 4px !important;
   }
 }
 
@@ -55,7 +102,7 @@
   padding: 0 !important;
 }
 .brand-logo img {
-  height: 40px !important; 
+  height: 78px !important; 
   width: auto !important;
   display: block !important;
   margin: 0 !important;
@@ -63,7 +110,7 @@
 }
 @media (max-width: 992px) {
   .brand-logo img {
-    height: 30px !important;
+    height: 58px !important;
   }
 }
 
@@ -79,6 +126,40 @@
   z-index: 1100 !important;
   padding: 10px !important;
 }
+
+/* Header Matchbox Button */
+.header-matchbox-btn {
+  height: 44px !important;
+  width: 170px !important;
+  margin-right: 50px !important;
+  margin-bottom: 0 !important;
+  flex-shrink: 0 !important;
+}
+.header-matchbox-btn .omb-cover {
+  font-size: 0.72rem !important;
+  letter-spacing: 0.8px !important;
+  padding: 0 12px !important;
+}
+.header-matchbox-btn .omb-drawer {
+  transform: translateY(-50%) translateX(42px) !important;
+}
+.header-matchbox-btn.is-closed .omb-drawer {
+  transform: translateY(-50%) translateX(5px) !important;
+}
+.header-matchbox-btn .matchstick-group {
+  width: 40px !important;
+  right: 6px !important;
+}
+.header-matchbox-btn .real-matchstick {
+  width: 50px !important;
+  height: 5px !important;
+}
+.header-matchbox-btn .real-matchstick::after {
+  width: 11px !important;
+  height: 8px !important;
+  right: -4px !important;
+  top: -1.5px !important;
+}
 </style>
 <!-- Main Navigation -->
     <header class="premium-header" id="premiumHeader">
@@ -86,7 +167,7 @@
             <!-- Left Section 20% -->
             <div class="header-left">
                 <a href="index.html" class="brand-logo">
-                    <img src="https://res.cloudinary.com/ppxlfuj2/image/upload/v1784195661/logo_bell_aelhiw.png" alt="Bell Match Factory">
+                    <img src="uploads/bell_logo.png" alt="The Bell Match Company">
                 </a>
                 </div>
 
@@ -113,7 +194,18 @@
 
             <!-- Right Section 25% -->
             <div class="header-right">
-                <a href="contact.html" class="btn-quote-premium">Get a Quote <i class="fas fa-arrow-right"></i></a>
+                <a href="contact.html" class="open-matchbox-btn header-matchbox-btn">
+                    <div class="omb-drawer">
+                        <div class="matchstick-group">
+                            <div class="real-matchstick" style="top: 7px; transform: rotate(-1deg); right: 12px;"></div>
+                            <div class="real-matchstick" style="top: 16px; transform: rotate(0.5deg); right: 12px;"></div>
+                            <div class="real-matchstick" style="top: 25px; transform: rotate(-0.5deg); right: 12px;"></div>
+                        </div>
+                    </div>
+                    <div class="omb-cover">
+                        <span>Get a Quote</span>
+                    </div>
+                </a>
             </div>
 
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Navigation Menu">
@@ -141,8 +233,19 @@
             <a href="gallery.html" class="mobile-link ">Gallery</a>
             <a href="blog.html" class="mobile-link ">Blog</a>
             <a href="contact.html" class="mobile-link ">Contact Us</a>
-            <div class="mobile-actions mt-4" style="width: 100%;">
-                <a href="contact.html" class="btn-quote-premium" style="width: 100%; justify-content: center;">Get a Quote <i class="fas fa-arrow-right"></i></a>
+            <div class="mobile-actions mt-4" style="width: 100%; display: flex; justify-content: center;">
+                <a href="contact.html" class="open-matchbox-btn header-matchbox-btn">
+                    <div class="omb-drawer">
+                        <div class="matchstick-group">
+                            <div class="real-matchstick" style="top: 7px; transform: rotate(-1deg); right: 12px;"></div>
+                            <div class="real-matchstick" style="top: 16px; transform: rotate(0.5deg); right: 12px;"></div>
+                            <div class="real-matchstick" style="top: 25px; transform: rotate(-0.5deg); right: 12px;"></div>
+                        </div>
+                    </div>
+                    <div class="omb-cover">
+                        <span>Get a Quote</span>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

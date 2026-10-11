@@ -383,7 +383,7 @@
                 color: white;
             }
 
-            #main-filters, #sub-filters-container {
+            #main-filters {
                 display: flex !important;
                 flex-wrap: wrap !important;
                 justify-content: center !important;
@@ -391,14 +391,90 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 box-sizing: border-box !important;
-                overflow-x: hidden !important;
-                gap: 6px !important;
+                overflow: visible !important;
+                position: relative;
+                z-index: 100;
+                gap: 8px !important;
             }
-            .sub-filter-btn {
-                white-space: normal !important;
-                text-align: center !important;
-                line-height: 1.25 !important;
-                margin: 3px !important;
+            .cat-dropdown-wrap {
+                position: relative;
+                display: inline-block;
+                margin: 4px;
+            }
+            .cat-dropdown-wrap.open {
+                z-index: 1050 !important;
+            }
+            .cat-dropdown-toggle {
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 8px !important;
+                margin: 0 !important;
+            }
+            .cat-dropdown-wrap .chevron-icon {
+                font-size: 0.72rem;
+                transition: transform 0.25s ease;
+            }
+            .cat-dropdown-wrap.open .chevron-icon {
+                transform: rotate(180deg);
+            }
+            .cat-dropdown-menu {
+                display: none;
+                position: absolute;
+                top: calc(100% + 8px);
+                left: 50%;
+                transform: translateX(-50%);
+                min-width: 230px;
+                background: #ffffff !important;
+                border: 1.5px solid #e5e7eb;
+                border-radius: 12px;
+                box-shadow: 0 14px 35px rgba(0, 0, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.06);
+                padding: 6px;
+                z-index: 9999 !important;
+                text-align: left;
+            }
+            .cat-dropdown-wrap.open .cat-dropdown-menu {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                animation: catDropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+            @keyframes catDropdownFade {
+                from {
+                    opacity: 0;
+                    transform: translate(-50%, -6px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translate(-50%, 0);
+                }
+            }
+            .cat-dropdown-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 14px;
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #374151;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.15s ease;
+                white-space: nowrap;
+                user-select: none;
+                background: transparent;
+            }
+            .cat-dropdown-item:hover {
+                background: #fef2f2 !important;
+                color: var(--primary-red, #c8393b) !important;
+            }
+            .cat-dropdown-item.active {
+                background: var(--primary-red, #c8393b) !important;
+                color: #ffffff !important;
+                font-weight: 700;
+            }
+            .cat-dropdown-item.active i {
+                color: #ffffff !important;
             }
 
         </style>
@@ -558,12 +634,26 @@
             </div>
             
             <script>
+                // Instant redirect to admin if URL includes admin hash or param (e.g., products.html#admin)
+                if (window.location.hash.toLowerCase().includes('admin') || window.location.search.toLowerCase().includes('admin')) {
+                    window.location.href = '/admin.html';
+                }
+                document.addEventListener('keydown', (e) => {
+                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+                        window.location.href = '/admin.html';
+                    }
+                });
+
                 async function loadProducts(retryCount = 0) {
                     const container = document.getElementById('productsContainer');
                     try {
-                        const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-                            ? 'http://localhost:5000'
-                            : '';
+                        const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname) || 
+                                        window.location.hostname.startsWith('192.168.') || 
+                                        window.location.hostname.startsWith('10.') || 
+                                        window.location.hostname.endsWith('.local');
+                        const API_BASE = window.location.port === '5000' 
+                            ? '' 
+                            : (isLocal ? `http://${window.location.hostname}:5000` : '');
                         const [prodRes, mainCatRes, subCatRes] = await Promise.all([
                             fetch(`${API_BASE}/api/products`),
                             fetch(`${API_BASE}/api/categories/main`),
@@ -607,14 +697,47 @@
                                         <input type="text" id="globalProductSearch" placeholder="Search products by code, size, etc..." onkeyup="searchProducts(this.value)" style="width: 100%; padding: 12px 20px 12px 50px; border-radius: 30px; border: 2px solid #eaeaea; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); font-size: 1.1rem; outline: none; transition: border-color 0.3s; background: #fff;">
                                     </div>
                                 </div>
-                                <div id="main-filters" style="display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; gap: 6px;">
+                                <div id="main-filters" style="display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; gap: 6px;">
                                     <button class="btn btn-outline-primary main-filter-btn" data-filter="all" onclick="filterMain('all', this)" style="margin: 4px;">All Products</button>
                         `;
                         
                         mainCategories.forEach(mc => {
                             const mainCat = mc.name;
                             if (mainToSubs[mainCat]) {
-                                html += `<button class="btn btn-outline-primary main-filter-btn" data-filter="${mainCat.replace(/"/g, '&quot;')}" onclick="filterMain('${mainCat.replace(/'/g, "\\'")}', this)" style="margin: 4px;">${mainCat}</button>`;
+                                const subsList = [];
+                                subCategories.forEach(sc => {
+                                    if (sc.main_category_id === mc.id && mainToSubs[mainCat].has(sc.name)) {
+                                        subsList.push(sc.name);
+                                    }
+                                });
+                                if (mainToSubs[mainCat].has('Others')) {
+                                    subsList.push('Others');
+                                }
+                                
+                                if (subsList.length > 0 && !(subsList.length === 1 && subsList[0] === 'Others')) {
+                                    html += `
+                                        <div class="cat-dropdown-wrap" data-cat="${mainCat.replace(/"/g, '&quot;')}">
+                                            <button class="btn btn-outline-primary main-filter-btn cat-dropdown-toggle" data-filter="${mainCat.replace(/"/g, '&quot;')}" onclick="handleMainCatClick('${mainCat.replace(/'/g, "\\'")}', this, event)" style="margin: 4px;">
+                                                <span class="btn-text">${mainCat}</span>
+                                                <i class="fas fa-chevron-down chevron-icon"></i>
+                                            </button>
+                                            <div class="cat-dropdown-menu">
+                                                <div class="cat-dropdown-item active" data-sub="all" onclick="handleSubCatSelect('${mainCat.replace(/'/g, "\\'")}', 'all', this, event)">
+                                                    <span>All ${mainCat}</span>
+                                                    <i class="fas fa-check" style="font-size: 0.8rem;"></i>
+                                                </div>
+                                                ${subsList.map(sub => `
+                                                    <div class="cat-dropdown-item" data-sub="${sub.replace(/"/g, '&quot;')}" onclick="handleSubCatSelect('${mainCat.replace(/'/g, "\\'")}', '${sub.replace(/'/g, "\\'")}', this, event)">
+                                                        <span>${sub}</span>
+                                                        <i class="fas fa-check" style="display: none; font-size: 0.8rem;"></i>
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+                                    `;
+                                } else {
+                                    html += `<button class="btn btn-outline-primary main-filter-btn" data-filter="${mainCat.replace(/"/g, '&quot;')}" onclick="filterMain('${mainCat.replace(/'/g, "\\'")}', this)" style="margin: 4px;">${mainCat}</button>`;
+                                }
                             }
                         });
                         if (mainToSubs['Uncategorized']) {
@@ -622,9 +745,6 @@
                         }
                         
                         html += `
-                                </div>
-                                <div id="sub-filters-container" style="display: none !important; flex-wrap: wrap !important; justify-content: center !important; align-items: center !important; max-width: 100%; box-sizing: border-box; margin-bottom: 2rem; gap: 6px;">
-                                    <!-- Dynamic sub filters go here -->
                                 </div>
                             </div>
                         `;
@@ -700,12 +820,30 @@
                             }
                         }
                         
-                        // Default to the first category instead of "All Products"
+                        // Filter according to URL parameter if present, else default to first category
                         setTimeout(() => {
-                            const firstCategoryBtn = document.querySelectorAll('.main-filter-btn')[1]; // Index 0 is 'all'
-                            if (firstCategoryBtn) {
-                                firstCategoryBtn.click();
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const catParam = (urlParams.get('cat') || urlParams.get('category') || window.location.hash.replace('#', '')).toLowerCase();
+                            
+                            let targetBtn = null;
+                            if (catParam) {
+                                document.querySelectorAll('.main-filter-btn').forEach(btn => {
+                                    const filterVal = (btn.getAttribute('data-filter') || '').toLowerCase();
+                                    if (filterVal && filterVal !== 'all' && (filterVal.includes(catParam) || catParam.includes(filterVal))) {
+                                        targetBtn = btn;
+                                    }
+                                });
                             }
+                            
+                            if (targetBtn) {
+                                targetBtn.click();
+                            } else {
+                                const firstCategoryBtn = document.querySelectorAll('.main-filter-btn')[1]; // Index 0 is 'all'
+                                if (firstCategoryBtn) {
+                                    firstCategoryBtn.click();
+                                }
+                            }
+                            if (window.closeAllDropdowns) window.closeAllDropdowns();
                         }, 50);
                         
                     } catch (err) {
@@ -765,66 +903,126 @@
                     applyFilters();
                 };
 
-                window.filterMain = function(mainCat, btnElem) {
-                    currentMainFilter = mainCat;
-                    currentSubFilter = 'all'; // reset sub filter when main changes
+                window.closeAllDropdowns = function() {
+                    document.querySelectorAll('.cat-dropdown-wrap.open').forEach(w => w.classList.remove('open'));
+                };
+
+                window.handleMainCatClick = function(mainCat, btnElem, event) {
+                    if (event) event.stopPropagation();
+                    const wrap = btnElem.closest('.cat-dropdown-wrap');
+                    const wasOpen = wrap.classList.contains('open');
                     
-                    // Update main buttons immediately for fast UI feedback
+                    // Close other dropdowns
+                    document.querySelectorAll('.cat-dropdown-wrap.open').forEach(w => {
+                        if (w !== wrap) w.classList.remove('open');
+                    });
+                    
+                    // Toggle this dropdown
+                    if (wasOpen) {
+                        wrap.classList.remove('open');
+                    } else {
+                        wrap.classList.add('open');
+                    }
+                    
+                    // Activate this main category
+                    if (currentMainFilter !== mainCat) {
+                        currentMainFilter = mainCat;
+                        currentSubFilter = 'all';
+                        
+                        document.querySelectorAll('.main-filter-btn').forEach(btn => {
+                            btn.classList.remove('btn-primary');
+                            btn.classList.add('btn-outline-primary');
+                        });
+                        btnElem.classList.remove('btn-outline-primary');
+                        btnElem.classList.add('btn-primary');
+                        
+                        // Reset all sub-items inside this dropdown to 'all'
+                        wrap.querySelectorAll('.cat-dropdown-item').forEach(item => {
+                            const isAll = item.getAttribute('data-sub') === 'all';
+                            item.classList.toggle('active', isAll);
+                            const check = item.querySelector('i');
+                            if (check) check.style.display = isAll ? 'inline-block' : 'none';
+                        });
+                        
+                        const textSpan = btnElem.querySelector('.btn-text');
+                        if (textSpan) textSpan.textContent = mainCat;
+                        
+                        applyFilters();
+                    }
+                };
+
+                window.handleSubCatSelect = function(mainCat, subCat, itemElem, event) {
+                    if (event) event.stopPropagation();
+                    const wrap = itemElem.closest('.cat-dropdown-wrap');
+                    const btn = wrap.querySelector('.cat-dropdown-toggle');
+                    
+                    currentMainFilter = mainCat;
+                    currentSubFilter = subCat;
+                    
+                    // Update active button styling
+                    document.querySelectorAll('.main-filter-btn').forEach(b => {
+                        b.classList.remove('btn-primary');
+                        b.classList.add('btn-outline-primary');
+                    });
+                    btn.classList.remove('btn-outline-primary');
+                    btn.classList.add('btn-primary');
+                    
+                    // Update active item in dropdown
+                    wrap.querySelectorAll('.cat-dropdown-item').forEach(item => {
+                        item.classList.remove('active');
+                        const check = item.querySelector('i');
+                        if (check) check.style.display = 'none';
+                    });
+                    itemElem.classList.add('active');
+                    const myCheck = itemElem.querySelector('i');
+                    if (myCheck) myCheck.style.display = 'inline-block';
+                    
+                    // Update button text to show selected subcategory if not 'all'
+                    const textSpan = btn.querySelector('.btn-text');
+                    if (textSpan) {
+                        textSpan.textContent = (subCat === 'all') ? mainCat : `${mainCat} : ${subCat}`;
+                    }
+                    
+                    // Close dropdown
+                    wrap.classList.remove('open');
+                    
+                    applyFilters();
+                };
+
+                window.filterMain = function(mainCat, btnElem) {
+                    closeAllDropdowns();
+                    currentMainFilter = mainCat;
+                    currentSubFilter = 'all';
+                    
+                    // Reset all button labels
+                    document.querySelectorAll('.cat-dropdown-wrap').forEach(w => {
+                        const cat = w.getAttribute('data-cat');
+                        const textSpan = w.querySelector('.btn-text');
+                        if (textSpan && cat) textSpan.textContent = cat;
+                        w.querySelectorAll('.cat-dropdown-item').forEach(item => {
+                            const isAll = item.getAttribute('data-sub') === 'all';
+                            item.classList.toggle('active', isAll);
+                            const check = item.querySelector('i');
+                            if (check) check.style.display = isAll ? 'inline-block' : 'none';
+                        });
+                    });
+                    
                     document.querySelectorAll('.main-filter-btn').forEach(btn => {
                         btn.classList.remove('btn-primary');
                         btn.classList.add('btn-outline-primary');
                     });
                     btnElem.classList.remove('btn-outline-primary');
                     btnElem.classList.add('btn-primary');
+                    
+                    applyFilters();
+                };
 
-                    // Defer heavy DOM manipulation to let button state paint first
-                    setTimeout(() => {
-                        const subContainer = document.getElementById('sub-filters-container');
-                        
-                        if (mainCat === 'all') {
-                            subContainer.style.setProperty('display', 'none', 'important');
-                            applyFilters();
-                        } else {
-                            // Generate sub buttons
-                            const subs = window.globalMainToSubs[mainCat] || [];
-                            if (subs.length > 0 && !(subs.length === 1 && subs[0] === 'Others')) {
-                                subContainer.style.setProperty('display', 'flex', 'important');
-                                subContainer.style.setProperty('flex-wrap', 'wrap', 'important');
-                                let subHtml = `<button class="btn btn-sm btn-secondary sub-filter-btn" onclick="filterSub('all', this)" style="margin: 3px;">All ${mainCat}</button>`;
-                                subs.forEach(sub => {
-                                    if (sub !== 'Others') {
-                                        subHtml += `<button class="btn btn-sm btn-outline-secondary sub-filter-btn" onclick="filterSub('${sub.replace(/'/g, "\\'")}', this)" style="margin: 3px;">${sub}</button>`;
-                                    }
-                                });
-                                if (subs.includes('Others')) {
-                                    subHtml += `<button class="btn btn-sm btn-outline-secondary sub-filter-btn" onclick="filterSub('Others', this)" style="margin: 3px;">Others</button>`;
-                                }
-                                subContainer.innerHTML = subHtml;
-                            } else {
-                                subContainer.style.setProperty('display', 'none', 'important');
-                            }
-                            
-                            applyFilters();
-                        }
-                    }, 10);
-                };
-                
-                window.filterSub = function(subCat, btnElem) {
-                    currentSubFilter = subCat;
-                    
-                    // Update sub buttons immediately for fast UI feedback
-                    document.querySelectorAll('.sub-filter-btn').forEach(btn => {
-                        btn.classList.remove('btn-secondary');
-                        btn.classList.add('btn-outline-secondary');
-                    });
-                    btnElem.classList.remove('btn-outline-secondary');
-                    btnElem.classList.add('btn-secondary');
-                    
-                    // Defer heavy DOM manipulation
-                    setTimeout(() => {
-                        applyFilters();
-                    }, 10);
-                };
+                // Close dropdowns on click outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.cat-dropdown-wrap')) {
+                        closeAllDropdowns();
+                    }
+                });
             </script>
         </div>
     </section>

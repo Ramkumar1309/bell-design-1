@@ -248,11 +248,6 @@
         
         <div class="container" style="position: relative; z-index: 2;">
             <div style="max-width: 900px;">
-                <div style="display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 30px; margin-bottom: 24px;">
-                    <i class="fas fa-globe" style="color: #fbbf24; margin-right: 10px;"></i>
-                    <span style="color: #e2e8f0; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Global Exporter of Premium Safety Matches</span>
-                </div>
-                
                 <h1 class="hero-title-gradient" style="font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif;">
                     Trusted Worldwide. <br>
                     <span style="color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.7);">Delivered Reliably.</span>
@@ -280,33 +275,276 @@
     </section>
 
     <!-- Where We Export Section -->
-    <section class="section" style="padding: 5rem 0; background-color: white;">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <h2 style="color: var(--primary-red); font-size: 2.5rem; margin-bottom: 1rem;">Where We Export</h2>
-                <div style="width: 60px; height: 4px; background: var(--gold-accent); margin: 0 auto 1.5rem auto; border-radius: 2px;"></div>
-                <p style="font-size: 1.1rem; line-height: 1.7; color: #4b5563;">
-                    Bell Match Company maintains strong, active trade relationships across the globe. Our high-capacity production in Sivakasi, India regularly supplies the following key international markets:
-                </p>
-            </div>
+    <section class="section" id="where-we-export" style="padding: 2.5rem 0; background-color: #ffffff; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <style>
+            .export-global-split {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+                align-items: center;
+                width: 100%;
+            }
+            .export-map-panel {
+                background: #ffffff;
+                border: 1px solid #e2e8f0;
+                border-radius: 14px;
+                padding: 0.5rem;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 10px 30px -8px rgba(15, 23, 42, 0.08);
+            }
+            .map-flight-path {
+                stroke: #dc2626;
+                stroke-width: 1.8;
+                stroke-dasharray: 6, 4;
+                fill: none;
+                opacity: 0.85;
+            }
+            .map-sea-path {
+                stroke: #0284c7;
+                stroke-width: 2.2;
+                stroke-dasharray: 6, 4;
+                fill: none;
+                opacity: 0.9;
+            }
+            .hub-pulse-air {
+                animation: pulseAir 2s infinite ease-out;
+            }
+            .hub-pulse-sea {
+                animation: pulseSea 2.4s infinite ease-out;
+            }
+            @keyframes pulseAir {
+                0% { r: 5; opacity: 1; }
+                50% { r: 13; opacity: 0.35; }
+                100% { r: 19; opacity: 0; }
+            }
+            @keyframes pulseSea {
+                0% { r: 5; opacity: 1; }
+                50% { r: 13; opacity: 0.35; }
+                100% { r: 19; opacity: 0; }
+            }
+            @media (max-width: 992px) {
+                .export-global-split {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                }
+            }
+            @media (max-width: 580px) {
+                .dual-hub-grid {
+                    grid-template-columns: 1fr !important;
+                }
+            }
+        </style>
 
-            <div class="country-grid">
-                <div class="country-card"><i class="fas fa-map-marker-alt"></i> Dubai</div>
-                <div class="country-card"><i class="fas fa-map-marker-alt"></i> France</div>
-                <div class="country-card"><i class="fas fa-map-marker-alt"></i> UK</div>
-                <div class="country-card"><i class="fas fa-map-marker-alt"></i> USA</div>
-                <div class="country-card"><i class="fas fa-map-marker-alt"></i> UAE</div>
-                <div class="country-card"><i class="fas fa-map-marker-alt"></i> Qatar</div>
-                <div class="country-card"><i class="fas fa-map-marker-alt"></i> Canada</div>
-                <div class="country-card"><i class="fas fa-map-marker-alt"></i> Sharjah</div>
-            </div>
+        <div style="width: 100% !important; max-width: 100% !important; padding: 0 4% !important; margin: 0 !important; box-sizing: border-box;">
+            <div class="export-global-split">
+                <!-- Left: Content Panel -->
+                <div>
+                    <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(1.85rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--primary-red, #b71c1c); line-height: 1.2; margin: 0 0 0.5rem 0;">
+                        Where We Export
+                    </h2>
 
-            <p style="font-size: 1.1rem; line-height: 1.7; color: #4b5563; text-align: center; margin-top: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 1rem;">
-                Beyond these core markets, our vast production capacity and streamlined export infrastructure allow us to fulfill safety match orders to <strong>any country worldwide</strong>, making us a highly reliable long-term sourcing partner for international importers and distributors.
-            </p>
-            <p style="font-size: 1.1rem; line-height: 1.7; color: #4b5563; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 0;">
-                As a safety matches exporter from India, Bell Match supports importers, wholesalers, distributors, and private-label businesses seeking an international matchbox supplier with dependable production and export capabilities.
-            </p>
+                    <div style="width: 50px; height: 3px; background: var(--gold-accent, #ffc107); margin-bottom: 0.95rem; border-radius: 2px;"></div>
+
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.94rem; line-height: 1.6; color: #475569; margin: 0 0 1.1rem 0;">
+                        Bell Match Company operates an extensive global trade network, fulfilling high-volume safety match shipments to commercial importers, wholesalers, and retail distributors worldwide via dual dispatch channels:
+                    </p>
+
+                    <!-- Dual Hub Highlights: Bengaluru (Air) & Thoothukudi (Sea) -->
+                    <div class="dual-hub-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 1.1rem;">
+                        <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 0.95rem 1rem;">
+                            <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #b71c1c; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                                <i class="fas fa-plane-departure"></i> Air Cargo Export
+                            </div>
+                            <strong style="display: block; font-size: 0.92rem; color: #0f172a; margin-bottom: 2px; font-family: 'Poppins', sans-serif;">Bengaluru Hub</strong>
+                            <p style="font-size: 0.78rem; color: #64748b; line-height: 1.4; margin: 0; font-family: 'Inter', sans-serif;">
+                                Rapid air freight dispatch for high-priority replenishments and expedited international shipments.
+                            </p>
+                        </div>
+
+                        <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px; padding: 0.95rem 1rem;">
+                            <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #0284c7; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                                <i class="fas fa-ship"></i> Ocean Sea Freight
+                            </div>
+                            <strong style="display: block; font-size: 0.92rem; color: #0f172a; margin-bottom: 2px; font-family: 'Poppins', sans-serif;">Thoothukudi Port</strong>
+                            <p style="font-size: 0.78rem; color: #64748b; line-height: 1.4; margin: 0; font-family: 'Inter', sans-serif;">
+                                High-capacity FCL container cargo shipping via VOC Deepwater Port on direct international sea lanes.
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.88rem; line-height: 1.55; color: #64748b; margin: 0;">
+                        Beyond our primary routes across North America, Western Europe, and the Middle East, our robust manufacturing infrastructure fulfills custom matchbox contracts to <strong>any country worldwide</strong>.
+                    </p>
+                </div>
+
+                <!-- Right: Compact Animated World Export Map -->
+                <div class="export-map-panel">
+                    <!-- SVG World Map Container -->
+                    <div style="position: relative; width: 100%; line-height: 0;">
+                        <svg viewBox="0 55 950 455" width="100%" height="auto" style="display: block; border-radius: 10px; background: #ffffff;">
+                            <!-- Base Vector World Map (Clean, Bright Landmasses) -->
+                            <image href="uploads/world_map_base.svg" x="0" y="0" width="950" height="620" preserveAspectRatio="xMidYMid meet" opacity="0.95" />
+
+                            <defs>
+                                <filter id="pinShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.18" />
+                                </filter>
+
+                                <!-- Authentic Aerodynamic Commercial Cargo Jet Airplane (Nose points +X forward) -->
+                                <g id="real-airplane">
+                                    <path d="M 12 0 
+                                             C 10.5 -1.2, 7 -1.8, 2.5 -1.8 
+                                             L -1 -11 
+                                             C -1.8 -11.6, -2.8 -11, -2.4 -9.5 
+                                             L -0.2 -1.8 
+                                             L -6.5 -1.8 
+                                             L -9 -5.5 
+                                             C -9.6 -6, -10.5 -5.8, -10.2 -4.5 
+                                             L -9 0 
+                                             L -10.2 4.5 
+                                             C -10.5 5.8, -9.6 6, -9 5.5 
+                                             L -6.5 1.8 
+                                             L -0.2 1.8 
+                                             L -2.4 9.5 
+                                             C -2.8 11, -1.8 11.6, -1 11 
+                                             L 2.5 1.8 
+                                             C 7 1.8, 10.5 1.2, 12 0 Z" 
+                                          fill="#dc2626" stroke="#ffffff" stroke-width="0.8" />
+                                </g>
+
+                                <!-- Ocean Cargo Container Vessel (Bow points +X forward) -->
+                                <g id="real-ship">
+                                    <path d="M 7 0 L 3.5 -3 L -5 -3 L -6.5 -1.5 L -6.5 1.5 L -5 3 L 3.5 3 Z" fill="#0284c7" stroke="#ffffff" stroke-width="0.8" />
+                                    <rect x="-3" y="-1.5" width="4.5" height="3" fill="#ffffff" rx="0.5" />
+                                </g>
+                            </defs>
+
+                            <!-- ================= SEA FREIGHT ROUTES (From Thoothukudi Port: 674, 310) ================= -->
+                            <!-- 1. Europe Sea Route: Thoothukudi -> Gulf of Aden -> Red Sea / Suez -> Mediterranean -> Gibraltar -> UK & France -->
+                            <path id="sea-route-europe" class="map-sea-path" d="M 674 310 C 640 315 595 305 575 295 C 555 285 540 262 532 238 C 505 225 450 225 425 215 C 410 200 420 170 448 152" />
+
+                            <!-- 2. Americas Sea Route: Thoothukudi -> Indian Ocean -> Cape of Good Hope -> Atlantic Ocean (Navigating Open Waters East of South America) -> USA East Coast -->
+                            <path id="sea-route-usa" class="map-sea-path" d="M 674 310 C 640 370 565 440 515 465 C 450 470 385 410 355 330 C 330 260 280 215 235 195" />
+
+                            <!-- Cargo Ships Gliding Along Exact Maritime Routes -->
+                            <!-- Ship on Europe / Suez Route -->
+                            <g>
+                                <use href="#real-ship" />
+                                <animateMotion dur="22s" repeatCount="indefinite" rotate="auto">
+                                    <mpath href="#sea-route-europe" />
+                                </animateMotion>
+                            </g>
+                            <!-- Ship on Cape of Good Hope / Atlantic Route -->
+                            <g>
+                                <use href="#real-ship" />
+                                <animateMotion dur="28s" repeatCount="indefinite" rotate="auto">
+                                    <mpath href="#sea-route-usa" />
+                                </animateMotion>
+                            </g>
+
+                            <!-- ================= AIR CARGO ROUTES (From Bengaluru Hub: 668, 282) ================= -->
+                            <!-- 1. Air Corridor: Bengaluru -> UK & France -->
+                            <path id="air-route-europe" class="map-flight-path" d="M 668 282 Q 555 140 448 152" />
+                            <path id="air-route-france" class="map-flight-path" d="M 448 152 Q 458 163 468 175" />
+
+                            <!-- 2. Transatlantic Air Corridor: UK -> USA & Canada -->
+                            <path id="air-route-transatlantic" class="map-flight-path" d="M 448 152 Q 340 120 235 195" />
+                            <path id="air-route-canada" class="map-flight-path" d="M 235 195 Q 230 175 225 155" />
+
+                            <!-- 3. Air Corridor: Bengaluru -> UAE & Qatar -->
+                            <path id="air-route-uae" class="map-flight-path" d="M 668 282 Q 632 250 600 238" />
+                            <path id="air-route-qatar" class="map-flight-path" d="M 600 238 Q 594 241 588 244" />
+
+                            <!-- Real Airplanes Flying Along Corridors -->
+                            <!-- Flight: Bengaluru to Europe -->
+                            <g>
+                                <use href="#real-airplane" />
+                                <animateMotion dur="9s" repeatCount="indefinite" rotate="auto">
+                                    <mpath href="#air-route-europe" />
+                                </animateMotion>
+                            </g>
+                            <!-- Flight: Transatlantic to North America -->
+                            <g>
+                                <use href="#real-airplane" />
+                                <animateMotion dur="8s" begin="4s" repeatCount="indefinite" rotate="auto">
+                                    <mpath href="#air-route-transatlantic" />
+                                </animateMotion>
+                            </g>
+                            <!-- Flight: Bengaluru to UAE -->
+                            <g>
+                                <use href="#real-airplane" />
+                                <animateMotion dur="6s" begin="1.5s" repeatCount="indefinite" rotate="auto">
+                                    <mpath href="#air-route-uae" />
+                                </animateMotion>
+                            </g>
+
+                            <!-- ================= DESTINATION LABELS & PINS ================= -->
+                            <!-- USA -->
+                            <g transform="translate(235, 195)" filter="url(#pinShadow)">
+                                <circle cx="0" cy="0" r="5" fill="#0f172a" stroke="#ffffff" stroke-width="1.8" />
+                                <rect x="-42" y="-24" width="56" height="18" rx="4" fill="#0f172a" />
+                                <text x="-14" y="-11" fill="#ffffff" font-size="9.5" font-family="'Poppins', sans-serif" font-weight="700" text-anchor="middle">USA</text>
+                            </g>
+
+                            <!-- Canada -->
+                            <g transform="translate(225, 155)" filter="url(#pinShadow)">
+                                <circle cx="0" cy="0" r="5" fill="#0f172a" stroke="#ffffff" stroke-width="1.8" />
+                                <rect x="-52" y="-24" width="68" height="18" rx="4" fill="#0f172a" />
+                                <text x="-18" y="-11" fill="#ffffff" font-size="9.5" font-family="'Poppins', sans-serif" font-weight="700" text-anchor="middle">Canada</text>
+                            </g>
+
+                            <!-- UK -->
+                            <g transform="translate(448, 152)" filter="url(#pinShadow)">
+                                <circle cx="0" cy="0" r="5" fill="#0f172a" stroke="#ffffff" stroke-width="1.8" />
+                                <rect x="-40" y="-24" width="48" height="18" rx="4" fill="#0f172a" />
+                                <text x="-16" y="-11" fill="#ffffff" font-size="9.5" font-family="'Poppins', sans-serif" font-weight="700" text-anchor="middle">UK</text>
+                            </g>
+
+                            <!-- France -->
+                            <g transform="translate(468, 175)" filter="url(#pinShadow)">
+                                <circle cx="0" cy="0" r="5" fill="#0f172a" stroke="#ffffff" stroke-width="1.8" />
+                                <rect x="8" y="-9" width="60" height="18" rx="4" fill="#0f172a" />
+                                <text x="38" y="4" fill="#ffffff" font-size="9.5" font-family="'Poppins', sans-serif" font-weight="700" text-anchor="middle">France</text>
+                            </g>
+
+                            <!-- UAE (Dubai & Sharjah) -->
+                            <g transform="translate(600, 238)" filter="url(#pinShadow)">
+                                <circle cx="0" cy="0" r="5" fill="#0f172a" stroke="#ffffff" stroke-width="1.8" />
+                                <rect x="-140" y="-22" width="134" height="20" rx="4" fill="#0f172a" />
+                                <text x="-73" y="-8" fill="#ffffff" font-size="9.2" font-family="'Poppins', sans-serif" font-weight="700" text-anchor="middle">UAE (Dubai &amp; Sharjah)</text>
+                            </g>
+
+                            <!-- Qatar -->
+                            <g transform="translate(588, 244)" filter="url(#pinShadow)">
+                                <circle cx="0" cy="0" r="4.5" fill="#0f172a" stroke="#ffffff" stroke-width="1.5" />
+                                <rect x="-68" y="4" width="56" height="17" rx="4" fill="#0f172a" />
+                                <text x="-40" y="16" fill="#ffffff" font-size="8.8" font-family="'Poppins', sans-serif" font-weight="700" text-anchor="middle">Qatar</text>
+                            </g>
+
+                            <!-- ================= INDIAN EXPORT HUBS (ORIGINS) ================= -->
+                            <!-- Bengaluru (Air Cargo Export Hub) -->
+                            <g transform="translate(668, 282)" filter="url(#pinShadow)">
+                                <circle cx="0" cy="0" r="10" fill="#dc2626" opacity="0.25" class="hub-pulse-air" />
+                                <circle cx="0" cy="0" r="6" fill="#dc2626" stroke="#ffffff" stroke-width="2" />
+                                <rect x="10" y="-12" width="144" height="22" rx="4" fill="#dc2626" />
+                                <text x="82" y="3" fill="#ffffff" font-size="10" font-family="'Poppins', sans-serif" font-weight="700" text-anchor="middle">✈ Bengaluru (Air Hub)</text>
+                            </g>
+
+                            <!-- Thoothukudi (Sea Freight Export Port) -->
+                            <g transform="translate(674, 310)" filter="url(#pinShadow)">
+                                <circle cx="0" cy="0" r="10" fill="#0284c7" opacity="0.25" class="hub-pulse-sea" />
+                                <circle cx="0" cy="0" r="6" fill="#0284c7" stroke="#ffffff" stroke-width="2" />
+                                <rect x="10" y="-8" width="158" height="22" rx="4" fill="#0284c7" />
+                                <text x="89" y="7" fill="#ffffff" font-size="10" font-family="'Poppins', sans-serif" font-weight="700" text-anchor="middle">⚓ Thoothukudi (Sea Port)</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 
@@ -355,8 +593,206 @@
         </div>
     </section>
 
+    <!-- Dangerous Goods & Shipping Specifications -->
+    <section class="section" id="dangerous-goods" style="padding: 4.5rem 0; background: #ffffff; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <style>
+            .dg-split-layout {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3.5rem;
+                align-items: center;
+                width: 100%;
+            }
+            .dg-image-visual {
+                position: relative;
+                width: 100%;
+                min-height: 500px;
+                height: 100%;
+                border-radius: 14px;
+                overflow: hidden;
+                box-shadow: 0 14px 35px -8px rgba(15, 23, 42, 0.12);
+                background-image: url('uploads/match_export_freight.jpg?v=2');
+                background-size: cover;
+                background-position: center;
+            }
+
+            /* Cross-Hairline Metric Matrix (Zero Cards) */
+            .dg-metric-matrix {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                margin: 1.5rem 0 1.25rem 0;
+                border-top: 1px solid #e2e8f0;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            .dg-metric-cell {
+                padding: 1.15rem 1.25rem;
+                box-sizing: border-box;
+            }
+            .dg-metric-cell:nth-child(1),
+            .dg-metric-cell:nth-child(3) {
+                border-right: 1px solid #e2e8f0;
+                padding-left: 0;
+            }
+            .dg-metric-cell:nth-child(2),
+            .dg-metric-cell:nth-child(4) {
+                padding-right: 0;
+            }
+            .dg-metric-cell:nth-child(1),
+            .dg-metric-cell:nth-child(2) {
+                border-bottom: 1px solid #e2e8f0;
+            }
+            .dg-metric-label {
+                font-family: 'Poppins', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 600;
+                letter-spacing: 0.8px;
+                text-transform: uppercase;
+                color: var(--primary-red, #b71c1c);
+                margin-bottom: 0.25rem;
+                display: block;
+            }
+            .dg-metric-value {
+                font-size: 1.9rem;
+                font-weight: 700;
+                color: #0f172a;
+                font-family: 'Poppins', sans-serif;
+                line-height: 1.15;
+                margin-bottom: 0.2rem;
+            }
+            .dg-metric-title {
+                font-size: 0.95rem;
+                font-weight: 600;
+                font-family: 'Poppins', sans-serif;
+                color: #1e293b;
+                margin-bottom: 0.2rem;
+            }
+            .dg-metric-meta {
+                font-size: 0.82rem;
+                font-family: 'Inter', sans-serif;
+                color: #64748b;
+                line-height: 1.45;
+            }
+
+            /* Clean Checkmark Advisory Highlights (Zero Cards) */
+            .dg-advisory-points {
+                display: flex;
+                flex-direction: column;
+                gap: 0.85rem;
+                margin-top: 0.5rem;
+            }
+            .dg-advisory-point {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.88rem;
+                line-height: 1.55;
+                color: #475569;
+            }
+            .dg-advisory-point i {
+                color: var(--primary-red, #b71c1c);
+                font-size: 0.95rem;
+                margin-top: 3px;
+                flex-shrink: 0;
+            }
+
+            @media (max-width: 992px) {
+                .dg-split-layout {
+                    grid-template-columns: 1fr;
+                    gap: 2.25rem;
+                }
+                .dg-image-visual {
+                    min-height: 360px;
+                }
+            }
+            @media (max-width: 580px) {
+                .dg-metric-matrix {
+                    grid-template-columns: 1fr;
+                }
+                .dg-metric-cell {
+                    padding: 1rem 0 !important;
+                    border-right: none !important;
+                    border-bottom: 1px solid #e2e8f0 !important;
+                }
+                .dg-metric-cell:last-child {
+                    border-bottom: none !important;
+                }
+            }
+        </style>
+
+        <div style="width: 100% !important; max-width: 100% !important; padding: 0 4% !important; margin: 0 !important; box-sizing: border-box;">
+            <div class="dg-split-layout">
+                <!-- Left: 50% Clean Visual Photography Panel (No Text Overlays) -->
+                <div class="dg-image-visual"></div>
+
+                <!-- Right: 50% Standard Font Technical Content (No Cards) -->
+                <div>
+                    <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(1.85rem, 2.5vw, 2.35rem); font-weight: 700; color: #0f172a; line-height: 1.25; margin: 0 0 0.75rem 0;">
+                        Dangerous Goods &amp; Shipping Specifications
+                    </h2>
+
+                    <!-- Standard Site Gold Line -->
+                    <div style="width: 50px; height: 3px; background: var(--gold-accent, #ffc107); margin-bottom: 1.25rem; border-radius: 2px;"></div>
+
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.96rem; line-height: 1.7; color: #475569; margin: 0 0 1.25rem 0;">
+                        Safety matches are classified under Dangerous Goods Class 4.1 (UN 1944) for international transport. Handled, packaged, and documented according to IMDG Code &amp; destination port clearance requirements.
+                    </p>
+
+                    <!-- Hairline Cross Metric Matrix (Zero Cards) -->
+                    <div class="dg-metric-matrix">
+                        <div class="dg-metric-cell">
+                            <span class="dg-metric-label">Hazard Class</span>
+                            <div class="dg-metric-value" style="color: var(--primary-red, #b71c1c);">4.1</div>
+                            <div class="dg-metric-title">Flammable Solid</div>
+                            <div class="dg-metric-meta">Category 2 · Friction-ignition safe formulation</div>
+                        </div>
+
+                        <div class="dg-metric-cell">
+                            <span class="dg-metric-label">Regulatory ID</span>
+                            <div class="dg-metric-value" style="color: #0f172a;">UN 1944</div>
+                            <div class="dg-metric-title">IMO / UN Number</div>
+                            <div class="dg-metric-meta">Matches, Safety · IMDG Multimodal Compliant</div>
+                        </div>
+
+                        <div class="dg-metric-cell">
+                            <span class="dg-metric-label">Surface Transit</span>
+                            <div class="dg-metric-value" style="color: #0f172a;">4.1 DOT</div>
+                            <div class="dg-metric-title">DOT Classification</div>
+                            <div class="dg-metric-meta">Approved for highway and surface container transit</div>
+                        </div>
+
+                        <div class="dg-metric-cell">
+                            <span class="dg-metric-label">Export Packaging</span>
+                            <div class="dg-metric-value" style="color: #0f172a;">Group III</div>
+                            <div class="dg-metric-title">Packing Group</div>
+                            <div class="dg-metric-meta">Moisture-sealed poly wrap &amp; 5-ply export master cartons</div>
+                        </div>
+                    </div>
+
+                    <!-- Clean Advisory Highlights (Zero Cards) -->
+                    <div class="dg-advisory-points">
+                        <div class="dg-advisory-point">
+                            <i class="fas fa-circle-check"></i>
+                            <div>
+                                <strong style="color: #0f172a;">Destination &amp; Transport Mode:</strong> 
+                                Export-ready packaging and dangerous goods documentation. Buyers confirm route requirements before container booking.
+                            </div>
+                        </div>
+                        <div class="dg-advisory-point">
+                            <i class="fas fa-circle-check"></i>
+                            <div>
+                                <strong style="color: #0f172a;">Support for Global Importers:</strong> 
+                                Classification details, safety sheets (MSDS), and certificates are provided to help buyers navigate destination port customs.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Our Export Process -->
-    <section class="section" style="padding: 5rem 0; background-color: white;">
+    <section class="section" style="padding: 5rem 0; background-color: #f9fafb;">
         <div class="container">
             <h2 style="color: var(--primary-red); font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">Our Seamless Export Process</h2>
             <div style="width: 60px; height: 4px; background: var(--gold-accent); margin: 0 auto 1.5rem auto; border-radius: 2px;"></div>
@@ -411,259 +847,15 @@
         </div>
     </section>
 
-    <!-- Dangerous Goods & Shipping Specifications -->
-    <section class="section" id="dangerous-goods" style="padding: 5.5rem 0; background: #ffffff; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
-        <style>
-            .dg-refined-grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
-                margin-bottom: 2.25rem;
-                width: 100%;
-            }
-            .dg-refined-card {
-                background: #ffffff;
-                border-radius: 16px;
-                border: 1px solid #e2e8f0;
-                padding: 2.25rem 1.75rem;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                overflow: hidden;
-            }
-            .dg-refined-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 4px;
-                background: #e2e8f0;
-                transition: background 0.3s ease;
-            }
-            .dg-refined-card:hover {
-                transform: translateY(-6px);
-                box-shadow: 0 16px 35px rgba(0, 0, 0, 0.08);
-                border-color: #cbd5e1;
-            }
-            .dg-refined-card:hover::before {
-                background: var(--primary-red);
-            }
-            .dg-refined-icon {
-                width: 52px;
-                height: 52px;
-                border-radius: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.4rem;
-                margin-bottom: 1.25rem;
-            }
-            .dg-refined-meta-tag {
-                font-size: 0.76rem;
-                font-weight: 700;
-                letter-spacing: 1px;
-                text-transform: uppercase;
-                color: #64748b;
-                margin-bottom: 0.5rem;
-            }
-            .dg-refined-value {
-                font-size: 2.5rem;
-                font-weight: 800;
-                font-family: monospace, sans-serif;
-                line-height: 1;
-                margin-bottom: 0.75rem;
-            }
-            .dg-refined-title {
-                font-size: 1.2rem;
-                font-weight: 700;
-                color: #1e293b;
-                margin-bottom: 1rem;
-            }
-            .dg-refined-footer {
-                margin-top: auto;
-                padding-top: 1rem;
-                border-top: 1px solid #f1f5f9;
-                font-size: 0.94rem;
-                color: #475569;
-                line-height: 1.5;
-            }
-            .dg-refined-pill {
-                display: inline-block;
-                padding: 4px 11px;
-                border-radius: 20px;
-                font-size: 0.78rem;
-                font-weight: 700;
-                margin-top: 0.65rem;
-            }
-            .dg-refined-support-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
-                width: 100%;
-            }
-            .dg-refined-support-card {
-                background: #f8fafc;
-                border: 1px solid #e2e8f0;
-                border-radius: 16px;
-                padding: 2.25rem;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-                display: flex;
-                gap: 1.5rem;
-                align-items: flex-start;
-                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            }
-            .dg-refined-support-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-                border-color: #cbd5e1;
-            }
-            .dg-refined-support-icon {
-                width: 52px;
-                height: 52px;
-                border-radius: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.35rem;
-                flex-shrink: 0;
-            }
-            @media (max-width: 1024px) {
-                .dg-refined-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-                .dg-refined-support-grid {
-                    grid-template-columns: 1fr;
-                }
-            }
-            @media (max-width: 600px) {
-                .dg-refined-grid {
-                    grid-template-columns: 1fr;
-                }
-                .dg-refined-support-card {
-                    flex-direction: column;
-                    padding: 1.75rem;
-                }
-            }
-        </style>
-
-        <div style="width: 100% !important; max-width: 100% !important; padding: 0 4% !important; margin: 0 !important; box-sizing: border-box;">
-            <!-- Section Header -->
-            <div style="text-align: center; max-width: 880px; margin: 0 auto 3.5rem auto;">
-                <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(183, 28, 28, 0.06); border: 1px solid rgba(183, 28, 28, 0.18); border-radius: 30px; color: var(--primary-red); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.75px; text-transform: uppercase; margin-bottom: 1.25rem;">
-                    <i class="fas fa-shield-halved"></i> Global Shipping &amp; Compliance Standards
-                </div>
-                <h2 style="color: var(--primary-red); font-size: clamp(2.2rem, 3.5vw, 2.75rem); font-weight: 800; margin-bottom: 1rem;">
-                    Dangerous Goods &amp; Shipping Specifications
-                </h2>
-                <div style="width: 60px; height: 4px; background: var(--gold-accent); margin: 0 auto 1.5rem auto; border-radius: 2px;"></div>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #4b5563; margin: 0;">
-                    Safety matches are classified as dangerous goods for international transportation and must be handled, packed, documented, and shipped according to applicable transportation and destination-country requirements.
-                </p>
-            </div>
-
-            <!-- 4 Modern Executive Specification Cards -->
-            <div class="dg-refined-grid">
-                <!-- Card 1: Hazard Class -->
-                <div class="dg-refined-card">
-                    <div class="dg-refined-icon" style="background: #fef2f2; color: #dc2626;">
-                        <i class="fas fa-fire-flame-curved"></i>
-                    </div>
-                    <div class="dg-refined-meta-tag">Product Classification</div>
-                    <div class="dg-refined-value" style="color: #dc2626;">4.1</div>
-                    <div class="dg-refined-title">Hazard Class</div>
-                    <div class="dg-refined-footer">
-                        <div><strong>Details:</strong> Flammable Solid</div>
-                        <span class="dg-refined-pill" style="background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;">Category 2</span>
-                    </div>
-                </div>
-
-                <!-- Card 2: IMO / UN Number -->
-                <div class="dg-refined-card">
-                    <div class="dg-refined-icon" style="background: #eff6ff; color: #2563eb;">
-                        <i class="fas fa-ship"></i>
-                    </div>
-                    <div class="dg-refined-meta-tag">Product Classification</div>
-                    <div class="dg-refined-value" style="font-size: 2.15rem; color: #1e40af;">UN 1944</div>
-                    <div class="dg-refined-title">IMO / UN Number</div>
-                    <div class="dg-refined-footer">
-                        <div><strong>Details:</strong> Matches, Safety</div>
-                        <span class="dg-refined-pill" style="background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe;">IMDG Code Compliant</span>
-                    </div>
-                </div>
-
-                <!-- Card 3: DOT Class -->
-                <div class="dg-refined-card">
-                    <div class="dg-refined-icon" style="background: #fffbeb; color: #d97706;">
-                        <i class="fas fa-truck-fast"></i>
-                    </div>
-                    <div class="dg-refined-meta-tag">Product Classification</div>
-                    <div class="dg-refined-value" style="color: #d97706;">4.1</div>
-                    <div class="dg-refined-title">DOT Class</div>
-                    <div class="dg-refined-footer">
-                        <div><strong>Details:</strong> Flammable Solid</div>
-                        <span class="dg-refined-pill" style="background: #fffbeb; color: #b45309; border: 1px solid #fde68a;">Surface Transit</span>
-                    </div>
-                </div>
-
-                <!-- Card 4: Packing Group -->
-                <div class="dg-refined-card">
-                    <div class="dg-refined-icon" style="background: #f0fdf4; color: #16a34a;">
-                        <i class="fas fa-boxes-packing"></i>
-                    </div>
-                    <div class="dg-refined-meta-tag">Product Classification</div>
-                    <div class="dg-refined-value" style="color: #15803d;">III</div>
-                    <div class="dg-refined-title">Packing Group</div>
-                    <div class="dg-refined-footer">
-                        <div><strong>Details:</strong> Export Packaging</div>
-                        <span class="dg-refined-pill" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Moisture Sealed</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dual Advisory Support Cards -->
-            <div class="dg-refined-support-grid">
-                <!-- Support Card 1 -->
-                <div class="dg-refined-support-card" style="border-left: 4px solid var(--primary-red);">
-                    <div class="dg-refined-support-icon" style="background: rgba(183, 28, 28, 0.08); color: var(--primary-red);">
-                        <i class="fas fa-boxes-stacked"></i>
-                    </div>
-                    <div>
-                        <div style="font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--primary-red); margin-bottom: 4px;">Packaging &amp; Route Standards</div>
-                        <h4 style="font-size: 1.18rem; color: #1e293b; margin: 0 0 10px 0; font-weight: 700;">Destination &amp; Transport Mode Verification</h4>
-                        <p style="font-size: 0.98rem; line-height: 1.75; color: #4b5563; margin: 0;">
-                            Bell Match provides export-ready packaging and documentation support for international shipments of safety matches. Buyers and logistics partners should confirm the specific dangerous-goods requirements applicable to their destination, carrier, route, and mode of transport before shipment.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Support Card 2 -->
-                <div class="dg-refined-support-card" style="border-left: 4px solid #f59e0b;">
-                    <div class="dg-refined-support-icon" style="background: rgba(245, 158, 11, 0.1); color: #d97706;">
-                        <i class="fas fa-file-shield"></i>
-                    </div>
-                    <div>
-                        <div style="font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #d97706; margin-bottom: 4px;">Customs &amp; Clearance Verification</div>
-                        <h4 style="font-size: 1.18rem; color: #1e293b; margin: 0 0 10px 0; font-weight: 700;">Support for Global Matchbox Importers</h4>
-                        <p style="font-size: 0.98rem; line-height: 1.75; color: #4b5563; margin: 0;">
-                            The above classification details can be presented alongside applicable safety, packaging, and shipping documentation to help international buyers understand the product requirements when sourcing from an Indian matchbox exporter.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Get in Touch CTA -->
-    <section class="section" id="quote" style="padding: 6rem 0; background: #ffffff; border-top: 1px solid #e2e8f0; position: relative;">
+    <section class="section" id="quote" style="padding: 4rem 0; background: #ffffff; border-top: 1px solid #e2e8f0; position: relative;">
         <style>
             .export-quote-grid {
                 display: grid;
                 grid-template-columns: 1fr 1.08fr;
-                gap: 3.5rem;
-                align-items: start;
+                gap: 3rem;
+                align-items: center;
                 width: 100%;
             }
             .export-spec-card {
@@ -800,82 +992,33 @@
 
         <div style="width: 100% !important; max-width: 100% !important; padding: 0 4% !important; margin: 0 !important; box-sizing: border-box;">
             <div class="export-quote-grid">
-                <!-- Left: Capabilities, Information & Direct Contacts -->
-                <div>
-                    <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; color: #b71c1c; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.25rem;">
-                        <span style="width: 8px; height: 8px; border-radius: 50%; background: #b71c1c; display: inline-block;"></span>
-                        Global Sourcing & Export Desk
-                    </div>
-
-                    <h2 style="font-size: clamp(2.2rem, 3.5vw, 3rem); font-family: 'Playfair Display', serif; font-weight: 800; color: #0f172a; line-height: 1.18; margin-bottom: 1.25rem;">
+                <!-- Left: Clean Informational Text -->
+                <div style="display: flex; flex-direction: column; justify-content: center; padding-right: 1.5rem;">
+                    <h2 style="font-size: clamp(2.2rem, 3.5vw, 3rem); font-family: 'Playfair Display', serif; font-weight: 800; color: #0f172a; line-height: 1.2; margin-bottom: 1.5rem;">
                         Get in Touch With Our Export Team
                     </h2>
 
-                    <p style="color: #475569; font-size: 1.1rem; line-height: 1.75; margin-bottom: 1.75rem; font-weight: 400;">
-                        Whether you're an importer, distributor, or private-label brand, our dedicated export team is ready to support your safety matches sourcing needs — anywhere in the world.
+                    <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.25rem;">
+                        Whether you are an international importer, distributor, or private-label buyer, our dedicated export desk is ready to support your safety matches sourcing requirements worldwide.
                     </p>
 
-                    <!-- Capability Card 1 -->
-                    <div class="export-spec-card" style="margin-bottom: 1.15rem; border-left: 4px solid #b71c1c;">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
-                            <div style="width: 28px; height: 28px; border-radius: 6px; background: #fee2e2; display: flex; align-items: center; justify-content: center; color: #b71c1c; font-size: 0.85rem; flex-shrink: 0;">
-                                <i class="fas fa-boxes-stacked"></i>
+                    <p style="color: #475569; font-size: 1.02rem; line-height: 1.8; margin-bottom: 1.75rem;">
+                        Bell Match provides turnkey Indian manufacturing and export solutions — spanning custom splint dimensions, bespoke matchbox branding, moisture-resistant packaging, and full container order fulfillment.
+                    </p>
+
+                    <div style="padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
+                        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 1rem; color: #334155;">
+                            <div>
+                                <span style="font-weight: 700; color: #0f172a;">Direct / WhatsApp:</span> 
+                                <a href="https://wa.me/917845965010" target="_blank" rel="noopener" style="color: #b71c1c; font-weight: 700; text-decoration: none; margin-left: 6px;">+91 78459 65010</a>
                             </div>
-                            <h3 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0; font-family: 'Poppins', sans-serif;">
-                                Wholesale & Private Label Supply
-                            </h3>
-                        </div>
-                        <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">
-                            Bell Match works with businesses looking for a custom matchbox supplier, bulk safety matches supplier, or private label matchbox manufacturer for importers.
-                        </p>
-                    </div>
-
-                    <!-- Capability Card 2 -->
-                    <div class="export-spec-card" style="margin-bottom: 1.75rem; border-left: 4px solid #0284c7;">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
-                            <div style="width: 28px; height: 28px; border-radius: 6px; background: #e0f2fe; display: flex; align-items: center; justify-content: center; color: #0284c7; font-size: 0.85rem; flex-shrink: 0;">
-                                <i class="fas fa-globe-asia"></i>
+                            <div>
+                                <span style="font-weight: 700; color: #0f172a;">Export Desk Email:</span> 
+                                <a href="mailto:dm@bellmatch.com" style="color: #b71c1c; font-weight: 700; text-decoration: none; margin-left: 6px;">dm@bellmatch.com</a>
                             </div>
-                            <h3 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0; font-family: 'Poppins', sans-serif;">
-                                Turnkey Indian Export Sourcing
-                            </h3>
-                        </div>
-                        <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">
-                            For customized requirements, Bell Match can support businesses seeking a custom matchbox exporter India solution covering product specifications, packaging, branding, and international order fulfilment.
-                        </p>
-                    </div>
-
-                    <!-- Direct Contact Chips -->
-                    <div style="display: grid; gap: 0.75rem;">
-                        <div class="export-contacts-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                            <a href="tel:+917845965010" class="export-touch-item">
-                                <div class="export-touch-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div style="min-width: 0;">
-                                    <span style="display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px;">Direct / WhatsApp</span>
-                                    <strong style="display: block; font-size: 0.96rem; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">+91 78459 65010</strong>
-                                </div>
-                            </a>
-
-                            <a href="mailto:dm@bellmatch.com" class="export-touch-item">
-                                <div class="export-touch-icon" style="background: #eff6ff; color: #0284c7;">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div style="min-width: 0;">
-                                    <span style="display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px;">Export Email</span>
-                                    <strong style="display: block; font-size: 0.96rem; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">dm@bellmatch.com</strong>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="export-touch-item" style="cursor: default;">
-                            <div class="export-touch-icon" style="background: #fefce8; color: #ca8a04;">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div style="min-width: 0;">
-                                <span style="display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px;">Manufacturing Facility</span>
-                                <strong style="display: block; font-size: 0.9rem; color: #0f172a; line-height: 1.4;">T.Managaseri, Srivilliputhur, Virudunagar, India</strong>
+                            <div>
+                                <span style="font-weight: 700; color: #0f172a;">Manufacturing Facility:</span> 
+                                <span style="color: #475569; margin-left: 6px;">T.Managaseri, Srivilliputhur, Virudunagar, Tamil Nadu, India</span>
                             </div>
                         </div>
                     </div>
@@ -883,18 +1026,13 @@
 
                 <!-- Right: The Dedicated Export Form -->
                 <div class="export-form-card">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 8px;">
-                        <div>
-                            <h3 style="font-size: 1.55rem; color: #0f172a; font-family: 'Playfair Display', serif; font-weight: 700; margin: 0;">
-                                Request Export Quotation
-                            </h3>
-                            <p style="color: #64748b; font-size: 0.9rem; margin-top: 4px; margin-bottom: 0; font-family: 'Inter', sans-serif;">
-                                Fill in your order specs for direct FOB / CIF manufacturer pricing.
-                            </p>
-                        </div>
-                        <span style="font-size: 0.75rem; font-weight: 700; padding: 4px 10px; background: #fef2f2; color: #b71c1c; border-radius: 20px; border: 1px solid #fecaca; display: inline-flex; align-items: center; gap: 5px;">
-                            <i class="fas fa-bolt" style="color: #f59e0b;"></i> Fast Response
-                        </span>
+                    <div style="margin-bottom: 0.5rem;">
+                        <h3 style="font-size: 1.55rem; color: #0f172a; font-family: 'Playfair Display', serif; font-weight: 700; margin: 0;">
+                            Request Export Quotation
+                        </h3>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-top: 4px; margin-bottom: 0; font-family: 'Inter', sans-serif;">
+                            Fill in your order specs for direct FOB / CIF manufacturer pricing.
+                        </p>
                     </div>
 
                     <form action="https://api.web3forms.com/submit" method="POST" id="exportQuoteForm" style="margin-top: 1.5rem;">
@@ -992,13 +1130,6 @@
                         }
                     });
                     </script>
-
-                    <!-- Trust Footnote -->
-                    <div class="export-trust-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.35rem; padding-top: 1.15rem; border-top: 1px solid #f1f5f9; font-size: 0.78rem; color: #64748b; flex-wrap: wrap; gap: 8px;">
-                        <span><i class="fas fa-shield-alt" style="color: #10b981; margin-right: 4px;"></i> Direct Factory Pricing</span>
-                        <span><i class="fas fa-clock" style="color: #f59e0b; margin-right: 4px;"></i> 24h Turnaround</span>
-                        <span><i class="fas fa-lock" style="color: #3b82f6; margin-right: 4px;"></i> 100% Confidential</span>
-                    </div>
                 </div>
             </div>
         </div>
