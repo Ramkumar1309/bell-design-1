@@ -463,17 +463,19 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.save();
     ctx.translate(x, y);
 
-    // 1. Ambient Firelight Glow (Illuminates the matchbox top and matchstick)
-    ctx.globalCompositeOperation = 'screen';
-    const bloom = ctx.createRadialGradient(0, -h * 0.45, 0, 0, -h * 0.45, h * 1.5);
-    bloom.addColorStop(0, 'rgba(255, 140, 20, 0.42)');
-    bloom.addColorStop(0.35, 'rgba(255, 60, 0, 0.16)');
-    bloom.addColorStop(0.7, 'rgba(255, 30, 0, 0.04)');
-    bloom.addColorStop(1, 'rgba(0, 0, 0, 0)');
-    ctx.fillStyle = bloom;
-    ctx.beginPath();
-    ctx.arc(0, -h * 0.45, h * 1.5, 0, Math.PI * 2);
-    ctx.fill();
+    // 1. Ambient Firelight Glow (Illuminates on desktop only; disabled on mobile to eliminate side glow)
+    if (window.innerWidth > 991) {
+      ctx.globalCompositeOperation = 'screen';
+      const bloom = ctx.createRadialGradient(0, -h * 0.45, 0, 0, -h * 0.45, h * 1.5);
+      bloom.addColorStop(0, 'rgba(255, 140, 20, 0.42)');
+      bloom.addColorStop(0.35, 'rgba(255, 60, 0, 0.16)');
+      bloom.addColorStop(0.7, 'rgba(255, 30, 0, 0.04)');
+      bloom.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = bloom;
+      ctx.beginPath();
+      ctx.arc(0, -h * 0.45, h * 1.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
 
     // 2. Outer Fiery Combustion Mantel with Soft Rounded Dome Apex
     ctx.globalCompositeOperation = 'source-over';
