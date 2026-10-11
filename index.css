@@ -638,21 +638,24 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
     bottom: 3px !important;
   }
   .hero-buttons .open-matchbox-btn .omb-drawer {
-    transform: translateY(-50%) translateX(36px) !important;
+    transform: translateY(-50%) translateX(42px) !important;
   }
   .hero-buttons .open-matchbox-btn.is-closed .omb-drawer {
     transform: translateY(-50%) translateX(5px) !important;
   }
+  .hero-buttons .open-matchbox-btn .matchstick-group {
+    right: 4px !important;
+  }
   .hero-buttons .open-matchbox-btn .real-matchstick {
     height: 5px !important;
     width: 55px !important;
-    right: 12px !important;
+    right: 2px !important;
   }
   .hero-buttons .open-matchbox-btn .real-matchstick::after {
     width: 12px !important;
     height: 9px !important;
     top: -2px !important;
-    right: -4px !important;
+    right: -2px !important;
   }
   .hero-buttons .open-matchbox-btn .real-matchstick:nth-child(1) {
     top: 11px !important;
@@ -693,7 +696,7 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
     font-size: 0.72rem !important;
   }
   .hero-buttons .open-matchbox-btn .omb-drawer {
-    transform: translateY(-50%) translateX(32px) !important;
+    transform: translateY(-50%) translateX(38px) !important;
   }
   .hero-title {
     font-size: clamp(1.55rem, 6.8vw, 1.95rem) !important;
