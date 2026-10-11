@@ -1,5 +1,5 @@
 <style>
-/* Desktop Layout */
+/* Base Desktop Layout (min-width: 993px) */
 @media (min-width: 993px) {
   .header-inner {
     display: flex !important;
@@ -7,77 +7,144 @@
     align-items: center !important;
     padding: 0.4rem 1.5rem !important; 
     gap: 1rem !important;
+    position: relative !important;
   }
   .header-left {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
     flex-shrink: 0 !important;
+    z-index: 2 !important;
   }
   .header-center {
     display: flex !important;
     justify-content: center !important;
-    flex: 1 !important;
+    align-items: center !important;
+    flex: 1 1 auto !important;
     min-width: 0 !important;
+    z-index: 5 !important;
   }
   .header-right {
     display: flex !important;
     justify-content: flex-end !important;
     align-items: center !important;
+    flex: 0 0 auto !important;
     flex-shrink: 0 !important;
+    z-index: 2 !important;
   }
 }
 
-/* Tablet & Smaller Desktop Responsive Fit (993px - 1280px) */
-@media (min-width: 993px) and (max-width: 1280px) {
+/* Base Logo Sizing (Desktop > 1280px) */
+.brand-logo {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
+}
+.brand-logo img {
+  height: 52px !important;
+  max-width: 200px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* Nav Container & Links Priority */
+.nav-container {
+  position: relative !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+  flex-shrink: 0 !important;
+}
+.premium-nav .nav-link,
+.nav-dropdown .nav-link {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Large Desktop (> 1400px) */
+@media (min-width: 1401px) {
+  .brand-logo img {
+    height: 56px !important;
+    max-width: 215px !important;
+  }
+}
+
+/* Laptop & Medium Desktop (1201px - 1400px) */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .brand-logo img {
+    height: 48px !important;
+    max-width: 185px !important;
+  }
   .header-inner {
-    padding: 0.35rem 1rem !important;
-    gap: 0.5rem !important;
+    padding: 0.35rem 1.2rem !important;
+    gap: 0.75rem !important;
+  }
+  .premium-nav .nav-link,
+  .nav-dropdown .nav-link {
+    font-size: 14.5px !important;
+    padding: 8px 14px !important;
+  }
+}
+
+/* Small Desktop & Tablet Landscape (993px - 1200px) - Specifically Fixes 1024px screens */
+@media (min-width: 993px) and (max-width: 1200px) {
+  .header-inner {
+    padding: 0.3rem 0.8rem !important;
+    gap: 0.4rem !important;
   }
   .brand-logo img {
-    height: 54px !important;
+    height: 40px !important;
+    max-width: 155px !important;
   }
   .nav-container {
-    padding: 4px 6px !important;
+    padding: 3px 5px !important;
   }
   .premium-nav {
     gap: 0px !important;
   }
   .premium-nav .nav-link,
   .nav-dropdown .nav-link {
-    font-size: 13.5px !important;
-    padding: 7px 10px !important;
-    letter-spacing: 0px !important;
+    font-size: 13px !important;
+    padding: 6px 9px !important;
+    letter-spacing: -0.2px !important;
   }
   .header-matchbox-btn {
-    height: 38px !important;
-    width: 140px !important;
-    margin-right: 36px !important;
+    height: 36px !important;
+    width: 130px !important;
+    margin-right: 32px !important;
   }
   .header-matchbox-btn .omb-cover {
-    font-size: 0.65rem !important;
-    padding: 0 10px !important;
+    font-size: 0.62rem !important;
+    padding: 0 8px !important;
   }
   .header-matchbox-btn .omb-drawer {
-    transform: translateY(-50%) translateX(30px) !important;
+    transform: translateY(-50%) translateX(28px) !important;
   }
   .header-matchbox-btn .matchstick-group {
-    width: 32px !important;
+    width: 28px !important;
     right: 4px !important;
   }
   .header-matchbox-btn .real-matchstick {
-    width: 40px !important;
+    width: 36px !important;
     height: 4px !important;
   }
 }
 
-/* Mobile Layout */
+/* Mobile & Tablet Portrait Layout (max-width: 992px) */
 @media (max-width: 992px) {
   .header-inner {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0.3rem 1rem !important;
+    padding: 0.35rem 1rem !important;
   }
   .header-left {
     display: flex !important;
@@ -85,32 +152,26 @@
     justify-content: flex-start !important;
     height: 100% !important;
   }
+  .brand-logo img {
+    height: 42px !important;
+    max-width: 165px !important;
+  }
   .header-center, .header-right {
     display: none !important;
   }
   .mobile-menu-toggle {
-    display: flex !important; /* FIXED: Must be flex so the bars stack correctly */
+    display: flex !important;
   }
 }
 
-/* Logo Sizing */
-.brand-logo {
-  display: flex !important;
-  align-items: center !important;
-  height: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.brand-logo img {
-  height: 78px !important; 
-  width: auto !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-@media (max-width: 992px) {
+/* Extra Small Phones (max-width: 420px) */
+@media (max-width: 420px) {
+  .header-inner {
+    padding: 0.3rem 0.6rem !important;
+  }
   .brand-logo img {
-    height: 58px !important;
+    height: 36px !important;
+    max-width: 135px !important;
   }
 }
 
