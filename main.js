@@ -80,6 +80,7 @@ loadComponents();
 })();
 
 document.addEventListener('ComponentsLoaded', () => {
+  initContactModal();
 
   // Premium Mobile Menu Toggle
   const mobileMenuToggle = document.getElementById('mobileMenuToggle');
@@ -652,3 +653,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
   requestAnimationFrame(animate);
 });
+
+// Quick Contact Modal Controller
+function initContactModal() {
+  const overlay = document.getElementById('contactModalOverlay');
+  const closeBtn = document.getElementById('contactModalClose');
+  const form = document.getElementById('contactModalForm');
+  const statusMsg = document.getElementById('cmStatusMsg');
+  const submitBtn = document.getElementById('cmSubmitBtn');
+
+  function openModal() {
+    if (!overlay) return;
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Intercept any click on Contact Us floating buttons or quote pills
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.quote-pill, [data-open-contact-modal]');
+    if (trigger) {
+      e.preventDefault();
+      openModal();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay && overlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!submitBtn || !statusMsg) return;
+      
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending...</span> <i class="fas fa-spinner fa-spin"></i>';
+      statusMsg.className = 'cm-status-msg';
+      statusMsg.style.display = 'none';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await response.json();
+
+        if (data.success) {
+          statusMsg.className = 'cm-status-msg success';
+          statusMsg.textContent = 'Thank you! Your message has been sent successfully.';
+          statusMsg.style.display = 'block';
+          form.reset();
+          setTimeout(() => {
+            closeModal();
+            statusMsg.style.display = 'none';
+          }, 3000);
+        } else {
+          statusMsg.className = 'cm-status-msg error';
+          statusMsg.textContent = data.message || 'Something went wrong. Please try again.';
+          statusMsg.style.display = 'block';
+        }
+      } catch (err) {
+        statusMsg.className = 'cm-status-msg error';
+        statusMsg.textContent = 'Connection error. Please try again or WhatsApp us.';
+        statusMsg.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+  }
+}
