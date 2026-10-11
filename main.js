@@ -127,6 +127,15 @@ document.addEventListener('ComponentsLoaded', () => {
   if (headerComponent || premiumHeader) {
     let lastScrollY = window.scrollY;
     
+    function updateHeaderHeightVar() {
+      const h = headerComponent ? headerComponent.offsetHeight : (premiumHeader ? premiumHeader.offsetHeight : 70);
+      if (h > 0) {
+        document.documentElement.style.setProperty('--header-height', h + 'px');
+      }
+    }
+    updateHeaderHeightVar();
+    window.addEventListener('resize', updateHeaderHeightVar, { passive: true });
+    
     window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
       
@@ -141,6 +150,7 @@ document.addEventListener('ComponentsLoaded', () => {
       
       // Near top of page, keep header visible
       if (currentScrollY <= 60) {
+        document.body.classList.remove('header-is-hidden');
         if (headerComponent) headerComponent.classList.remove('header-hidden');
         if (premiumHeader) premiumHeader.classList.remove('header-hidden');
         lastScrollY = currentScrollY;
@@ -156,11 +166,13 @@ document.addEventListener('ComponentsLoaded', () => {
       const delta = currentScrollY - lastScrollY;
       
       if (delta > 6) {
-        // Scrolling DOWN -> Hide header
+        // Scrolling DOWN -> Hide header, sticky sections slide up to 0px
+        document.body.classList.add('header-is-hidden');
         if (headerComponent) headerComponent.classList.add('header-hidden');
         if (premiumHeader) premiumHeader.classList.add('header-hidden');
       } else if (delta < -6) {
-        // Scrolling UP -> Reveal header immediately
+        // Scrolling UP -> Reveal header immediately, sticky sections sit below header
+        document.body.classList.remove('header-is-hidden');
         if (headerComponent) headerComponent.classList.remove('header-hidden');
         if (premiumHeader) premiumHeader.classList.remove('header-hidden');
       }
