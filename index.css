@@ -2706,7 +2706,7 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
-        padding: 10px 0;
+        padding: 10px 10px !important;
     }
     .topbar-left {
         flex-wrap: wrap;
@@ -3571,10 +3571,11 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
 /* Mobile Responsive Topbar Layout */
 @media (max-width: 768px) {
     .premium-topbar {
-        padding: 2px 0;
+        padding: 4px 10px !important;
     }
     .topbar-inner {
         flex-direction: row;
+        padding: 0 !important;
         justify-content: space-between;
         align-items: center;
     }
