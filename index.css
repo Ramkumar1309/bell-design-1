@@ -200,6 +200,13 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+#header-component.header-hidden,
+.premium-header.header-hidden {
+  transform: translateY(-115%) !important;
 }
 
 .premium-header {
@@ -2775,14 +2782,14 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
         padding: 0.3rem 1rem !important; 
     }
     .brand-logo img {
-        height: 52px !important;
+        height: 60px !important;
         width: auto !important;
         max-width: none !important;
     }
 }
 @media (max-width: 420px) {
     .brand-logo img {
-        height: 46px !important;
+        height: 52px !important;
     }
 }
 

@@ -120,16 +120,53 @@ document.addEventListener('ComponentsLoaded', () => {
   });
 
 
-  // Premium Sticky Header
+  // Premium Smart Header - Hide on Scroll Down, Reveal on Scroll Up (All Displays)
+  const headerComponent = document.getElementById('header-component');
   const premiumHeader = document.getElementById('premiumHeader');
-  if (premiumHeader) {
+  
+  if (headerComponent || premiumHeader) {
+    let lastScrollY = window.scrollY;
+    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        premiumHeader.classList.add('scrolled');
-      } else {
-        premiumHeader.classList.remove('scrolled');
+      const currentScrollY = window.scrollY;
+      
+      // Scrolled state styling (blur / border)
+      if (premiumHeader) {
+        if (currentScrollY > 50) {
+          premiumHeader.classList.add('scrolled');
+        } else {
+          premiumHeader.classList.remove('scrolled');
+        }
       }
-    });
+      
+      // Near top of page, keep header visible
+      if (currentScrollY <= 60) {
+        if (headerComponent) headerComponent.classList.remove('header-hidden');
+        if (premiumHeader) premiumHeader.classList.remove('header-hidden');
+        lastScrollY = currentScrollY;
+        return;
+      }
+      
+      // Do not hide while mobile menu is open
+      if (typeof mobileNav !== 'undefined' && mobileNav && mobileNav.classList.contains('active')) {
+        lastScrollY = currentScrollY;
+        return;
+      }
+      
+      const delta = currentScrollY - lastScrollY;
+      
+      if (delta > 6) {
+        // Scrolling DOWN -> Hide header
+        if (headerComponent) headerComponent.classList.add('header-hidden');
+        if (premiumHeader) premiumHeader.classList.add('header-hidden');
+      } else if (delta < -6) {
+        // Scrolling UP -> Reveal header immediately
+        if (headerComponent) headerComponent.classList.remove('header-hidden');
+        if (premiumHeader) premiumHeader.classList.remove('header-hidden');
+      }
+      
+      lastScrollY = currentScrollY;
+    }, { passive: true });
   }
 
   // Back to Top Button
