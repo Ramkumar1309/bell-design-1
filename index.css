@@ -3957,7 +3957,7 @@ p { margin-bottom: 1rem; color: var(--text-muted); }
   pointer-events: auto;
   cursor: pointer;
   /* Exactly standing right at the striker edge matching Image 3 */
-  transform: translate(170px, -14px) rotate(15deg);
+  transform: translate(170px, 7px) rotate(15deg);
   will-change: transform;
   user-select: none;
   transition: filter 0.3s ease;

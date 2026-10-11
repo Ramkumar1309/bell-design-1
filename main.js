@@ -365,15 +365,15 @@ document.addEventListener('DOMContentLoaded', () => {
     currentIntensity = 0;
     targetIntensity = 0;
 
-    // Step 1: Position at start of black honeycomb strip (0%, vertical center)
+    // Step 1: Position at start of honeycomb strip (0%, exact vertical center)
     actor.style.transition = 'transform 0.3s ease-out';
-    actor.style.transform = 'translate(-28px, 41px) rotate(20deg)';
+    actor.style.transform = 'translate(-28px, 55px) rotate(20deg)';
 
     // Step 2: Strike swipe across 85% of the honeycomb strip at smooth, realistic deliberate speed
     setTimeout(() => {
       strikeStartTime = performance.now();
       actor.style.transition = 'transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-      actor.style.transform = 'translate(170px, -14px) rotate(15deg)';
+      actor.style.transform = 'translate(170px, 7px) rotate(15deg)';
     }, 300);
 
     // Step 3: Ignition Burst right at the 85% mark!
