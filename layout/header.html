@@ -5,8 +5,8 @@
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0.4rem 1.5rem !important; 
-    gap: 1rem !important;
+    padding: 0.35rem 1.2rem !important; 
+    gap: 0.8rem !important;
     position: relative !important;
   }
   .header-left {
@@ -34,7 +34,7 @@
   }
 }
 
-/* Base Logo Sizing (Desktop > 1280px) */
+/* Consistent, Bold Logo for All Desktop Screens (Stays 72px uniformly without shrinking) */
 .brand-logo {
   display: flex !important;
   align-items: center !important;
@@ -44,14 +44,14 @@
   flex-shrink: 0 !important;
 }
 .brand-logo img {
-  height: 52px !important;
-  max-width: 200px !important;
+  height: 72px !important;
   width: auto !important;
+  max-width: none !important;
   object-fit: contain !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  transition: transform 0.3s ease !important;
+  transition: transform 0.2s ease !important;
 }
 
 /* Nav Container & Links Priority */
@@ -60,6 +60,10 @@
   z-index: 10 !important;
   pointer-events: auto !important;
   flex-shrink: 0 !important;
+  padding: 5px 10px !important;
+}
+.premium-nav {
+  gap: 2px !important;
 }
 .premium-nav .nav-link,
 .nav-dropdown .nav-link {
@@ -67,42 +71,33 @@
   pointer-events: auto !important;
   position: relative !important;
   z-index: 10 !important;
+  font-size: 14px !important;
+  padding: 8px 13px !important;
+  white-space: nowrap !important;
 }
 
-/* Large Desktop (> 1400px) */
+/* Large Screens (> 1400px): Generous breathing room */
 @media (min-width: 1401px) {
-  .brand-logo img {
-    height: 56px !important;
-    max-width: 215px !important;
-  }
-}
-
-/* Laptop & Medium Desktop (1201px - 1400px) */
-@media (min-width: 1201px) and (max-width: 1400px) {
-  .brand-logo img {
-    height: 48px !important;
-    max-width: 185px !important;
-  }
   .header-inner {
-    padding: 0.35rem 1.2rem !important;
-    gap: 0.75rem !important;
+    padding: 0.4rem 1.8rem !important;
+    gap: 1.2rem !important;
+  }
+  .premium-nav {
+    gap: 6px !important;
   }
   .premium-nav .nav-link,
   .nav-dropdown .nav-link {
-    font-size: 14.5px !important;
-    padding: 8px 14px !important;
+    font-size: 15.5px !important;
+    padding: 9px 18px !important;
   }
 }
 
-/* Small Desktop & Tablet Landscape (993px - 1200px) - Specifically Fixes 1024px screens */
+/* Tablet Landscape & Compact Desktop (993px - 1200px) */
+/* The logo remains full 72px size; only nav padding tightens cleanly to fit without collision */
 @media (min-width: 993px) and (max-width: 1200px) {
   .header-inner {
-    padding: 0.3rem 0.8rem !important;
+    padding: 0.25rem 0.6rem !important;
     gap: 0.4rem !important;
-  }
-  .brand-logo img {
-    height: 40px !important;
-    max-width: 155px !important;
   }
   .nav-container {
     padding: 3px 5px !important;
@@ -113,28 +108,13 @@
   .premium-nav .nav-link,
   .nav-dropdown .nav-link {
     font-size: 13px !important;
-    padding: 6px 9px !important;
+    padding: 6px 8px !important;
     letter-spacing: -0.2px !important;
   }
   .header-matchbox-btn {
-    height: 36px !important;
-    width: 130px !important;
+    height: 38px !important;
+    width: 135px !important;
     margin-right: 32px !important;
-  }
-  .header-matchbox-btn .omb-cover {
-    font-size: 0.62rem !important;
-    padding: 0 8px !important;
-  }
-  .header-matchbox-btn .omb-drawer {
-    transform: translateY(-50%) translateX(28px) !important;
-  }
-  .header-matchbox-btn .matchstick-group {
-    width: 28px !important;
-    right: 4px !important;
-  }
-  .header-matchbox-btn .real-matchstick {
-    width: 36px !important;
-    height: 4px !important;
   }
 }
 
@@ -153,8 +133,9 @@
     height: 100% !important;
   }
   .brand-logo img {
-    height: 42px !important;
-    max-width: 165px !important;
+    height: 52px !important;
+    width: auto !important;
+    max-width: none !important;
   }
   .header-center, .header-right {
     display: none !important;
@@ -164,14 +145,13 @@
   }
 }
 
-/* Extra Small Phones (max-width: 420px) */
+/* Small Mobile Phones (max-width: 420px) */
 @media (max-width: 420px) {
   .header-inner {
     padding: 0.3rem 0.6rem !important;
   }
   .brand-logo img {
-    height: 36px !important;
-    max-width: 135px !important;
+    height: 44px !important;
   }
 }
 
