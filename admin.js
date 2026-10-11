@@ -249,12 +249,13 @@ window.toggleSpecTemplate = function() {
 function updateLivePreview() {
     const isCustom = document.getElementById('useCustomSpecsBtn').checked;
     
-    // Sync product code fields
+    // Sync product code fields and enforce uppercase
     const activeCodeId = isCustom ? 'prodCodeDyn' : 'prodCode';
     const inactiveCodeId = isCustom ? 'prodCode' : 'prodCodeDyn';
-    document.getElementById(inactiveCodeId).value = document.getElementById(activeCodeId).value;
+    const codeVal = document.getElementById(activeCodeId).value.toUpperCase();
+    document.getElementById(activeCodeId).value = codeVal;
+    document.getElementById(inactiveCodeId).value = codeVal;
     
-    const codeVal = document.getElementById(activeCodeId).value;
     document.getElementById('prevCode').textContent = codeVal ? codeVal : '-';
     
     const specsList = document.getElementById('prevDynamicSpecsList');
@@ -359,7 +360,21 @@ async function loadProducts() {
 
 function renderProductsTable() {
     const tbody = document.getElementById('productsTableBody');
-    tbody.innerHTML = allProducts.map(p => {
+    if (!tbody) return;
+    const searchEl = document.getElementById('adminProductSearch');
+    const term = (searchEl ? searchEl.value : '').toLowerCase().trim();
+    const filtered = term ? allProducts.filter(p => {
+        const code = (p.product_code || '').toLowerCase();
+        const cat = ((p.main_category_name || '') + ' ' + (p.sub_category_name || '')).toLowerCase();
+        return code.includes(term) || cat.includes(term);
+    }) : allProducts;
+
+    if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" class="text-center text-muted py-4">No matching products found.</td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = filtered.map(p => {
         const catText = (p.main_category_name || 'Uncategorized') + (p.sub_category_name ? ` > ${p.sub_category_name}` : '');
         return `
         <tr>
@@ -463,7 +478,8 @@ document.getElementById('addProductForm').addEventListener('submit', async (e) =
     formData.append('sub_category_id', document.getElementById('prodSubCategory').value);
     
     const isCustom = document.getElementById('useCustomSpecsBtn').checked;
-    formData.append('product_code', document.getElementById(isCustom ? 'prodCodeDyn' : 'prodCode').value);
+    const pCodeVal = document.getElementById(isCustom ? 'prodCodeDyn' : 'prodCode').value.trim().toUpperCase();
+    formData.append('product_code', pCodeVal);
     
     if (isCustom) {
         formData.append('specifications', JSON.stringify(getDynamicSpecs()));
@@ -521,6 +537,12 @@ document.getElementById('filterSubCatInput').addEventListener('input', function(
         item.style.display = text.includes(term) ? 'flex' : 'none';
     });
 });
+
+// Product Search Filter Logic
+const adminProductSearchEl = document.getElementById('adminProductSearch');
+if (adminProductSearchEl) {
+    adminProductSearchEl.addEventListener('input', renderProductsTable);
+}
 
 
 
