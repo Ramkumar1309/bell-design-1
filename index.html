@@ -287,6 +287,45 @@
                     height: 440px !important;
                 }
             }
+
+            /* Tablet Viewport Fix (992px - 1280px): Prevent 3D matchbox & matchstick cutting off on right side */
+            @media (min-width: 992px) and (max-width: 1280px) {
+                .hero-container {
+                    grid-template-columns: 1fr 1.05fr !important;
+                    gap: 1.5rem !important;
+                    padding-left: 2rem !important;
+                    padding-right: 2.5rem !important;
+                    align-items: center !important;
+                    box-sizing: border-box !important;
+                }
+                .hero-content {
+                    min-width: 0 !important;
+                }
+                .hero-title {
+                    font-size: clamp(2rem, 3.2vw, 2.5rem) !important;
+                    line-height: 1.25 !important;
+                }
+                .hero-description {
+                    font-size: 0.95rem !important;
+                    line-height: 1.6 !important;
+                    margin-bottom: 1.5rem !important;
+                }
+                .hero-visual {
+                    min-width: 0 !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                    overflow: visible !important;
+                }
+                .code-match-scene {
+                    transform: scale(0.74) translateX(-24px) !important;
+                    transform-origin: center center !important;
+                    margin: 0 auto !important;
+                    flex-shrink: 0 !important;
+                }
+            }
         </style>
 
         <div class="container hero-container relative">
