@@ -53,7 +53,7 @@
     <style>
         .export-hero {
             position: relative;
-            padding: 95px 0 100px;
+            padding: 55px 0 50px;
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             overflow: hidden;
             color: white;
@@ -197,7 +197,7 @@
         @media(max-width: 768px) {
             .process-grid { grid-template-columns: 1fr; }
             .country-grid { grid-template-columns: repeat(2, 1fr); }
-            .export-hero { padding: 80px 0 60px; }
+            .export-hero { padding: 45px 0 40px; }
             .export-form-row { grid-template-columns: 1fr !important; }
         }
     </style>
@@ -248,21 +248,21 @@
         
         <div class="container" style="position: relative; z-index: 2;">
             <div style="max-width: 900px;">
-                <h1 class="hero-title-gradient" style="font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif;">
+                <h1 class="hero-title-gradient" style="font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">
                     Trusted Worldwide. <br>
                     <span style="color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.7);">Delivered Reliably.</span>
                 </h1>
                 
-                <div style="width: 60px; height: 4px; background: #b71c1c; margin-bottom: 1.5rem; border-radius: 2px;"></div>
+                <div style="width: 60px; height: 4px; background: #b71c1c; margin-bottom: 1.15rem; border-radius: 2px;"></div>
                 
-                <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 750px; font-weight: 300; margin-bottom: 1rem;">
-                    Bell Match Company is a preferred safety matches exporter for importers, wholesalers, and private-label brands across the globe — combining decades of manufacturing expertise with a dependable global supply chain.
+                <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 750px; font-weight: 300; margin-bottom: 0.75rem;">
+                    Bell Matches is a preferred safety matches exporter for importers, wholesalers and private label brands worldwide.
                 </p>
-                <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 750px; font-weight: 300; margin-bottom: 1rem;">
-                    As a trusted matchbox exporter from India, we regularly supply to key international markets and are equipped to fulfill orders to virtually any destination worldwide.
+                <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 750px; font-weight: 300; margin-bottom: 0.75rem;">
+                    As a trusted matchbox exporter from India, we pair decades of manufacturing expertise with export ready packaging and dependable supply.
                 </p>
-                <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 750px; font-weight: 300; margin-bottom: 2.5rem;">
-                    As an experienced Indian matchbox exporter, Bell Match supports international buyers with dependable manufacturing, export packaging, and supply solutions.
+                <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 750px; font-weight: 300; margin-bottom: 1.5rem;">
+                    Share your destination and requirement, and our export desk takes it from there.
                 </p>
 
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
@@ -279,8 +279,8 @@
         <style>
             .export-global-split {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 2.5rem;
+                grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+                gap: clamp(1.5rem, 2.5vw, 2.5rem);
                 align-items: center;
                 width: 100%;
             }
@@ -288,10 +288,26 @@
                 background: #ffffff;
                 border: 1px solid #e2e8f0;
                 border-radius: 14px;
-                padding: 0.5rem;
+                padding: 0.6rem;
                 position: relative;
                 overflow: hidden;
                 box-shadow: 0 10px 30px -8px rgba(15, 23, 42, 0.08);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 0;
+            }
+            .export-map-svg-wrap {
+                position: relative;
+                width: 100%;
+                line-height: 0;
+            }
+            .export-map-svg-wrap svg {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 10px;
+                background: #ffffff;
             }
             .map-flight-path {
                 stroke: #dc2626;
@@ -326,23 +342,44 @@
             @media (max-width: 992px) {
                 .export-global-split {
                     grid-template-columns: 1fr;
-                    gap: 2rem;
+                    gap: 1.75rem;
+                }
+                .dual-hub-grid {
+                    grid-template-columns: 1fr !important;
                 }
             }
             @media (max-width: 768px) {
                 .export-map-panel {
-                    margin: 0 -0.5rem;
-                    padding: 0.85rem 0.2rem !important;
+                    margin: 0;
+                    padding: 0;
                     border-radius: 12px;
+                    overflow: hidden;
                 }
                 .export-map-svg-wrap {
-                    transform: scale(1.16);
-                    transform-origin: center center;
+                    overflow: hidden;
+                    border-radius: 10px;
+                    height: 255px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                }
+                .export-map-svg-wrap svg {
+                    width: 100%;
+                    height: auto;
+                    transform: scale(1.36);
+                    transform-origin: 50% 48%;
+                    margin: 0;
                 }
             }
-            @media (max-width: 580px) {
-                .dual-hub-grid {
-                    grid-template-columns: 1fr !important;
+            @media (max-width: 480px) {
+                .export-map-svg-wrap {
+                    height: 235px;
+                }
+                .export-map-svg-wrap svg {
+                    transform: scale(1.38);
+                    transform-origin: 50% 48%;
+                    margin: 0;
                 }
             }
         </style>
@@ -350,7 +387,7 @@
         <div style="width: 100% !important; max-width: 100% !important; padding: 0 4% !important; margin: 0 !important; box-sizing: border-box;">
             <div class="export-global-split">
                 <!-- Left: Content Panel -->
-                <div>
+                <div style="display: flex; flex-direction: column; justify-content: center; min-width: 0;">
                     <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(1.85rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--primary-red, #b71c1c); line-height: 1.2; margin: 0 0 0.5rem 0;">
                         Where We Export
                     </h2>
@@ -358,7 +395,7 @@
                     <div style="width: 50px; height: 3px; background: var(--gold-accent, #ffc107); margin-bottom: 0.95rem; border-radius: 2px;"></div>
 
                     <p style="font-family: 'Inter', sans-serif; font-size: 0.94rem; line-height: 1.6; color: #475569; margin: 0 0 1.1rem 0;">
-                        Bell Match Company operates an extensive global trade network, fulfilling high-volume safety match shipments to commercial importers, wholesalers, and retail distributors worldwide via dual dispatch channels:
+                        Bell Matches Company, an Indian matchbox exporter and safety match exporter, operates an extensive global trade network, fulfilling high volume safety match shipments to commercial importers, wholesalers and retail distributors worldwide via dual dispatch channels:
                     </p>
 
                     <!-- Dual Hub Highlights: Bengaluru (Air) & Thoothukudi (Sea) -->
@@ -369,7 +406,7 @@
                             </div>
                             <strong style="display: block; font-size: 0.92rem; color: #0f172a; margin-bottom: 2px; font-family: 'Poppins', sans-serif;">Bengaluru Hub</strong>
                             <p style="font-size: 0.78rem; color: #64748b; line-height: 1.4; margin: 0; font-family: 'Inter', sans-serif;">
-                                Rapid air freight dispatch for high-priority replenishments and expedited international shipments.
+                                Rapid air freight dispatch from our matchbox exporter desk for high priority replenishments and expedited international shipments.
                             </p>
                         </div>
 
@@ -379,7 +416,7 @@
                             </div>
                             <strong style="display: block; font-size: 0.92rem; color: #0f172a; margin-bottom: 2px; font-family: 'Poppins', sans-serif;">Thoothukudi Port</strong>
                             <p style="font-size: 0.78rem; color: #64748b; line-height: 1.4; margin: 0; font-family: 'Inter', sans-serif;">
-                                High-capacity FCL container cargo shipping via VOC Deepwater Port on direct international sea lanes.
+                                High-capacity FCL container shipping of safety matches via VOC Deepwater Port on direct international sea lanes, as an international matchbox supplier.
                             </p>
                         </div>
                     </div>
@@ -387,7 +424,7 @@
 
 
                     <p style="font-family: 'Inter', sans-serif; font-size: 0.88rem; line-height: 1.55; color: #64748b; margin: 0;">
-                        Beyond our primary routes across North America, Western Europe, and the Middle East, our robust manufacturing infrastructure fulfills custom matchbox contracts to <strong>any country worldwide</strong>.
+                        Beyond our primary routes across North America, Western Europe and the Middle East, our robust infrastructure as a matchbox manufacturer India exporter fulfils custom matchbox contracts for any country worldwide, making us a global matchbox supplier and safety matches export company.
                     </p>
                 </div>
 
@@ -560,45 +597,192 @@
     </section>
 
     <!-- Why Global Buyers Choose Us -->
-    <section class="section" style="padding: 5rem 0; background-color: #f9fafb;">
+    <section class="section" style="padding: 3.25rem 0 3rem 0; background-color: #fcfdfe;">
         <div class="container">
-            <h2 style="color: var(--primary-red); font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">Why Global Buyers Choose Bell Match</h2>
-            <div style="width: 60px; height: 4px; background: var(--gold-accent); margin: 0 auto 1.5rem auto; border-radius: 2px;"></div>
-            <p style="font-size: 1.1rem; line-height: 1.7; color: #4b5563; text-align: center; max-width: 800px; margin: 0 auto 3rem auto;">
-                A reliable matchbox exporter needs more than manufacturing capacity. International buyers also require consistent quality, export-ready packaging, flexible customization, and dependable supply.
-            </p>
+            <div style="max-width: 820px; margin: 0 auto; text-align: center; margin-bottom: 2.25rem;">
+                <h2 style="color: var(--primary-red); font-size: 2.35rem; margin-bottom: 0.55rem; font-weight: 700; font-family: 'Poppins', sans-serif;">Why Global Buyers Choose Bell Matches</h2>
+                <div style="width: 55px; height: 3px; background: var(--gold-accent); margin: 0 auto 0.85rem auto; border-radius: 2px;"></div>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: #4b5563; margin: 0;">
+                    Certified quality, export ready packing and dependable supply.
+                </p>
+            </div>
 
-            <div class="grid grid-cols-2" style="gap: 2rem;">
-                <!-- Card 1 -->
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border-left: 4px solid var(--primary-red);">
-                    <h3 class="card-title-flex" style="font-size: 1.3rem; margin-bottom: 1.2rem; color: #1e293b;"><div class="premium-badge"><i class="fas fa-check-circle"></i></div> International Manufacturing Standard</h3>
-                    <p style="color: #4b5563; line-height: 1.6; margin: 0;">Our safety matches are manufactured in strict accordance with the <strong>EN 1783</strong> standard, ensuring consistent quality, reliable ignition, and absolute safety compliance for international markets.</p>
-                </div>
-                
-                <!-- Card 2 -->
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border-left: 4px solid var(--primary-red);">
-                    <h3 class="card-title-flex" style="font-size: 1.3rem; margin-bottom: 1.2rem; color: #1e293b;"><div class="premium-badge"><i class="fas fa-globe-asia"></i></div> Established Export Track Record</h3>
-                    <p style="color: #4b5563; line-height: 1.6; margin: 0;">We are a preferred partner for importers and distributors across multiple continents, backed by decades of large-scale manufacturing and global export experience from Sivakasi.</p>
-                </div>
-                
-                <!-- Card 3 -->
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border-left: 4px solid var(--primary-red);">
-                    <h3 class="card-title-flex" style="font-size: 1.3rem; margin-bottom: 1.2rem; color: #1e293b;"><div class="premium-badge"><i class="fas fa-box-open"></i></div> Export-Grade Packaging</h3>
-                    <p style="color: #4b5563; line-height: 1.6; margin: 0;">We utilize highly durable, moisture-resistant, container-ready packaging meticulously designed to withstand international shipping routes, transits, and varied climate conditions.</p>
+            <style>
+                .wgb-split-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1.15fr;
+                    gap: 3.25rem;
+                    align-items: center;
+                    width: 100%;
+                }
+                .wgb-visual-wrap {
+                    position: relative;
+                }
+                .wgb-image-container {
+                    position: relative;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.12);
+                    border: 1px solid #e2e8f0;
+                    background: #0f172a;
+                }
+                .wgb-machinery-img {
+                    width: 100%;
+                    height: 480px;
+                    object-fit: cover;
+                    display: block;
+                    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+                }
+                .wgb-image-container:hover .wgb-machinery-img {
+                    transform: scale(1.03);
+                }
+                .wgb-list-wrap {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .wgb-list-item {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 1.25rem;
+                    padding: 1.15rem 0;
+                    border-bottom: 1px solid #e5e7eb;
+                    transition: all 0.25s ease;
+                }
+                .wgb-list-item:first-child {
+                    padding-top: 0;
+                }
+                .wgb-list-item:last-child {
+                    border-bottom: none;
+                    padding-bottom: 0;
+                }
+                .wgb-item-num {
+                    font-family: 'Outfit', sans-serif;
+                    font-size: 1.15rem;
+                    font-weight: 800;
+                    color: #94a3b8;
+                    line-height: 1;
+                    padding-top: 3px;
+                    min-width: 28px;
+                    transition: color 0.25s ease;
+                }
+                .wgb-list-item:hover .wgb-item-num {
+                    color: var(--primary-red);
+                }
+                .wgb-item-body {
+                    flex: 1;
+                }
+                .wgb-item-title {
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.12rem;
+                    font-weight: 700;
+                    color: #0f172a;
+                    margin: 0 0 0.3rem 0;
+                    line-height: 1.35;
+                    transition: color 0.2s ease;
+                }
+                .wgb-list-item:hover .wgb-item-title {
+                    color: var(--primary-red);
+                }
+                .wgb-item-desc {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.92rem;
+                    line-height: 1.6;
+                    color: #4b5563;
+                    margin: 0;
+                }
+                @media (max-width: 992px) {
+                    .wgb-split-grid {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        gap: 1.75rem !important;
+                    }
+                    .wgb-visual-wrap {
+                        width: 100% !important;
+                    }
+                    .wgb-image-container {
+                        width: 100% !important;
+                        border-radius: 12px !important;
+                    }
+                    .wgb-machinery-img {
+                        height: 240px !important;
+                        width: 100% !important;
+                        object-fit: cover !important;
+                    }
+                    .wgb-list-wrap {
+                        width: 100% !important;
+                    }
+                    .wgb-list-item {
+                        padding: 0.95rem 0 !important;
+                        gap: 1rem !important;
+                    }
+                    .wgb-item-num {
+                        font-size: 1.05rem !important;
+                        min-width: 24px !important;
+                    }
+                    .wgb-item-title {
+                        font-size: 1.05rem !important;
+                    }
+                    .wgb-item-desc {
+                        font-size: 0.88rem !important;
+                        line-height: 1.55 !important;
+                    }
+                }
+            </style>
+
+            <div class="wgb-split-grid">
+                <!-- Left: Production & Export Visual Showcase -->
+                <div class="wgb-visual-wrap">
+                    <div class="wgb-image-container">
+                        <img src="uploads/bell_global_markets_export.jpg" alt="Bell Matches Global Export Markets & Ocean Container Shipping" class="wgb-machinery-img" loading="lazy" decoding="async">
+                    </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border-left: 4px solid var(--primary-red);">
-                    <h3 class="card-title-flex" style="font-size: 1.3rem; margin-bottom: 1.2rem; color: #1e293b;"><div class="premium-badge"><i class="fas fa-palette"></i></div> Flexible Private Label & OEM</h3>
-                    <p style="color: #4b5563; line-height: 1.6; margin: 0 0 0.8rem 0;">We offer comprehensive custom branding, box design, and packaging solutions tailored specifically to the regulatory standards and aesthetic market preferences of your destination country.</p>
-                    <p style="color: #4b5563; line-height: 1.6; margin: 0;">Our capabilities also make Bell Match a private label matchbox manufacturer for businesses requiring customized matchboxes, branding, packaging, and bulk production.</p>
-                </div>
-                
-                <!-- Card 5 (Full width span) -->
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border-left: 4px solid var(--primary-red); grid-column: 1 / -1;">
-                    <h3 class="card-title-flex" style="font-size: 1.3rem; margin-bottom: 1.2rem; color: #1e293b;"><div class="premium-badge"><i class="fas fa-shipping-fast"></i></div> Reliable Supply Chain at Scale</h3>
-                    <p style="color: #4b5563; line-height: 1.6; margin: 0 0 0.8rem 0;">Operating from a world-class manufacturing facility, we have the proven bandwidth and production capacity to support consistent, on-time international deliveries at massive scale.</p>
-                    <p style="color: #4b5563; line-height: 1.6; margin: 0;">Bell Match also serves as a dependable safety matches supplier for businesses seeking regular bulk supply and long-term sourcing arrangements.</p>
+                <!-- Right: Cardless Capability List (Clean & Editorial) -->
+                <div class="wgb-list-wrap">
+                    <!-- Point 1 -->
+                    <div class="wgb-list-item">
+                        <span class="wgb-item-num">01</span>
+                        <div class="wgb-item-body">
+                            <h3 class="wgb-item-title">Consistent Quality</h3>
+                            <p class="wgb-item-desc">ISO 9001:2015 certified manufacturing for reliable ignition on every export order.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 2 -->
+                    <div class="wgb-list-item">
+                        <span class="wgb-item-num">02</span>
+                        <div class="wgb-item-body">
+                            <h3 class="wgb-item-title">Established Export Track Record</h3>
+                            <p class="wgb-item-desc">Decades of manufacturing and export experience serving importers and distributors.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 3 -->
+                    <div class="wgb-list-item">
+                        <span class="wgb-item-num">03</span>
+                        <div class="wgb-item-body">
+                            <h3 class="wgb-item-title">Export-Grade Packaging</h3>
+                            <p class="wgb-item-desc">Moisture resistant, container ready packing built for long shipping routes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 4 -->
+                    <div class="wgb-list-item">
+                        <span class="wgb-item-num">04</span>
+                        <div class="wgb-item-body">
+                            <h3 class="wgb-item-title">Private Label & OEM</h3>
+                            <p class="wgb-item-desc">Custom branding and box design from a private label matchbox manufacturer.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 5 -->
+                    <div class="wgb-list-item">
+                        <span class="wgb-item-num">05</span>
+                        <div class="wgb-item-body">
+                            <h3 class="wgb-item-title">Reliable Supply Chain</h3>
+                            <p class="wgb-item-desc">Production capacity for on time bulk orders, as a dependable safety matches supplier.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -748,10 +932,7 @@
 
         <div style="width: 100% !important; max-width: 100% !important; padding: 0 4% !important; margin: 0 !important; box-sizing: border-box;">
             <div class="dg-split-layout">
-                <!-- Left: 50% Clean Visual Photography Panel (No Text Overlays) -->
-                <div class="dg-image-visual"></div>
-
-                <!-- Right: 50% Standard Font Technical Content (No Cards) -->
+                <!-- Left: 50% Standard Font Technical Content (No Cards) -->
                 <div class="dg-content-col">
                     <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(1.85rem, 2.5vw, 2.35rem); font-weight: 700; color: #0f172a; line-height: 1.25; margin: 0 0 0.75rem 0;">
                         Dangerous Goods &amp; Shipping Specifications
@@ -813,63 +994,59 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Right: 50% Clean Visual Photography Panel (No Text Overlays) -->
+                <div class="dg-image-visual"></div>
             </div>
         </div>
     </section>
 
     <!-- Our Export Process -->
-    <section class="section" style="padding: 5rem 0; background-color: #f9fafb;">
+    <section class="section" style="padding: 2.75rem 0 2.5rem 0; background-color: #f9fafb;">
         <div class="container">
-            <h2 style="color: var(--primary-red); font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">Our Seamless Export Process</h2>
-            <div style="width: 60px; height: 4px; background: var(--gold-accent); margin: 0 auto 1.5rem auto; border-radius: 2px;"></div>
-            <p style="font-size: 1.1rem; line-height: 1.7; color: #4b5563; text-align: center; max-width: 850px; margin: 0 auto 1rem auto;">
-                Importing matches should be frictionless. We manage every step of the supply chain to ensure a smooth, transparent process from your first inquiry to final delivery.
-            </p>
-            <p style="font-size: 1.1rem; line-height: 1.7; color: #4b5563; text-align: center; max-width: 850px; margin: 0 auto 3rem auto;">
-                Our export process is designed for businesses looking for a matchbox manufacturer and exporter in India that can coordinate manufacturing, customization, documentation, packaging, and international shipping requirements.
+            <h2 style="color: var(--primary-red); font-size: 2.35rem; margin-bottom: 0.6rem; text-align: center; font-weight: 700; font-family: 'Poppins', sans-serif;">Our Seamless Export Process</h2>
+            <div style="width: 55px; height: 3px; background: var(--gold-accent); margin: 0 auto 0.95rem auto; border-radius: 2px;"></div>
+            <p style="font-size: 1.05rem; line-height: 1.6; color: #4b5563; text-align: center; max-width: 820px; margin: 0 auto 2.25rem auto;">
+                A matchbox manufacturer and exporter in India that manages production, packing, documentation and shipping in one clear process.
             </p>
 
             <div class="process-grid">
                 <div class="process-card">
                     <div class="process-number">1</div>
-                    <h4 style="font-size: 1.2rem; color: #1e293b; margin-bottom: 10px;">Inquiry & Quotation</h4>
-                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Share your exact requirements and specifications. We will promptly respond with a detailed, competitive FOB or CIF quote.</p>
+                    <h4 style="font-size: 1.2rem; color: #1e293b; margin-bottom: 10px;">Inquiry &amp; Quotation</h4>
+                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Share your needs. Our safety match exporter desk replies with a detailed FOB or CIF quote.</p>
                 </div>
 
                 <div class="process-card">
                     <div class="process-number">2</div>
                     <h4 style="font-size: 1.2rem; color: #1e293b; margin-bottom: 10px;">Sample Approval</h4>
-                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Physical product samples are dispatched internationally for your direct quality inspection and formal confirmation.</p>
+                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Samples of our custom matchbox range are sent for your inspection and approval.</p>
                 </div>
 
                 <div class="process-card">
                     <div class="process-number">3</div>
                     <h4 style="font-size: 1.2rem; color: #1e293b; margin-bottom: 10px;">Production</h4>
-                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Upon approval, bulk manufacturing commences under our strict quality control frameworks and EN 1783 guidelines.</p>
+                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Bulk safety matches are manufactured under strict quality control, with private label runs handled in house.</p>
                 </div>
 
                 <div class="process-card">
                     <div class="process-number">4</div>
                     <h4 style="font-size: 1.2rem; color: #1e293b; margin-bottom: 10px;">Export Packaging</h4>
-                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Finished goods undergo rigorous moisture-resistant, export-standard packing to ensure absolute safety during transit.</p>
+                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Moisture resistant, export grade matchbox packing prepared for safe sea transit.</p>
                 </div>
 
                 <div class="process-card">
                     <div class="process-number">5</div>
                     <h4 style="font-size: 1.2rem; color: #1e293b; margin-bottom: 10px;">Documentation</h4>
-                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Our logistics team prepares all necessary export invoices, compliance certificates, and customs shipping documents.</p>
+                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Export invoices, certificates and customs documents prepared by our logistics team.</p>
                 </div>
 
                 <div class="process-card">
                     <div class="process-number">6</div>
                     <h4 style="font-size: 1.2rem; color: #1e293b; margin-bottom: 10px;">Shipping</h4>
-                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Containers are securely dispatched and tracked through to successful delivery at your requested destination port.</p>
+                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">Containers dispatched and tracked by an international matchbox supplier to your port.</p>
                 </div>
             </div>
-
-            <p style="font-size: 1.1rem; line-height: 1.7; color: #4b5563; text-align: center; max-width: 850px; margin: 3rem auto 0 auto;">
-                For customers sourcing safety matches wholesale, Bell Match can support bulk requirements through an organized manufacturing and export workflow. This makes us a practical wholesale safety matches supplier for international importers and distributors.
-            </p>
         </div>
     </section>
 
@@ -1038,11 +1215,11 @@
                     </h2>
 
                     <p style="color: #475569; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.25rem;">
-                        Whether you are an international importer, distributor, or private-label buyer, our dedicated export desk is ready to support your safety matches sourcing requirements worldwide.
+                        Whether you are an international importer, distributor, or private label buyer, our dedicated export desk is ready to support your safety matches sourcing requirements worldwide.
                     </p>
 
                     <p style="color: #475569; font-size: 1.02rem; line-height: 1.8; margin-bottom: 1.75rem;">
-                        Bell Match provides turnkey Indian manufacturing and export solutions — spanning custom splint dimensions, bespoke matchbox branding, moisture-resistant packaging, and full container order fulfillment.
+                        Bell Match provides turnkey Indian manufacturing and export solutions spanning custom splint dimensions, bespoke matchbox branding, moisture-resistant packaging, and full container order fulfillment.
                     </p>
 
                     <div style="padding-top: 1.5rem; border-top: 1px solid #e2e8f0; width: 100%;">
@@ -1117,7 +1294,7 @@
 
                         <div style="margin-bottom: 1.35rem;">
                             <label class="export-form-label">Order Volume & Specifications <span style="color: #b71c1c;">*</span></label>
-                            <textarea name="specifications_and_volume" class="export-form-input" rows="4" placeholder="Specify your container volume (e.g. 1x20ft or 40ft FCL), matchbox size, splint length, stick count, or custom packaging needs..." required style="resize: vertical;"></textarea>
+                            <textarea name="specifications_and_volume" class="export-form-input" rows="4" placeholder="Specify your container volume (e.g. 1x20ft or 40ft FCL), matchbox size, splint length, stick count, or custom packaging needs..." required style="resize: none;"></textarea>
                         </div>
 
                         <div id="exportFormStatus" style="display: none; padding: 12px 16px; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.95rem; font-weight: 500;"></div>

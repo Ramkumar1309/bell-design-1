@@ -147,9 +147,18 @@
             <div class="grid grid-cols-2" style="align-items: stretch; gap: 4rem;">
                 <div>
                     <h2 class="company-profile-title" style="color: var(--primary-red); font-size: 2.5rem; margin-bottom: 0.5rem; font-family: 'Poppins', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Our Company Profile</h2>
-                    <h4 class="company-profile-subtitle" style="color: var(--gold-accent); font-size: 1.2rem; margin-bottom: 2rem; font-style: italic; font-weight: 400; letter-spacing: 0.5px; font-family: 'Lora', serif;">Trusted Manufacturer &amp; Global Exporter of Premium Wooden Safety Matches</h4>
+                    <h4 class="company-profile-subtitle" style="color: var(--gold-accent); font-size: 1.2rem; margin-bottom: 1.5rem; font-style: italic; font-weight: 400; letter-spacing: 0.5px; font-family: 'Lora', serif;">Trusted Manufacturer &amp; Global Exporter of Premium Wooden Safety Matches</h4>
                     
-                    <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 0; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">Bell Match is a trusted safety match manufacturer built on quality, safety, innovation and customer commitment. As part of the Bell Group of Companies, with interests spanning engineering, hospitality and pyrotechnics, we bring strong expertise and responsible business practices to everything we do. What sets us apart is our ability to understand customer requirements and deliver reliable, flexible and customized solutions. Backed by a sustainable manufacturing approach, we focus on consistent quality while meeting the needs of diverse markets. Our 5-acre manufacturing facility, modern machinery and skilled workforce enable us to combine technology with manufacturing expertise at every stage. With a strong focus on safety, compliance and dependable service, Bell Match has built lasting customer relationships and a growing presence in international markets. As an established match manufacturer (decades of experience), Bell Match continues to develop its manufacturing capabilities to serve international buyers. Today, our footprint extends across 25+ countries, connecting Bell Match with customers worldwide. At Bell Match, service meets commitment, safety meets innovation, and partnerships are built to last.</p>
+                    <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">Bell Matches is an established match manufacturer and a trusted safety match manufacturer, built on quality, safety and customer commitment. As part of the Bell Group of Companies, we bring responsible business practices and decades of experience to every order.</p>
+
+                    <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">Our 5 acre facility, modern machinery and skilled team handle every stage in house, from splint to finished box. This lets us offer flexible, customised solutions as a matchbox manufacturer and exporter serving importers, wholesalers and private label brands worldwide.</p>
+
+                    <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.75rem; font-style: italic; font-weight: 600; color: var(--primary-red); font-family: 'Lora', serif;">Service meets commitment. Safety meets innovation. Partnerships built to last.</p>
+
+                    <div style="border-top: 1px solid #e5e7eb; padding-top: 1.25rem;">
+                        <h3 style="color: #111827; font-size: 1.4rem; margin-bottom: 0.5rem; font-family: 'Poppins', sans-serif; font-weight: 700;">Our Manufacturing Journey</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 0; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">Since 1998, Bell Matches has focused on safety matches with consistent quality and timely delivery. Today, as an Indian matchbox exporter, we support international markets with reliable manufacturing and export capability.</p>
+                    </div>
                 </div>
                 <div style="position: relative; height: 100%; display: flex; align-items: stretch; justify-content: center;">
                     <video id="aboutVideoHero" src="videos/matchbox-filling-machine.mp4" poster="videos/matchbox-filling-machine-poster.jpg" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);"></video>
@@ -176,6 +185,269 @@
                             }
                         });
                     </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Sets Bell Matches Apart Section -->
+    <section class="section" id="sets-apart" style="padding: 4rem 0 3.5rem 0; background: #ffffff; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; position: relative;">
+        <style>
+            .apart-pipeline-container {
+                position: relative;
+                margin-top: 3.5rem;
+            }
+            /* Connecting track across nodes on desktop */
+            .apart-pipeline-rail {
+                position: absolute;
+                top: 42px;
+                left: 12%;
+                right: 12%;
+                height: 3px;
+                background: linear-gradient(90deg, var(--primary-red) 0%, var(--gold-accent) 50%, var(--primary-red) 100%);
+                opacity: 0.35;
+                z-index: 1;
+            }
+            .apart-pipeline {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+                position: relative;
+                z-index: 2;
+            }
+            .apart-pillar {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                position: relative;
+                padding: 0 0.5rem;
+                transition: transform 0.3s ease;
+            }
+            .apart-node-wrapper {
+                position: relative;
+                margin-bottom: 1.5rem;
+            }
+            .apart-node {
+                width: 84px;
+                height: 84px;
+                border-radius: 50%;
+                background: #ffffff;
+                border: 2px solid #e2e8f0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            }
+            .apart-node i {
+                font-size: 1.85rem;
+                color: var(--primary-red);
+                transition: all 0.35s ease;
+            }
+            .apart-node-badge {
+                position: absolute;
+                top: -6px;
+                right: -6px;
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                background: var(--gold-accent);
+                color: #ffffff;
+                font-size: 0.72rem;
+                font-weight: 800;
+                font-family: 'Poppins', sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid #ffffff;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+                transition: all 0.3s ease;
+            }
+            .apart-pillar:hover {
+                transform: translateY(-6px);
+            }
+            .apart-pillar:hover .apart-node {
+                border-color: var(--primary-red);
+                background: var(--primary-red);
+                box-shadow: 0 12px 28px rgba(183, 28, 28, 0.28);
+            }
+            .apart-pillar:hover .apart-node i {
+                color: #ffffff;
+                transform: scale(1.1);
+            }
+            .apart-pillar:hover .apart-node-badge {
+                background: #111827;
+                transform: scale(1.12);
+            }
+            .apart-pillar-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .apart-pillar-content h3 {
+                font-family: 'Poppins', sans-serif;
+                font-size: 1.22rem;
+                font-weight: 700;
+                color: #111827;
+                margin-bottom: 0.65rem;
+                line-height: 1.35;
+                transition: color 0.3s ease;
+            }
+            .apart-pillar:hover .apart-pillar-content h3 {
+                color: var(--primary-red);
+            }
+            .apart-pillar-content p {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                line-height: 1.65;
+                color: #64748b;
+                margin: 0;
+                max-width: 290px;
+            }
+            @media (max-width: 992px) {
+                .apart-pipeline-rail {
+                    display: none;
+                }
+                .apart-pipeline {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2.5rem 1.5rem;
+                }
+            }
+            @media (max-width: 768px) {
+                .apart-pipeline-container {
+                    margin-top: 2.25rem;
+                }
+                .apart-pipeline {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.75rem;
+                    position: relative;
+                }
+                /* Mobile vertical connecting rail between the node circles */
+                .apart-pipeline::before {
+                    content: '';
+                    position: absolute;
+                    top: 35px;
+                    bottom: 35px;
+                    left: 31px;
+                    width: 2px;
+                    background: linear-gradient(180deg, var(--primary-red) 0%, var(--gold-accent) 50%, var(--primary-red) 100%);
+                    opacity: 0.35;
+                    z-index: 1;
+                }
+                .apart-pillar {
+                    flex-direction: row;
+                    text-align: left;
+                    align-items: flex-start;
+                    gap: 1.25rem;
+                    position: relative;
+                    z-index: 2;
+                    padding: 0;
+                }
+                .apart-node-wrapper {
+                    margin-bottom: 0;
+                    flex-shrink: 0;
+                }
+                .apart-node {
+                    width: 64px;
+                    height: 64px;
+                    background: #ffffff;
+                }
+                .apart-node i {
+                    font-size: 1.4rem;
+                }
+                .apart-node-badge {
+                    width: 24px;
+                    height: 24px;
+                    font-size: 0.68rem;
+                    top: -4px;
+                    right: -4px;
+                }
+                .apart-pillar-content {
+                    display: block;
+                    text-align: left;
+                    flex: 1;
+                    min-width: 0;
+                    padding-top: 0.2rem;
+                }
+                .apart-pillar-content h3 {
+                    font-size: 1.12rem;
+                    margin-bottom: 0.35rem;
+                    line-height: 1.35;
+                }
+                .apart-pillar-content p {
+                    font-size: 0.92rem;
+                    line-height: 1.55;
+                    max-width: 100%;
+                }
+            }
+        </style>
+        <div class="container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <h2 style="color: #111827; font-size: 2.35rem; margin-bottom: 0.5rem; font-family: 'Poppins', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">What Sets <span style="color: var(--primary-red);">Bell Matches</span> Apart</h2>
+                <h4 style="color: var(--gold-accent); font-size: 1.15rem; margin: 0; font-style: italic; font-weight: 400; letter-spacing: 0.5px; font-family: 'Lora', serif;">Experience, capacity and care behind every order.</h4>
+            </div>
+
+            <div class="apart-pipeline-container">
+                <div class="apart-pipeline-rail"></div>
+                <div class="apart-pipeline">
+                    <!-- Pillar 1 -->
+                    <div class="apart-pillar">
+                        <div class="apart-node-wrapper">
+                            <div class="apart-node">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <div class="apart-node-badge">01</div>
+                        </div>
+                        <div class="apart-pillar-content">
+                            <h3>Experienced Team</h3>
+                            <p>Skilled professionals with years of expertise in premium wooden safety matches.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="apart-pillar">
+                        <div class="apart-node-wrapper">
+                            <div class="apart-node">
+                                <i class="fas fa-boxes-stacked"></i>
+                            </div>
+                            <div class="apart-node-badge">02</div>
+                        </div>
+                        <div class="apart-pillar-content">
+                            <h3>Private Label &amp; OEM</h3>
+                            <p>Complete branding and packaging as a matchbox OEM manufacturer.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="apart-pillar">
+                        <div class="apart-node-wrapper">
+                            <div class="apart-node">
+                                <i class="fas fa-cubes"></i>
+                            </div>
+                            <div class="apart-node-badge">03</div>
+                        </div>
+                        <div class="apart-pillar-content">
+                            <h3>Bulk Capacity</h3>
+                            <p>From small trial orders to high volume supply, handled efficiently.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="apart-pillar">
+                        <div class="apart-node-wrapper">
+                            <div class="apart-node">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="apart-node-badge">04</div>
+                        </div>
+                        <div class="apart-pillar-content">
+                            <h3>Customer Centric Support</h3>
+                            <p>One dedicated point of contact from enquiry to delivery.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -219,9 +491,17 @@
                     order: 2 !important;
                 }
             }
+            .mfg-mobile-br {
+                display: none;
+            }
             @media (max-width: 768px) {
                 .mfg-solutions-title {
                     text-align: center !important;
+                    font-size: clamp(1.7rem, 6.2vw, 2rem) !important;
+                    line-height: 1.25 !important;
+                }
+                .mfg-mobile-br {
+                    display: block !important;
                 }
             }
         </style>
@@ -234,8 +514,8 @@
 
                 <!-- Right: Text -->
                 <div class="mfg-solutions-content" style="display: flex; flex-direction: column; justify-content: center;">
-                    <h2 class="mfg-solutions-title" style="color: var(--primary-red); font-size: 2.3rem; margin-bottom: 1.5rem; font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.25;">Complete Safety Match Manufacturing Solutions</h2>
-                    <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">Whether you require standard household safety matches, kitchen matches, promotional match boxes, or customised private-label products, Bell Match Company provides complete manufacturing solutions tailored to your business requirements.</p>
+                    <h2 class="mfg-solutions-title" style="color: var(--primary-red); font-size: 2.3rem; margin-bottom: 1.5rem; font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.25;">Complete Safety<br class="mfg-mobile-br"> Match Manufacturing<br class="mfg-mobile-br"> Solutions</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">Whether you require standard household safety matches, kitchen matches, promotional match boxes, or customised private label products, Bell Match Company provides complete manufacturing solutions tailored to your business requirements.</p>
                     <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">Our experienced production and export teams ensure every order meets stringent quality standards while maintaining consistency across bulk production.</p>
                     <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 0; text-align: justify; font-family: 'Lora', serif; font-weight: 400; color: #374151;">For businesses requiring customized production, Bell Match also operates as a matchbox OEM manufacturer, providing manufacturing and packaging solutions according to customer requirements.</p>
                 </div>
@@ -617,7 +897,7 @@
                 background: #ffffff;
                 border: 1px solid #e5e7eb;
                 border-radius: 14px;
-                padding: 2.2rem 1.8rem;
+                padding: 2rem clamp(1.1rem, 1.35vw, 1.8rem);
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
@@ -674,15 +954,19 @@
             }
             .export-deck-card h3 {
                 font-family: 'Poppins', sans-serif;
-                font-size: 1.25rem;
+                font-size: clamp(0.92rem, 1.15vw, 1.25rem);
                 font-weight: 600;
                 color: #111827;
                 line-height: 1.35;
                 margin: 0 0 1rem 0;
             }
+            .export-deck-card h3 span {
+                display: block;
+                white-space: nowrap;
+            }
             .export-deck-card p {
                 font-family: 'Inter', sans-serif;
-                font-size: 0.95rem;
+                font-size: clamp(0.86rem, 0.95vw, 0.95rem);
                 line-height: 1.7;
                 color: #64748b;
                 margin: 0;
@@ -767,7 +1051,7 @@
                 </div>
                 <div class="export-header-right">
                     <p class="export-lead-p">
-                        Bell Match operates as a matchbox export company serving international markets with reliable manufacturing, packaging and supply capabilities.
+                        Bell Matches is a matchbox export company and safety match manufacturer for importers, supplying Indian made matches with reliable packaging and dependable order fulfilment.
                     </p>
                     <a href="export.html#quote" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--primary-red); text-decoration: none;">
                         Start Export Enquiry <i class="fas fa-arrow-right"></i>
@@ -785,8 +1069,8 @@
                             <i class="fas fa-industry"></i>
                         </div>
                     </div>
-                    <h3>Export-Oriented Manufacturing</h3>
-                    <p>Our export-oriented manufacturing model enables us to support businesses looking for an international matchbox supplier with consistent production and dependable order fulfilment.</p>
+                    <h3><span>Export Oriented</span><span>Manufacturing</span></h3>
+                    <p>An international matchbox supplier with consistent production capacity and dependable global order fulfilment.</p>
                 </div>
 
                 <!-- Card 2 -->
@@ -797,8 +1081,8 @@
                             <i class="fas fa-globe-europe"></i>
                         </div>
                     </div>
-                    <h3>Global &amp; European Distribution</h3>
-                    <p>Bell Match also serves as a global matchbox supplier, connecting Indian manufacturing capabilities with customers and importers across international markets, including Europe.</p>
+                    <h3><span>Global &amp; European</span><span>Distribution</span></h3>
+                    <p>A global matchbox supplier connecting Indian manufacturing with international importers and European buyers.</p>
                 </div>
 
                 <!-- Card 3 -->
@@ -809,8 +1093,8 @@
                             <i class="fas fa-certificate"></i>
                         </div>
                     </div>
-                    <h3>Indian Export Capabilities</h3>
-                    <p>For businesses sourcing from India, our capabilities position Bell Match as a matchbox manufacturer India exporter with experience in international supply requirements.</p>
+                    <h3><span>Indian Export</span><span>Capabilities</span></h3>
+                    <p>A trusted matchbox manufacturer and exporter from India, experienced in international regulatory requirements.</p>
                 </div>
 
                 <!-- Card 4 -->
@@ -821,8 +1105,8 @@
                             <i class="fas fa-handshake"></i>
                         </div>
                     </div>
-                    <h3>Long-Term Supply Partnerships</h3>
-                    <p>Our international operations support customers seeking a reliable safety matches export company for long-term business requirements.</p>
+                    <h3><span>Long Term Supply</span><span>Partnerships</span></h3>
+                    <p>A dependable safety matches export partner offering reliable contracts for ongoing wholesale supply needs.</p>
                 </div>
             </div>
         </div>
